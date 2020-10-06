@@ -1,4 +1,5 @@
 {
   "name": "Contame",
-  "displayName": "Contame"
+  "displayName": "Contame",
+  "host": "https://contame.herokuapp.com"
 }

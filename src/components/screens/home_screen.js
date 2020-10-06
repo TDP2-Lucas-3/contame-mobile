@@ -1,9 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
+import ReportsList from './reports_list';
+import {styles} from '../../styles/common';
 
 const HomeScreen = () => (
-  <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-    <Text>Contame!</Text>
+  <View style={styles.container}>
+    <ReportsList />
   </View>
 );
 
