@@ -13,4 +13,4 @@ jobs:
           npm test
       - name: Run Linter
         run: |
-          npm lint
+          npm run lint
