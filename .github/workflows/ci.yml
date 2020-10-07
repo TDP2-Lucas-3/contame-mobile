@@ -20,7 +20,7 @@ on:
   push:
     tags:
       - '*'
-  branch:
+  branches:
     - main
 build-android:
     needs: install-test-lint
