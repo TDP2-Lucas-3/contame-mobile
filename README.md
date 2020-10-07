@@ -1,3 +1,5 @@
+![Build project](https://github.com/TDP2-Lucas-3/contame-mobile/workflows/Build%20project/badge.svg?branch=main)
+
 # App Mobile Contame!
 
 ## Requirements
