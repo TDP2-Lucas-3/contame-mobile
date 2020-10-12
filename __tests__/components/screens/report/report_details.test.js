@@ -2,7 +2,6 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import ReportDetails from '../../../../src/components/screens/reports/report_details';
 
-
 describe('ReportDetails', () => {
   let render;
   let props;
