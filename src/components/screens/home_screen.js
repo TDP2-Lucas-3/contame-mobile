@@ -1,11 +1,10 @@
 import React from 'react';
 import {View} from 'react-native';
-import ReportsList from './reports_list';
-import {styles} from '../../styles/common';
+import NewReport from './reports/new_report';
 
 const HomeScreen = () => (
-  <View style={styles.container}>
-    <ReportsList />
+  <View>
+    <NewReport />
   </View>
 );
 
