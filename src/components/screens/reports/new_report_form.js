@@ -17,10 +17,10 @@ const NewReportForm = (props) => (
     />
     <Input
       placeholder="Detalles?"
-      onChangeText={(value) => props.onChange('details', value)}
+      onChangeText={(value) => props.onChange('description', value)}
       disabled={props.loading}
     />
-    <Button title="Contame!" onPress={props.onSubmit} laoding={props.loading} />
+    <Button title="Contame!" onPress={props.onSubmit} loading={props.loading} />
   </View>
 );
 
