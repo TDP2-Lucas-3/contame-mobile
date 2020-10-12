@@ -6,4 +6,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  /* MARGIN */
+  m_1: {
+    margin: 10,
+  },
 });
