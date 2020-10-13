@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import NewReportForm from '../../../../src/components/screens/reports/new_report_form';
+import NewReportForm from '../../../../src/components/screens/reports/new/new_report_form';
 import {findByTestId} from '../../../support/helpers';
 
 describe('NewReportForm', () => {
@@ -24,46 +24,15 @@ describe('NewReportForm', () => {
     expect(render(props)).toMatchSnapshot();
   });
 
-  describe('onChange', () => {
-    let value;
-    let expectedKey;
-    let testId;
+  describe('Wizard', () => {
+    let component;
 
-    const itCallsOnChangeWithRightValues = () =>
-      it('calls onChange prop with right keys', () => {
-        findByTestId(render(props), testId).props().onChangeText(value);
-
-        expect(props.onChange).toHaveBeenCalledWith(expectedKey, value);
-      });
-
-    describe('when changing title', () => {
-      beforeEach(() => {
-        value = 'some title';
-        expectedKey = 'title';
-        testId = 'title_input';
-      });
-
-      itCallsOnChangeWithRightValues();
+    beforeEach(() => {
+      component = render(props);
     });
 
-    describe('when changing description', () => {
-      beforeEach(() => {
-        value = 'some description';
-        expectedKey = 'description';
-        testId = 'description_input';
-      });
-
-      itCallsOnChangeWithRightValues();
-    });
-
-    describe('when changing location', () => {
-      beforeEach(() => {
-        value = 'some location';
-        expectedKey = 'location';
-        testId = 'location_input';
-      });
-
-      itCallsOnChangeWithRightValues();
+    it('renders category as first step', () => {
+      expect(() => findByTestId(component, 'category_step')).not.toThrowError();
     });
   });
 });

@@ -3,7 +3,7 @@ import {Picker} from '@react-native-community/picker';
 import {getCategories} from '../../../../../config/routes';
 import useAxios from 'axios-hooks';
 import Loading from '../../../../common/loading';
-import {styles} from '../../../../../styles/common';
+import {capitalize} from 'lodash';
 
 const CategoryStep = (props) => {
   const [{data, loading}] = useAxios(getCategories());
@@ -21,7 +21,7 @@ const CategoryStep = (props) => {
       }>
       {data.map((category) => (
         <Picker.Item
-          label={category.name}
+          label={capitalize(category.name)}
           value={category.id}
           key={category.id}
         />
