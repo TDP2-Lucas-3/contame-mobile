@@ -10,4 +10,7 @@ export const styles = StyleSheet.create({
   m_1: {
     margin: 10,
   },
+  picker: {
+    flex: 1,
+  },
 });

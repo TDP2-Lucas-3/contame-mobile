@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import NewReport from './reports/new_report';
+import NewReport from './reports/new/new_report';
 
 const HomeScreen = () => (
   <View>
