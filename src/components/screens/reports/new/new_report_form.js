@@ -4,20 +4,15 @@ import Wizard from 'react-native-wizard';
 import CategoryStep from './steps/category';
 import TitleStep from './steps/title';
 import {Button} from 'react-native-elements';
-import {styles} from '../../../../styles/common';
 
 const NewReportForm = (props) => {
   const wizard = useRef(null);
-  const [isLastStep, setIsLastStep] = useState(0);
+  const [onLastStep, setOnLastStep] = useState(0);
 
   const stepList = [
     {
       content: (
-        <CategoryStep
-          onChange={props.onChange}
-          selected={props.category}
-          testID="category_step"
-        />
+        <CategoryStep onChange={props.onChange} selected={props.category} />
       ),
     },
     {
@@ -32,13 +27,13 @@ const NewReportForm = (props) => {
   const completeButton = <Button title="Contame!" onPress={props.onSubmit} />;
 
   return (
-    <View style={styles.m_1}>
+    <View>
       <Wizard
         ref={wizard}
         steps={stepList}
-        currentStep={({isLastStep}) => setIsLastStep(isLastStep)}
+        currentStep={({isLastStep}) => setOnLastStep(isLastStep)}
       />
-      {isLastStep ? completeButton : nextButton}
+      {onLastStep ? completeButton : nextButton}
     </View>
   );
 };
