@@ -5,8 +5,8 @@ import {styles} from '../../../../../styles/common';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 
 const INITIAL_CENTER = {
-  latitude: 37.78825,
-  longitude: -122.4324,
+  latitude: -34.609824,
+  longitude: -58.392705,
 };
 
 const IncidentLocationMapViewStep = (props) => {
