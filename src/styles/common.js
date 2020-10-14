@@ -9,6 +9,10 @@ export const styles = StyleSheet.create({
   justifyAround: {
     justifyContent: 'space-around',
   },
+  map: {
+    width: '100%',
+    height: '93%',
+  },
   /* MARGIN */
   m_1: {
     margin: 10,
