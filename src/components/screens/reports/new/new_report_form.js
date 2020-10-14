@@ -25,7 +25,7 @@ const NewReportForm = (props) => {
       content: <TitleStep onChange={props.onChange} onSelect={next} />,
     },
     {
-      content: <IncidentLocationMapViewStep onSelect={onSelect} />,
+      content: <IncidentLocationMapViewStep onSelect={onSelect} skip={next} />,
     },
   ];
 

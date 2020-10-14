@@ -46,13 +46,16 @@ const IncidentLocationMapViewStep = (props) => {
         onRegionChange={(region) => (region ? setCenter(region) : null)}>
         <MapMarker coordinate={center} />
       </MapView>
-      <Button
-        title="Seleccionar"
-        onPress={() => {
-          props.onSelect('latitude', center.latitude);
-          props.onSelect('longitude', center.longitude);
-        }}
-      />
+      <View>
+        <Button
+          title="Seleccionar"
+          onPress={() => {
+            props.onSelect('latitude', center.latitude);
+            props.onSelect('longitude', center.longitude);
+          }}
+        />
+        <Button title="Siguiente" onPress={props.skip} />
+      </View>
     </View>
   );
 };

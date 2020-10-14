@@ -19,7 +19,7 @@ const NewReport = () => {
       setLoading(false);
     }
   };
-  console.log(data);
+
   return (
     <View>
       <NewReportForm
