@@ -12,8 +12,12 @@ const NewReportForm = (props) => {
     wizard.current.next();
   };
 
+  const back = () => {
+    wizard.current.prev();
+  };
+
   const onSelect = (...params) => {
-    props.onChange(params);
+    props.onChange(...params);
     next();
   };
 
@@ -22,7 +26,14 @@ const NewReportForm = (props) => {
       content: <CategoryStep onChange={onSelect} selected={props.category} />,
     },
     {
-      content: <TitleStep onChange={props.onChange} onSelect={next} />,
+      content: (
+        <TitleStep
+          onChange={props.onChange}
+          onSelect={next}
+          title={props.title}
+          onBack={back}
+        />
+      ),
     },
     {
       content: <IncidentLocationMapViewStep onSelect={onSelect} />,
