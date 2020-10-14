@@ -19,11 +19,15 @@ const NewReport = () => {
       setLoading(false);
     }
   };
-
+  console.log(data);
   return (
     <View>
       <NewReportForm
-        onChange={(key, value) => setData({...data, [key]: value})}
+        onChange={(key, value) =>
+          setData((prev) => {
+            return {...prev, [key]: value};
+          })
+        }
         onSubmit={onSubmit}
         loading={loading}
         {...data}

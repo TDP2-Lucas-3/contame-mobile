@@ -13,7 +13,7 @@ const NewReportForm = (props) => {
   };
 
   const onSelect = (...params) => {
-    props.onChange(params);
+    props.onChange(...params);
     next();
   };
 
