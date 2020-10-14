@@ -3,8 +3,15 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    margin: 20,
+  },
+  justifyAround: {
+    justifyContent: 'space-around',
+  },
+  map: {
+    width: '100%',
+    height: '93%',
   },
   /* MARGIN */
   m_1: {

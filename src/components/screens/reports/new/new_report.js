@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+import {View} from 'react-native';
+import {getReports} from '../../../../config/routes';
+import usePost from '../../../../hooks/usePost';
 import NewReportForm from './new_report_form';
-import {getReports} from '../../../config/routes';
-import usePost from '../../../hooks/usePost';
 
 const NewReport = () => {
   const [data, setData] = useState({});
@@ -20,11 +21,14 @@ const NewReport = () => {
   };
 
   return (
-    <NewReportForm
-      onChange={(key, value) => setData({...data, [key]: value})}
-      onSubmit={onSubmit}
-      loading={loading}
-    />
+    <View>
+      <NewReportForm
+        onChange={(key, value) => setData({...data, [key]: value})}
+        onSubmit={onSubmit}
+        loading={loading}
+        {...data}
+      />
+    </View>
   );
 };
 
