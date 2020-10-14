@@ -42,7 +42,12 @@ const NewReportForm = (props) => {
 
   return (
     <View>
-      <Wizard ref={wizard} steps={stepList} />
+      <Wizard
+        ref={wizard}
+        steps={stepList}
+        nextStepAnimation="slideRight"
+        prevStepAnimation="slideLeft"
+      />
     </View>
   );
 };
