@@ -3,9 +3,10 @@ import {View} from 'react-native';
 import {Text, Button, colors} from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker';
 import {styles} from '../../../../../styles/common';
+import ImageIcon from '../../../../common/image_icon';
 
 const ImagesStep = (props) => {
-  const [images, setImages] = useState('');
+  const [images, setImages] = useState([]);
 
   const onAttachImages = () => {
     const options = {
@@ -19,8 +20,22 @@ const ImagesStep = (props) => {
         return;
       }
 
-      setImages([...images, {uri: response.uri}]);
+      setImages([
+        ...images,
+        {
+          uri: 'data:image/jpeg;base64,' + response.data,
+          name: response.fileName,
+        },
+      ]);
     });
+  };
+
+  const onRemoveImage = (image) => {
+    const newImages = images.filter(
+      (currentImage) => currentImage.name !== image.name,
+    );
+
+    setImages(newImages);
   };
 
   return (
@@ -37,6 +52,11 @@ const ImagesStep = (props) => {
         titleStyle={styles.link}
         onPress={onAttachImages}
       />
+      <View style={[styles.row, styles.alignSelfCenter]}>
+        {images.map((image) => (
+          <ImageIcon name={image.name} onRemove={() => onRemoveImage(image)} />
+        ))}
+      </View>
     </View>
   );
 };

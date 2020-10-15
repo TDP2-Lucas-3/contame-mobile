@@ -10,12 +10,32 @@ export const styles = StyleSheet.create({
   justifyAround: {
     justifyContent: 'space-around',
   },
+  alignSelfCenter: {
+    alignSelf: 'flex-start',
+  },
   alignCenter: {
     alignItems: 'center',
   },
   map: {
     width: '100%',
     height: '85%',
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  image_icon: {
+    height: 50,
+    width: 50,
+    justifyContent: 'center',
+    borderRadius: 10,
+  },
+  positionRelative: {
+    position: 'relative',
+  },
+  close_icon: {
+    position: 'absolute',
+    top: 0,
+    right: 8,
   },
   /* TEXT */
   underline: {
@@ -32,5 +52,9 @@ export const styles = StyleSheet.create({
   /* PADDING */
   p_2: {
     paddingBottom: 20,
+  },
+  /* COLORS */
+  bg_grey: {
+    backgroundColor: colors.grey4,
   },
 });
