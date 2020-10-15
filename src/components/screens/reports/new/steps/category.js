@@ -9,6 +9,8 @@ import {capitalize} from 'lodash';
 const CategoryStep = (props) => {
   const [{data, loading}] = useAxios(getCategories());
 
+  const categories = [{id: -1, name: 'Seleccione'}, ...(data || [])];
+
   return loading ? (
     <Loading />
   ) : (
@@ -22,7 +24,7 @@ const CategoryStep = (props) => {
             data.find((category) => category.id === itemValue).id,
           )
         }>
-        {data.map((category) => (
+        {categories.map((category) => (
           <Picker.Item
             label={capitalize(category.name)}
             value={category.id}

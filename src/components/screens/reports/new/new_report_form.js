@@ -4,6 +4,7 @@ import Wizard from 'react-native-wizard';
 import CategoryStep from './steps/category';
 import TitleStep from './steps/title';
 import IncidentLocationMapViewStep from './steps/incident_location_map_view';
+import DescriptionStep from './steps/description';
 
 const NewReportForm = (props) => {
   const wizard = useRef(null);
@@ -32,6 +33,16 @@ const NewReportForm = (props) => {
           onSelect={next}
           title={props.title}
           onBack={back}
+        />
+      ),
+    },
+    {
+      content: (
+        <DescriptionStep
+          onChange={props.onChange}
+          onSelect={next}
+          onBack={back}
+          description={props.description}
         />
       ),
     },
