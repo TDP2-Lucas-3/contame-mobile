@@ -1,9 +1,12 @@
-import React, {useState} from 'react';
-import {View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, ToastAndroid} from 'react-native';
 import {Text, Button, colors} from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker';
 import {styles} from '../../../../../styles/common';
 import ImageIcon from '../../../../common/image_icon';
+
+const MAX_IMAGE_ERROR_MSG = 'Podés subir hasta 5 imágenes';
+const MAX_IMAGE_COUNT = 5;
 
 const ImagesStep = (props) => {
   const [images, setImages] = useState([]);
@@ -20,15 +23,27 @@ const ImagesStep = (props) => {
         return;
       }
 
+      if (images.length >= MAX_IMAGE_COUNT) {
+        ToastAndroid.show(MAX_IMAGE_ERROR_MSG, ToastAndroid.LONG);
+        return;
+      }
+
       setImages([
         ...images,
         {
-          uri: 'data:image/jpeg;base64,' + response.data,
+          data: 'data:image/jpeg;base64,' + response.data,
           name: response.fileName,
         },
       ]);
     });
   };
+
+  useEffect(() => {
+    props.onChange(
+      'images',
+      images.map((image) => image.data),
+    );
+  }, [images]);
 
   const onRemoveImage = (image) => {
     const newImages = images.filter(
@@ -53,7 +68,13 @@ const ImagesStep = (props) => {
           titleStyle={styles.link}
           onPress={onAttachImages}
         />
-        <View style={[styles.row, styles.alignSelfCenter, styles.pb_2]}>
+        <View
+          style={[
+            styles.row,
+            styles.alignSelfStart,
+            styles.pb_2,
+            styles.flexWrap,
+          ]}>
           {images.map((image) => (
             <ImageIcon
               key={image.name}
@@ -63,7 +84,10 @@ const ImagesStep = (props) => {
           ))}
         </View>
       </View>
-      <Button title="Siguiente" onPress={props.onNext} />
+      <Button
+        title={images.length > 0 ? 'Siguiente' : 'Saltear'}
+        onPress={props.onNext}
+      />
     </View>
   );
 };

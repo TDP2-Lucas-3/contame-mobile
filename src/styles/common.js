@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   justifyBetween: {
     justifyContent: 'space-between',
   },
-  alignSelfCenter: {
+  alignSelfStart: {
     alignSelf: 'flex-start',
   },
   alignCenter: {
@@ -25,9 +25,15 @@ export const styles = StyleSheet.create({
   fullH: {
     height: '100%',
   },
+  fullW: {
+    width: '100%',
+  },
   map: {
     width: '100%',
     height: '85%',
+  },
+  flexWrap: {
+    flexWrap: 'wrap',
   },
   row: {
     flexDirection: 'row',

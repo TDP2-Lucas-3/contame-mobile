@@ -25,9 +25,6 @@ const NewReportForm = (props) => {
 
   const stepList = [
     {
-      content: <ImagesStep />,
-    },
-    {
       content: <CategoryStep onChange={onSelect} selected={props.category} />,
     },
     {
@@ -52,6 +49,9 @@ const NewReportForm = (props) => {
     },
     {
       content: <IncidentLocationMapViewStep onSelect={onSelect} skip={next} />,
+    },
+    {
+      content: <ImagesStep onNext={next} onChange={props.onChange} />,
     },
   ];
 
