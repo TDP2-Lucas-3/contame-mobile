@@ -5,6 +5,7 @@ import CategoryStep from './steps/category';
 import TitleStep from './steps/title';
 import IncidentLocationMapViewStep from './steps/incident_location_map_view';
 import DescriptionStep from './steps/description';
+import ConfirmStep from './steps/confirm';
 
 const NewReportForm = (props) => {
   const wizard = useRef(null);
@@ -15,6 +16,10 @@ const NewReportForm = (props) => {
 
   const back = () => {
     wizard.current.prev();
+  };
+
+  const first = () => {
+    wizard.current.goTo(0);
   };
 
   const onSelect = (...params) => {
@@ -48,6 +53,9 @@ const NewReportForm = (props) => {
     },
     {
       content: <IncidentLocationMapViewStep onSelect={onSelect} skip={next} />,
+    },
+    {
+      content: <ConfirmStep first={first} />,
     },
   ];
 
