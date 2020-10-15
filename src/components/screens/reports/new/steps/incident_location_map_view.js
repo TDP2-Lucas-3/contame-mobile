@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Button} from 'react-native';
+import {View, Button, Text} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {styles} from '../../../../../styles/common';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
@@ -36,6 +36,7 @@ const IncidentLocationMapViewStep = (props) => {
 
   return (
     <View>
+      <Text h4>Donde ocurrio?</Text>
       <MapView
         provider={PROVIDER_GOOGLE}
         style={styles.map}

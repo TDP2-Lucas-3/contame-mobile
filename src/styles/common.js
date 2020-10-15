@@ -13,6 +13,10 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: '85%',
   },
+  /* TEXT */
+  underline: {
+    textDecorationLine: 'underline',
+  },
   /* MARGIN */
   m_1: {
     margin: 10,
