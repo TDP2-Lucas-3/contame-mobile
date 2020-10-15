@@ -5,6 +5,7 @@ import CategoryStep from './steps/category';
 import TitleStep from './steps/title';
 import IncidentLocationMapViewStep from './steps/incident_location_map_view';
 import DescriptionStep from './steps/description';
+import ImagesStep from './steps/images';
 
 const NewReportForm = (props) => {
   const wizard = useRef(null);
@@ -23,6 +24,9 @@ const NewReportForm = (props) => {
   };
 
   const stepList = [
+    {
+      content: <ImagesStep />,
+    },
     {
       content: <CategoryStep onChange={onSelect} selected={props.category} />,
     },
