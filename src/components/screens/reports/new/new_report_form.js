@@ -47,7 +47,7 @@ const NewReportForm = (props) => {
       ),
     },
     {
-      content: <IncidentLocationMapViewStep onSelect={onSelect} />,
+      content: <IncidentLocationMapViewStep onSelect={onSelect} skip={next} />,
     },
   ];
 
