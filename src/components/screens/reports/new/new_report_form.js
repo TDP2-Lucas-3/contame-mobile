@@ -36,7 +36,7 @@ const NewReportForm = (props) => {
         <TitleStep
           onChange={props.onChange}
           onSelect={next}
-          title={props.title}
+          title={props.data.title}
           onBack={back}
         />
       ),
@@ -47,7 +47,7 @@ const NewReportForm = (props) => {
           onChange={props.onChange}
           onSelect={next}
           onBack={back}
-          description={props.description}
+          description={props.data.description}
         />
       ),
     },
@@ -55,7 +55,7 @@ const NewReportForm = (props) => {
       content: <IncidentLocationMapViewStep onSelect={onSelect} skip={next} />,
     },
     {
-      content: <ConfirmStep first={first} />,
+      content: <ConfirmStep first={first} data={props.data} />,
     },
   ];
 

@@ -30,7 +30,7 @@ const NewReport = () => {
         }
         onSubmit={onSubmit}
         loading={loading}
-        {...data}
+        data={data}
       />
     </View>
   );
