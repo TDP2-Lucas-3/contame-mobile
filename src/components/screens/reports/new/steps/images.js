@@ -39,24 +39,31 @@ const ImagesStep = (props) => {
   };
 
   return (
-    <View style={styles.alignCenter}>
-      <Text style={styles.p_2}>Sacaste Fotos?</Text>
-      <Button
-        title="Adjuntar imagenes"
-        icon={{
-          name: 'camera',
-          type: 'font-awesome',
-          color: colors.primary,
-        }}
-        type="clear"
-        titleStyle={styles.link}
-        onPress={onAttachImages}
-      />
-      <View style={[styles.row, styles.alignSelfCenter]}>
-        {images.map((image) => (
-          <ImageIcon name={image.name} onRemove={() => onRemoveImage(image)} />
-        ))}
+    <View style={[styles.spaceAround, styles.fullH]}>
+      <View style={styles.alignCenter}>
+        <Text style={styles.pb_2}>Sacaste Fotos?</Text>
+        <Button
+          title="Adjuntar imagenes"
+          icon={{
+            name: 'camera',
+            type: 'font-awesome',
+            color: colors.primary,
+          }}
+          type="clear"
+          titleStyle={styles.link}
+          onPress={onAttachImages}
+        />
+        <View style={[styles.row, styles.alignSelfCenter, styles.pb_2]}>
+          {images.map((image) => (
+            <ImageIcon
+              key={image.name}
+              name={image.name}
+              onRemove={() => onRemoveImage(image)}
+            />
+          ))}
+        </View>
       </View>
+      <Button title="Siguiente" onPress={props.onNext} />
     </View>
   );
 };

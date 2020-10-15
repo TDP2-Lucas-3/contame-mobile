@@ -10,11 +10,20 @@ export const styles = StyleSheet.create({
   justifyAround: {
     justifyContent: 'space-around',
   },
+  justifyBetween: {
+    justifyContent: 'space-between',
+  },
   alignSelfCenter: {
     alignSelf: 'flex-start',
   },
   alignCenter: {
     alignItems: 'center',
+  },
+  spaceAround: {
+    justifyContent: 'space-around',
+  },
+  fullH: {
+    height: '100%',
   },
   map: {
     width: '100%',
@@ -50,7 +59,7 @@ export const styles = StyleSheet.create({
     margin: 10,
   },
   /* PADDING */
-  p_2: {
+  pb_2: {
     paddingBottom: 20,
   },
   /* COLORS */
