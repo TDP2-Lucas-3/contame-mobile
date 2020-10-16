@@ -55,7 +55,13 @@ const NewReportForm = (props) => {
       content: <IncidentLocationMapViewStep onSelect={onSelect} skip={next} />,
     },
     {
-      content: <ConfirmStep first={first} data={props.data} />,
+      content: (
+        <ConfirmStep
+          first={first}
+          onSubmit={props.onSubmit}
+          data={props.data}
+        />
+      ),
     },
   ];
 
