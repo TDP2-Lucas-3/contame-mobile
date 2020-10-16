@@ -11,6 +11,7 @@ describe('NewReportForm', () => {
       onChange: jest.fn(),
       onSubmit: jest.fn(),
       loading: false,
+      data: {},
     };
     render = (appProps) => shallow(<NewReportForm {...appProps} />);
   });

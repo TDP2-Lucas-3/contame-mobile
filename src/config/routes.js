@@ -1,7 +1,7 @@
 import {host} from '../../app.json';
 
 const api = {
-  REPORTS: '/contame/report',
+  REPORTS: '/contame/incident',
   CATEGORIES: '/contame/incident/categories',
 };
 
