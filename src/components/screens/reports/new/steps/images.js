@@ -10,6 +10,7 @@ const MAX_IMAGE_COUNT = 5;
 
 const ImagesStep = (props) => {
   const [images, setImages] = useState([]);
+  const {onChange} = props;
 
   const onAttachImages = () => {
     const options = {
@@ -39,11 +40,11 @@ const ImagesStep = (props) => {
   };
 
   useEffect(() => {
-    props.onChange(
+    onChange(
       'images',
       images.map((image) => image.data),
     );
-  }, [images]);
+  }, [images, onChange]);
 
   const onRemoveImage = (image) => {
     const newImages = images.filter(
