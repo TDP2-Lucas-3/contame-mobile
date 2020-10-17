@@ -31,7 +31,7 @@ const ImagesStep = (props) => {
       setImages([
         ...images,
         {
-          data: 'data:image/jpeg;base64,' + response.data,
+          data: response.data,
           name: response.fileName,
         },
       ]);
@@ -84,10 +84,7 @@ const ImagesStep = (props) => {
           ))}
         </View>
       </View>
-      <Button
-        title={images.length > 0 ? 'Siguiente' : 'Saltear'}
-        onPress={props.onNext}
-      />
+      <Button title={'Contame!'} onPress={props.onNext} />
     </View>
   );
 };

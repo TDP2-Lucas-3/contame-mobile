@@ -4,7 +4,7 @@ import {Button, Text, View} from 'react-native';
 const ConfirmStep = (props) => {
   useEffect(() => {
     props.onSubmit();
-  });
+  }, []);
 
   return (
     <View>
