@@ -14,7 +14,7 @@ const NewReport = () => {
     try {
       await submit(getReports(), data);
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     } finally {
       setLoading(false);
     }
@@ -30,7 +30,7 @@ const NewReport = () => {
         }
         onSubmit={onSubmit}
         loading={loading}
-        {...data}
+        data={data}
       />
     </View>
   );

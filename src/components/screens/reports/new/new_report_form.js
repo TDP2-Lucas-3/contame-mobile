@@ -6,6 +6,7 @@ import TitleStep from './steps/title';
 import IncidentLocationMapViewStep from './steps/incident_location_map_view';
 import DescriptionStep from './steps/description';
 import ImagesStep from './steps/images';
+import ConfirmStep from './steps/confirm';
 
 const NewReportForm = (props) => {
   const wizard = useRef(null);
@@ -16,6 +17,10 @@ const NewReportForm = (props) => {
 
   const back = () => {
     wizard.current.prev();
+  };
+
+  const first = () => {
+    wizard.current.goTo(0);
   };
 
   const onSelect = (...params) => {
@@ -32,7 +37,7 @@ const NewReportForm = (props) => {
         <TitleStep
           onChange={props.onChange}
           onSelect={next}
-          title={props.title}
+          title={props.data.title}
           onBack={back}
         />
       ),
@@ -43,7 +48,7 @@ const NewReportForm = (props) => {
           onChange={props.onChange}
           onSelect={next}
           onBack={back}
-          description={props.description}
+          description={props.data.description}
         />
       ),
     },
@@ -52,6 +57,15 @@ const NewReportForm = (props) => {
     },
     {
       content: <ImagesStep onNext={next} onChange={props.onChange} />,
+    },
+    {
+      content: (
+        <ConfirmStep
+          first={first}
+          onSubmit={props.onSubmit}
+          data={props.data}
+        />
+      ),
     },
   ];
 
