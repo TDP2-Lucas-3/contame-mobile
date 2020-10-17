@@ -2,9 +2,11 @@ import React, {useEffect} from 'react';
 import {Button, Text, View} from 'react-native';
 
 const ConfirmStep = (props) => {
+  const {onSubmit} = props;
+
   useEffect(() => {
-    props.onSubmit();
-  });
+    onSubmit();
+  }, [onSubmit]);
 
   return (
     <View>

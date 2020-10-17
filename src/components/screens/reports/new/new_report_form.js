@@ -5,6 +5,7 @@ import CategoryStep from './steps/category';
 import TitleStep from './steps/title';
 import IncidentLocationMapViewStep from './steps/incident_location_map_view';
 import DescriptionStep from './steps/description';
+import ImagesStep from './steps/images';
 import ConfirmStep from './steps/confirm';
 
 const NewReportForm = (props) => {
@@ -53,6 +54,9 @@ const NewReportForm = (props) => {
     },
     {
       content: <IncidentLocationMapViewStep onSelect={onSelect} skip={next} />,
+    },
+    {
+      content: <ImagesStep onNext={next} onChange={props.onChange} />,
     },
     {
       content: (
