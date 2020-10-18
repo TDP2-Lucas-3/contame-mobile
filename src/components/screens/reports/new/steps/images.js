@@ -44,7 +44,7 @@ const ImagesStep = (props) => {
       'images',
       images.map((image) => image.data),
     );
-  }, [images]);
+  }, [images, onChange]);
 
   const onRemoveImage = (image) => {
     const newImages = images.filter(

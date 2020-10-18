@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {View} from 'react-native';
 import {getReports} from '../../../../config/routes';
 import usePost from '../../../../hooks/usePost';
@@ -21,10 +21,13 @@ const NewReport = () => {
     }
   };
 
-  const onChange = (key, value) =>
-    setData((prev) => {
-      return {...prev, [key]: value};
-    });
+  const onChange = useCallback(
+    (key, value) =>
+      setData((prev) => {
+        return {...prev, [key]: value};
+      }),
+    [setData],
+  );
 
   return (
     <View>

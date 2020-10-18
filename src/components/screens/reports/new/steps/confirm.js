@@ -6,6 +6,7 @@ const ConfirmStep = (props) => {
 
   useEffect(() => {
     onSubmit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
