@@ -56,7 +56,7 @@ const IncidentLocationMapViewStep = (props) => {
             props.onSelect('lon', center.longitude);
           }}
         />
-        <Button title="Siguiente" onPress={props.skip} />
+        <Button title="Saltear" onPress={props.skip} />
       </View>
     </View>
   );

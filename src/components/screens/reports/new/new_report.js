@@ -13,6 +13,7 @@ const NewReport = () => {
     setLoading(true);
     try {
       await submit(getReports(), data);
+      setData({});
     } catch (error) {
       console.log(error.response);
     } finally {
@@ -20,14 +21,15 @@ const NewReport = () => {
     }
   };
 
+  const onChange = (key, value) =>
+    setData((prev) => {
+      return {...prev, [key]: value};
+    });
+
   return (
     <View>
       <NewReportForm
-        onChange={(key, value) =>
-          setData((prev) => {
-            return {...prev, [key]: value};
-          })
-        }
+        onChange={onChange}
         onSubmit={onSubmit}
         loading={loading}
         data={data}

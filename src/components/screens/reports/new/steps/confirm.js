@@ -6,7 +6,7 @@ const ConfirmStep = (props) => {
 
   useEffect(() => {
     onSubmit();
-  }, [onSubmit]);
+  }, []);
 
   return (
     <View>
