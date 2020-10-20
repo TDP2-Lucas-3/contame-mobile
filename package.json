@@ -17,6 +17,8 @@
     "@react-navigation/stack": "^5.9.2",
     "axios": "^0.20.0",
     "axios-hooks": "^2.1.0",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "react": "16.13.1",
@@ -69,6 +71,8 @@
     "testPathIgnorePatterns": [
       "./__tests__/setup.js",
       "./__tests__/support/*"
-    ]
+    ],
+    "setupFilesAfterEnv": ["jest-enzyme"],
+    "testEnvironment": "enzyme"
   }
 }

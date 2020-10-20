@@ -7,6 +7,7 @@ import {styles} from '../../../../styles/common';
 const ReportDetails = (props) => (
   <Card containerStyle={styles.report_card_container}>
     <Card.Image
+      testID="card_image"
       source={{uri: props.images[0]}}
       style={styles.borderTopRadius_1}
     />
