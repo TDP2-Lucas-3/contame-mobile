@@ -7,7 +7,16 @@ const Stack = createStackNavigator();
 
 const MainNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Nueva incidencia" component={ReportsList} />
+    <Stack.Screen
+      name="Reports"
+      component={ReportsList}
+      options={{title: 'Incidencias'}}
+    />
+    <Stack.Screen
+      name="NewReport"
+      component={NewReportScreen}
+      options={{title: 'Nueva incidencia'}}
+    />
   </Stack.Navigator>
 );
 

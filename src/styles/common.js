@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {colors} from 'react-native-elements';
+import { color } from 'react-native-reanimated';
 
 export const styles = StyleSheet.create({
   container: {
@@ -79,6 +80,15 @@ export const styles = StyleSheet.create({
   borderTopRadius_1: {
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+  },
+  action_button: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    padding: 14,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: colors.primary,
   },
   /* TEXT */
   underline: {
