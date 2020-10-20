@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import ReportDetails from '../../../../src/components/screens/reports/report_details';
+import ReportDetails from '../../../../src/components/screens/reports/list/report_details';
 
 describe('ReportDetails', () => {
   let render;
@@ -10,6 +10,7 @@ describe('ReportDetails', () => {
     props = {
       title: 'a report',
       description: 'some description',
+      images: ['some image data'],
     };
     render = (appProps) => shallow(<ReportDetails {...appProps} />);
   });

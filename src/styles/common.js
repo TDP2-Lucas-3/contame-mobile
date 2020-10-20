@@ -52,6 +52,30 @@ export const styles = StyleSheet.create({
     top: 0,
     right: 8,
   },
+  report_card_container: {
+    padding: 0,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+
+    elevation: 10,
+  },
+  report_card_body: {
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 10,
+  },
+  borderTopRadius_1: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
   /* TEXT */
   underline: {
     textDecorationLine: 'underline',
@@ -64,12 +88,27 @@ export const styles = StyleSheet.create({
   m_1: {
     margin: 10,
   },
+  mr_1: {
+    marginRight: 10,
+  },
   /* PADDING */
+  pb_1: {
+    paddingBottom: 10,
+  },
   pb_2: {
     paddingBottom: 20,
+  },
+  p_1: {
+    padding: 10,
+  },
+  pl_1: {
+    paddingLeft: 10,
   },
   /* COLORS */
   bg_grey: {
     backgroundColor: colors.grey4,
+  },
+  color_grey: {
+    color: 'grey',
   },
 });

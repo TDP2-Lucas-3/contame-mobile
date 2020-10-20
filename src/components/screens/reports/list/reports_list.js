@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList, Text} from 'react-native';
-import {getReports} from '../../config/routes';
+import {getReports} from '../../../../config/routes';
 import ReportDetails from './report_details';
 import useAxios from 'axios-hooks';
 

@@ -18,6 +18,7 @@
     "axios": "^0.20.0",
     "axios-hooks": "^2.1.0",
     "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "react": "16.13.1",
     "react-dom": "^16.13.1",
     "react-native": "0.63.3",
