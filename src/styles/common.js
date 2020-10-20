@@ -76,6 +76,9 @@ export const styles = StyleSheet.create({
   report_default_icon_container: {
     height: 150,
     justifyContent: 'center',
+    backgroundColor: colors.grey3,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
   },
   borderTopRadius_1: {
     borderTopLeftRadius: 10,
