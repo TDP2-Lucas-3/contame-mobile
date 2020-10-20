@@ -72,6 +72,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 10,
   },
+  report_default_icon_container: {
+    height: 150,
+    justifyContent: 'center',
+  },
   borderTopRadius_1: {
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
