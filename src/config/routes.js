@@ -15,4 +15,4 @@ export function getCategories() {
 
 export function getReport(reportId) {
   return `${host}${api.REPORT}/${reportId}`;
-};
+}
