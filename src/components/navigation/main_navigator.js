@@ -18,7 +18,8 @@ const MainNavigator = () => (
       component={NewReportScreen}
       options={{title: 'Nueva incidencia'}}
     />
-    <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="Ingresar" component={LoginScreen} />
+    <Stack.Screen name="Nueva incidencia" component={NewReportScreen} />
   </Stack.Navigator>
 );
 

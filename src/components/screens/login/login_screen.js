@@ -8,6 +8,7 @@ import React from 'react';
 import axios from 'axios';
 import {getUsers} from '../../../config/routes';
 import {OAUTH_CLIENT_ID} from '../../../config/constants';
+import token from '../../../services/token';
 
 const signIn = async () => {
   try {
@@ -16,7 +17,7 @@ const signIn = async () => {
     console.log(userInfo);
 
     const resp = await axios.post(getUsers(), {token: userInfo.idToken});
-    console.log(resp.data);
+    return resp.data;
   } catch (error) {
     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
     } else if (error.code === statusCodes.IN_PROGRESS) {
@@ -26,13 +27,20 @@ const signIn = async () => {
     } else {
       // some other error happened
     }
-    console.log(error.response.data);
+    console.log(error.response);
   }
 };
 
-export const LoginScreen = () => {
+export const LoginScreen = ({navigation}) => {
   GoogleSignin.configure({
     webClientId: OAUTH_CLIENT_ID,
   });
-  return <GoogleSigninButton onPress={signIn} />;
+
+  const onPress = async () => {
+    const data = await signIn();
+    console.log(data);
+    token.token = data.token;
+    navigation.navigate('Nueva incidencia');
+  };
+  return <GoogleSigninButton onPress={onPress} />;
 };
