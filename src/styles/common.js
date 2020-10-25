@@ -7,6 +7,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 20,
   },
+  flex_1: {
+    flex: 1,
+  },
   justifyAround: {
     justifyContent: 'space-around',
   },
@@ -92,6 +95,47 @@ export const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: colors.primary,
   },
+  report_details_container: {
+    flex: 1,
+    backgroundColor: colors.grey4,
+  },
+  report_header_image: {
+    width: '100%',
+    height: 200,
+  },
+  report_header_title: {
+    position: 'absolute',
+    padding: 15,
+    width: '85%',
+    top: '82%',
+    backgroundColor: 'white',
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  report_details_icon_container: {
+    backgroundColor: 'white',
+    borderRadius: 15,
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+
+    elevation: 10,
+  },
+  report_details_map: {
+    height: 250,
+    width: '80%',
+    margin: 30,
+  },
+  zIndex_9: {
+    zIndex: 9,
+  },
   /* TEXT */
   underline: {
     textDecorationLine: 'underline',
@@ -104,8 +148,26 @@ export const styles = StyleSheet.create({
   m_1: {
     margin: 10,
   },
+  m_3: {
+    margin: 30,
+  },
   mr_1: {
     marginRight: 10,
+  },
+  mr_2: {
+    marginRight: 20,
+  },
+  ml_2: {
+    marginLeft: 20,
+  },
+  ml_3: {
+    marginLeft: 30,
+  },
+  mt_9: {
+    marginTop: 90,
+  },
+  mt_2: {
+    marginTop: 20,
   },
   /* PADDING */
   pb_1: {
