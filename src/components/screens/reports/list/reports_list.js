@@ -15,7 +15,12 @@ const ReportsList = ({navigation}) => {
     <View>
       <FlatList
         data={data}
-        renderItem={({item}) => <ReportDetails {...item} />}
+        renderItem={({item}) => (
+          <ReportDetails
+            {...item}
+            onPress={() => navigation.navigate('ReportDetails')}
+          />
+        )}
       />
       <Icon
         name="plus"

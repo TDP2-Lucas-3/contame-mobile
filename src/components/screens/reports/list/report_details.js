@@ -5,7 +5,7 @@ import {Card, Text, Icon} from 'react-native-elements';
 import {styles} from '../../../../styles/common';
 
 const ReportDetails = (props) => (
-  <Card containerStyle={styles.report_card_container}>
+  <Card containerStyle={styles.report_card_container} onPress={props.onPress}>
     {props.images.length > 0 ? (
       <Card.Image
         testID="card_image"
