@@ -7,14 +7,13 @@ import {
 import React from 'react';
 import axios from 'axios';
 import {getUsers} from '../../../config/routes';
-import {OAUTH_CLIENT_ID} from '../../../config/constants';
 import token from '../../../services/token';
+import {configureHooks} from '../../../config/configure_app';
 
 const signIn = async () => {
   try {
     await GoogleSignin.hasPlayServices();
     const userInfo = await GoogleSignin.signIn();
-    console.log(userInfo);
 
     const resp = await axios.post(getUsers(), {token: userInfo.idToken});
     return resp.data;
@@ -32,14 +31,10 @@ const signIn = async () => {
 };
 
 export const LoginScreen = ({navigation}) => {
-  GoogleSignin.configure({
-    webClientId: OAUTH_CLIENT_ID,
-  });
-
   const onPress = async () => {
     const data = await signIn();
-    console.log(data);
     token.token = data.token;
+    configureHooks();
     navigation.navigate('Nueva incidencia');
   };
   return <GoogleSigninButton onPress={onPress} />;
