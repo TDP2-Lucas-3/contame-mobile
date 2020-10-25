@@ -1,59 +1,48 @@
 import {Button, Text, View} from 'react-native';
-import React, {useState} from 'react';
-import {Input} from 'react-native-elements';
 import {styles} from '../../../styles/first_login_edit_user_data';
 import {ClickableImage} from '../../common/clickable_image';
 import {showImagePicker} from '../../common/image_picker';
-import {editUser} from '../../../services/editUser';
-import {photoToBase64} from '../../../utils/photo_to_base64';
-import Loading from '../../common/loading';
-import {LoginEdit} from './login_edit';
+import {Input} from 'react-native-elements';
+import React from 'react';
 
-export const FirstLoginEdit = ({navigation, route}) => {
-  const {photo: defaultPhoto, firstName, lastName} = route.params;
-  const noImage = require('../../../../assets/images/no_image.jpeg');
+export const FirstLoginEdit = (props) => {
+  const {
+    photo,
+    imagePickerCallback,
+    firstName,
+    lastName,
+    setFirstName,
+    setLastName,
+    onSubmit,
+  } = props;
 
-  const [photo, setPhoto] = useState(defaultPhoto || noImage);
-  const [stateFirstName, setFirstName] = useState(firstName);
-  const [stateLastName, setLastName] = useState(lastName);
-  const [statePhoto, setStatePhoto] = useState(null);
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>
+        Antes de comenzar, podés editar tus datos...
+      </Text>
 
-  const [loading, setLoading] = useState(false);
+      <View style={styles.imageContainer}>
+        <ClickableImage
+          source={{uri: photo}}
+          style={styles.image}
+          onPress={() => showImagePicker(imagePickerCallback)}
+        />
+      </View>
 
-  const imagePickerCallback = (response) => {
-    if (response.didCancel || response.error) {
-      return;
-    }
-    console.log(response.data);
-    setPhoto(response.uri);
-    setStatePhoto(response.data);
-  };
+      <Text style={styles.label}>Nombre</Text>
+      <Input
+        defaultValue={firstName}
+        onChangeText={(value) => setFirstName(value)}
+      />
 
-  const onSubmit = async () => {
-    await setLoading(true);
-    try {
-      await editUser({
-        firstName: stateFirstName,
-        lastName: stateLastName,
-        photo: statePhoto,
-      });
-      navigation.navigate('Nueva incidencia');
-    } catch (e) {
-      console.log(e);
-      await setLoading(false);
-    }
-  };
-  return loading ? (
-    <Loading />
-  ) : (
-    <LoginEdit
-      photo={photo}
-      imagePickerCallback={imagePickerCallback}
-      firstName={stateFirstName}
-      lastName={stateLastName}
-      setFirstName={setFirstName}
-      setLastName={setLastName}
-      onSubmit={onSubmit}
-    />
+      <Text style={styles.label}>Apellido</Text>
+      <Input
+        defaultValue={lastName}
+        onChangeText={(value) => setLastName(value)}
+      />
+
+      <Button onPress={onSubmit} title={'Comenzar!'} />
+    </View>
   );
 };
