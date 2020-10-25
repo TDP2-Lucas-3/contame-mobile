@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReportDetails renders all values correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#bdc6cf",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "zIndex": 9,
+      }
+    }
+  >
+    <ForwardRef(Themed.Image)
+      source={
+        Object {
+          "uri": "some image data",
+        }
+      }
+      style={
+        Object {
+          "height": 200,
+          "width": "100%",
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderBottomRightRadius": 10,
+          "borderTopRightRadius": 10,
+          "padding": 15,
+          "position": "absolute",
+          "top": "82%",
+          "width": "85%",
+        }
+      }
+    >
+      <Themed.Text
+        h3={true}
+        style={
+          Object {
+            "marginLeft": 20,
+          }
+        }
+      >
+        A report
+      </Themed.Text>
+    </View>
+  </View>
+  <ScrollView>
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+          },
+          Object {
+            "marginTop": 90,
+          },
+          Object {
+            "margin": 30,
+          },
+          Object {
+            "alignItems": "center",
+          },
+        ]
+      }
+    >
+      <Themed.Icon
+        containerStyle={
+          Object {
+            "backgroundColor": "white",
+            "borderRadius": 15,
+            "elevation": 10,
+            "height": 40,
+            "justifyContent": "center",
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 5,
+              "width": 0,
+            },
+            "shadowOpacity": 0.34,
+            "shadowRadius": 6.27,
+            "width": 40,
+          }
+        }
+        name="calendar"
+        type="font-awesome-5"
+      />
+      <Themed.Text
+        style={
+          Object {
+            "marginLeft": 20,
+          }
+        }
+      >
+        Oct 25, 2020
+      </Themed.Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+          },
+          Object {
+            "marginLeft": 30,
+          },
+          Object {
+            "alignItems": "center",
+          },
+        ]
+      }
+    >
+      <Themed.Icon
+        containerStyle={
+          Object {
+            "backgroundColor": "white",
+            "borderRadius": 15,
+            "elevation": 10,
+            "height": 40,
+            "justifyContent": "center",
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 5,
+              "width": 0,
+            },
+            "shadowOpacity": 0.34,
+            "shadowRadius": 6.27,
+            "width": 40,
+          }
+        }
+        name="map-marker"
+        type="font-awesome-5"
+      />
+      <Themed.Text
+        style={
+          Object {
+            "marginLeft": 20,
+          }
+        }
+      >
+        San Telmo, Buenos Aires
+      </Themed.Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginLeft": 30,
+          },
+          Object {
+            "marginTop": 20,
+          },
+          Object {
+            "marginRight": 20,
+          },
+        ]
+      }
+    >
+      <Themed.Text
+        h4={true}
+      >
+        Detalles
+      </Themed.Text>
+      <Themed.Text
+        style={
+          Object {
+            "marginTop": 20,
+          }
+        }
+      >
+        some description
+      </Themed.Text>
+    </View>
+    <MapView
+      initialRegion={
+        Object {
+          "latitude": -1,
+          "latitudeDelta": 1,
+          "longitude": -1,
+          "longitudeDelta": 1,
+        }
+      }
+      provider="google"
+      style={
+        Object {
+          "height": 250,
+          "margin": 30,
+          "width": "80%",
+        }
+      }
+    >
+      <MapMarker
+        coordinate={
+          Object {
+            "latitude": -1,
+            "longitude": -1,
+          }
+        }
+        stopPropagation={false}
+      />
+    </MapView>
+  </ScrollView>
+</View>
+`;
