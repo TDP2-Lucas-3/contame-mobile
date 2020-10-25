@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, ToastAndroid} from 'react-native';
 import {Text, Button, colors} from 'react-native-elements';
-import ImagePicker from 'react-native-image-picker';
 import {styles} from '../../../../../styles/common';
 import ImageIcon from '../../../../common/image_icon';
 import {showImagePicker} from '../../../../common/image_picker';
