@@ -4,11 +4,12 @@ import {
   statusCodes,
 } from '@react-native-community/google-signin';
 
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import {getLogin} from '../../../config/routes';
 import token from '../../../services/token';
 import {configureHooks} from '../../../config/configure_app';
+import Loading from '../../common/loading';
 
 const signIn = async () => {
   try {
@@ -34,7 +35,9 @@ const signIn = async () => {
 };
 
 export const LoginScreen = ({navigation}) => {
+  const [loading, setLodaing] = useState(false);
   const onPress = async () => {
+    await setLodaing(true);
     const data = await signIn();
     token.token = data.token;
 
@@ -49,6 +52,7 @@ export const LoginScreen = ({navigation}) => {
         photo: data.user.photo,
       });
     }
+    await setLodaing(false);
   };
-  return <GoogleSigninButton onPress={onPress} />;
+  return loading ? <Loading /> : <GoogleSigninButton onPress={onPress} />;
 };
