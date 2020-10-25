@@ -1,3 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NewReportForm renders all values correctly 1`] = `ShallowWrapper {}`;
+exports[`NewReportForm renders all values correctly 1`] = `
+<View>
+  <ForwardRef
+    nextStepAnimation="slideRight"
+    prevStepAnimation="slideLeft"
+    steps={
+      Array [
+        Object {
+          "content": <CategoryStep
+            onChange={[Function]}
+          />,
+        },
+        Object {
+          "content": <TitleStep
+            onBack={[Function]}
+            onChange={[MockFunction]}
+            onSelect={[Function]}
+          />,
+        },
+        Object {
+          "content": <DescriptionStep
+            onBack={[Function]}
+            onChange={[MockFunction]}
+            onSelect={[Function]}
+          />,
+        },
+        Object {
+          "content": <IncidentLocationMapViewStep
+            onSelect={[Function]}
+            skip={[Function]}
+          />,
+        },
+        Object {
+          "content": <ImagesStep
+            onChange={[MockFunction]}
+            onNext={[Function]}
+          />,
+        },
+        Object {
+          "content": <ConfirmStep
+            data={Object {}}
+            first={[Function]}
+            onSubmit={[MockFunction]}
+          />,
+        },
+      ]
+    }
+  />
+</View>
+`;
