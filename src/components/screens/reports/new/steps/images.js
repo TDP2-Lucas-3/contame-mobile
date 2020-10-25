@@ -78,6 +78,7 @@ const ImagesStep = (props) => {
           ]}>
           {images.map((image) => (
             <ImageIcon
+              image={`data:image/jpeg;base64,${image.data}`}
               key={image.name}
               name={image.name}
               onRemove={() => onRemoveImage(image)}
