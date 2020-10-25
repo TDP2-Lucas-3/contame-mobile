@@ -5,62 +5,55 @@ import {styles} from '../../../styles/first_login_edit_user_data';
 import {ClickableImage} from '../../common/clickable_image';
 import {showImagePicker} from '../../common/image_picker';
 import {editUser} from '../../../services/editUser';
+import {photoToBase64} from '../../../utils/photo_to_base64';
+import Loading from '../../common/loading';
+import {LoginEdit} from './login_edit';
 
 export const FirstLoginEdit = ({navigation, route}) => {
-  const {photo, firstName, lastName} = route.params;
-  const defaultImage = require('../../../../assets/images/no_image.jpeg');
+  const {photo: defaultPhoto, firstName, lastName} = route.params;
+  const noImage = require('../../../../assets/images/no_image.jpeg');
 
-  const [image, setImage] = useState(photo);
+  const [photo, setPhoto] = useState(defaultPhoto || noImage);
   const [stateFirstName, setFirstName] = useState(firstName);
   const [stateLastName, setLastName] = useState(lastName);
+  const [statePhoto, setStatePhoto] = useState(null);
+
+  const [loading, setLoading] = useState(false);
+
   const imagePickerCallback = (response) => {
     if (response.didCancel || response.error) {
       return;
     }
-
-    setImage(response.uri);
+    console.log(response.data);
+    setPhoto(response.uri);
+    setStatePhoto(response.data);
   };
 
   const onSubmit = async () => {
+    await setLoading(true);
     try {
       await editUser({
         firstName: stateFirstName,
         lastName: stateLastName,
-        photo,
+        photo: statePhoto,
       });
       navigation.navigate('Nueva incidencia');
     } catch (e) {
       console.log(e);
+      await setLoading(false);
     }
   };
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        Antes de comenzar, podés editar tus datos...
-      </Text>
-
-      <View style={styles.imageContainer}>
-        <ClickableImage
-          defaultSource={defaultImage}
-          source={{uri: image}}
-          style={styles.image}
-          onPress={() => showImagePicker(imagePickerCallback)}
-        />
-      </View>
-
-      <Text style={styles.label}>Nombre</Text>
-      <Input
-        defaultValue={stateFirstName}
-        onChangeText={(value) => setFirstName(value)}
-      />
-
-      <Text style={styles.label}>Apellido</Text>
-      <Input
-        defaultValue={stateLastName}
-        onChangeText={(value) => setLastName(value)}
-      />
-
-      <Button onPress={onSubmit} title={'Comenzar!'} />
-    </View>
+  return loading ? (
+    <Loading />
+  ) : (
+    <LoginEdit
+      photo={photo}
+      imagePickerCallback={imagePickerCallback}
+      firstName={stateFirstName}
+      lastName={stateLastName}
+      setFirstName={setFirstName}
+      setLastName={setLastName}
+      onSubmit={onSubmit}
+    />
   );
 };
