@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import NewReportScreen from '../screens/reports/new/new_report_screen';
 import ReportsList from '../screens/reports/list/reports_list';
+import {LoginScreen} from '../screens/login/login_screen';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ const MainNavigator = () => (
       component={NewReportScreen}
       options={{title: 'Nueva incidencia'}}
     />
+    <Stack.Screen name="Login" component={LoginScreen} />
   </Stack.Navigator>
 );
 
