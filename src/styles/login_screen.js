@@ -35,7 +35,6 @@ export const styles = StyleSheet.create({
     fontFamily: 'Raleway-Regular',
   },
   loginButtonContainer: {
-    backgroundColor: '#F4D35E',
     height: '30%',
     width: '100%',
     justifyContent: 'center',

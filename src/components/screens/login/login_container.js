@@ -41,7 +41,7 @@ export const LoginContainer = ({navigation}) => {
     await setLodaing(true);
     const data = await signIn();
     token.token = data.token;
-    console.log(token.token);
+
     const firstLogin = data.firstLogin;
     configureHooks();
     if (firstLogin) {

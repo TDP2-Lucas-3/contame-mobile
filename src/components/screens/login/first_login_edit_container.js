@@ -18,7 +18,7 @@ export const FirstLoginEditContainer = ({navigation, route}) => {
     if (response.didCancel || response.error) {
       return;
     }
-    console.log(response.data);
+
     setPhoto(response.uri);
     setStatePhoto(response.data);
   };
@@ -33,7 +33,6 @@ export const FirstLoginEditContainer = ({navigation, route}) => {
       });
       navigation.navigate('Nueva incidencia');
     } catch (e) {
-      console.log(e);
       await setLoading(false);
     }
   };

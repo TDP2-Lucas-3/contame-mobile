@@ -1,4 +1,4 @@
-const obj = {
+const token = {
   token: null,
 };
-export default obj;
+export default token;
