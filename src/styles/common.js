@@ -115,6 +115,9 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
+  ml_2: {
+    marginLeft: 20,
+  },
   /* PADDING */
   pb_1: {
     paddingBottom: 10,
