@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {View, ToastAndroid} from 'react-native';
 import {Text, Button, colors} from 'react-native-elements';
-import ImagePicker from 'react-native-image-picker';
 import {styles} from '../../../../../styles/common';
 import ImageIcon from '../../../../common/image_icon';
+import {showImagePicker} from '../../../../common/image_picker';
 
 const MAX_IMAGE_ERROR_MSG = 'Podés subir hasta 5 imágenes';
 const MAX_IMAGE_COUNT = 5;
@@ -12,31 +12,23 @@ const ImagesStep = (props) => {
   const [images, setImages] = useState([]);
   const {onChange} = props;
 
-  const onAttachImages = () => {
-    const options = {
-      title: 'Selecciona una opcion',
-      chooseFromLibraryButtonTitle: 'Seleccionar desde mi galeria',
-      takePhotoButtonTitle: 'Sacar una foto',
-      cancelButtonTitle: 'Cancelar',
-    };
-    ImagePicker.showImagePicker(options, (response) => {
-      if (response.didCancel || response.error) {
-        return;
-      }
+  const imagePickerCallback = (response) => {
+    if (response.didCancel || response.error) {
+      return;
+    }
 
-      if (images.length >= MAX_IMAGE_COUNT) {
-        ToastAndroid.show(MAX_IMAGE_ERROR_MSG, ToastAndroid.LONG);
-        return;
-      }
+    if (images.length >= MAX_IMAGE_COUNT) {
+      ToastAndroid.show(MAX_IMAGE_ERROR_MSG, ToastAndroid.LONG);
+      return;
+    }
 
-      setImages([
-        ...images,
-        {
-          data: response.data,
-          name: response.fileName,
-        },
-      ]);
-    });
+    setImages([
+      ...images,
+      {
+        data: response.data,
+        name: response.fileName,
+      },
+    ]);
   };
 
   useEffect(() => {
@@ -67,7 +59,7 @@ const ImagesStep = (props) => {
           }}
           type="clear"
           titleStyle={styles.link}
-          onPress={onAttachImages}
+          onPress={() => showImagePicker(imagePickerCallback)}
         />
         <View
           style={[

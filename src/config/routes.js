@@ -3,6 +3,8 @@ import {host} from '../../app.json';
 const api = {
   REPORTS: '/contame/incident',
   CATEGORIES: '/contame/incident/categories',
+  LOGIN: '/contame/login/google',
+  USERS: '/contame/user',
 };
 
 export function getReports() {
@@ -11,4 +13,12 @@ export function getReports() {
 
 export function getCategories() {
   return `${host}${api.CATEGORIES}`;
+}
+
+export function getLogin() {
+  return `${host}${api.LOGIN}`;
+}
+
+export function getUsers() {
+  return `${host}${api.USERS}`;
 }
