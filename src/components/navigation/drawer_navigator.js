@@ -9,7 +9,7 @@ import {
 import ReportStack from './report_stack';
 import {Avatar, Text, Icon} from 'react-native-elements';
 import {styles} from '../../styles/common';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {saveConfig} from '../../redux/actions/config';
 
 const Drawer = createDrawerNavigator();
@@ -33,18 +33,20 @@ const DrawerNavigator = () => (
 
 const DrawerContent = (props) => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+
   return (
     <DrawerContentScrollView
       contentContainerStyle={[styles.container, styles.justifyBetween]}>
       <View style={styles.fullW}>
         <View style={styles.alignCenter}>
           <Avatar
-            source={{uri: 'https://picsum.photos/200/300'}}
+            source={{uri: user.avatar}}
             rounded
             size="large"
             containerStyle={styles.m_3}
           />
-          <Text>Usuario con apellido</Text>
+          <Text>{`${user.name} ${user.lastNme}`}</Text>
         </View>
         <View style={styles.mv_2}>
           <DrawerItemList {...props} />
