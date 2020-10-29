@@ -3,7 +3,7 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-community/google-signin';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useState} from 'react';
 import axios from 'axios';
 import {getLogin} from '../../../config/routes';
@@ -18,6 +18,7 @@ const signIn = async () => {
     const userInfo = await GoogleSignin.signIn();
 
     const resp = await axios.post(getLogin(), {token: userInfo.idToken});
+    await AsyncStorage.setItem('token', resp.data.token);
     return {
       ...userInfo,
       ...resp.data,

@@ -1,11 +1,11 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import MainNavigatior from './src/components/navigation/main_navigator';
+import WelcomeScreen from './src/components/screens/welcome/welcome_screen';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <MainNavigatior />
+      <WelcomeScreen />
     </NavigationContainer>
   );
 };

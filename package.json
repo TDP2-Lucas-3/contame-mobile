@@ -10,6 +10,7 @@
     "lint": "eslint . && prettier --check \"src/\""
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.13.1",
     "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/google-signin": "^5.0.0",
     "@react-native-community/masked-view": "^0.1.10",
@@ -74,7 +75,9 @@
       "./__tests__/setup.js",
       "./__tests__/support/*"
     ],
-    "setupFilesAfterEnv": ["jest-enzyme"],
+    "setupFilesAfterEnv": [
+      "jest-enzyme"
+    ],
     "testEnvironment": "enzyme"
   }
 }
