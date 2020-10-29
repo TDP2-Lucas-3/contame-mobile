@@ -93,6 +93,10 @@ export const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: colors.primary,
   },
+  bottom: {
+    position: 'absolute',
+    bottom: 0,
+  },
   /* TEXT */
   underline: {
     textDecorationLine: 'underline',
