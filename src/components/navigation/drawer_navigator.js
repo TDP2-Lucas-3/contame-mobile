@@ -46,7 +46,7 @@ const DrawerContent = (props) => {
             size="large"
             containerStyle={styles.m_3}
           />
-          <Text>{`${user.name} ${user.lastNme}`}</Text>
+          <Text>{`${user.name} ${user.lastName}`}</Text>
         </View>
         <View style={styles.mv_2}>
           <DrawerItemList {...props} />
