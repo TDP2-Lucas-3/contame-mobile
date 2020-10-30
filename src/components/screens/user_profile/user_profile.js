@@ -1,9 +1,13 @@
-import {Button, Text, View} from 'react-native';
+import {Button, ScrollView, View} from 'react-native';
 import {styles} from './styles';
 import {ClickableImage} from '../../common/clickable_image';
 import {showImagePicker} from '../../common/image_picker';
-import {Input} from 'react-native-elements';
 import React from 'react';
+import {ProfileField} from './profileField';
+
+const fieldValid = (field) => {
+  return field.length > 0;
+};
 
 export const UserProfile = (props) => {
   const {
@@ -18,7 +22,7 @@ export const UserProfile = (props) => {
   } = props;
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.imageContainer}>
         <ClickableImage
           source={{uri: photo}}
@@ -28,23 +32,35 @@ export const UserProfile = (props) => {
       </View>
 
       <View style={styles.fields}>
-        <Text style={styles.label}>Dirección de correo</Text>
-        <Input defaultValue={email} disabled={true} />
-        <Text style={styles.label}>Nombre</Text>
-        <Input
-          defaultValue={firstName}
-          onChangeText={(value) => setFirstName(value)}
+        <ProfileField
+          label={'Dirección de Correo'}
+          defaultValue={email}
+          disabled={true}
         />
-        <Text style={styles.label}>Apellido</Text>
-        <Input
+        <ProfileField
+          label={'Nombre'}
+          defaultValue={firstName}
+          onChangeText={setFirstName}
+          error={!fieldValid(firstName)}
+          errorText={'Este campo es obligatorio.'}
+        />
+        <ProfileField
+          label={'Apellido'}
           defaultValue={lastName}
-          onChangeText={(value) => setLastName(value)}
+          onChangeText={setLastName}
+          error={!fieldValid(lastName)}
+          errorText={'Este campo es obligatorio.'}
         />
       </View>
 
       <View style={styles.buttonContainer}>
-        <Button style={styles.button} onPress={onSubmit} title={'Confirmar'} />
+        <Button
+          disabled={!fieldValid(firstName) || !fieldValid(lastName)}
+          style={styles.button}
+          onPress={onSubmit}
+          title={'Confirmar'}
+        />
       </View>
-    </View>
+    </ScrollView>
   );
 };

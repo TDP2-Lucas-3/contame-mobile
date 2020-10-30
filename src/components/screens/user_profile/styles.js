@@ -32,6 +32,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
+  errorText: {
+    color: 'red',
+    marginTop: -30,
+  },
   button: {
     width: 100,
   },
