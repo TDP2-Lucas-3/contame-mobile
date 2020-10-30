@@ -3,6 +3,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import NewReportScreen from '../screens/reports/new/new_report_screen';
 import ReportsList from '../screens/reports/list/reports_list';
 import ReportDetailsContainer from '../screens/reports/details/report_details_container';
+import {LoginScreen} from '../screens/login/login_screen';
+import {FirstLoginEditContainer} from '../screens/login/first_login_edit_container';
+import {LoginContainer} from '../screens/login/login_container';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +25,12 @@ const MainNavigator = () => (
       name="NewReport"
       component={NewReportScreen}
       options={{title: 'Nueva incidencia'}}
+    />
+    <Stack.Screen name="Nueva incidencia" component={NewReportScreen} />
+    <Stack.Screen
+      name="login_edit"
+      options={{title: 'Confirmá tus datos'}}
+      component={FirstLoginEditContainer}
     />
   </Stack.Navigator>
 );

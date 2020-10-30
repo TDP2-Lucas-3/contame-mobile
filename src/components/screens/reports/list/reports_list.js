@@ -12,7 +12,7 @@ const ReportsList = ({navigation}) => {
   return loading ? (
     <Text>Loading...</Text>
   ) : (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={data}
         renderItem={({item}) => (
