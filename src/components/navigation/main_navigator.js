@@ -21,7 +21,11 @@ const MainNavigator = () => {
               component={FirstLoginEditContainer}
             />
           ) : (
-            <Stack.Screen name="drawer" component={DrawerNavigator} />
+            <Stack.Screen
+              name="drawer"
+              component={DrawerNavigator}
+              options={{headerShown: false}}
+            />
           )}
         </>
       ) : (
