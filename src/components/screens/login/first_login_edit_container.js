@@ -3,7 +3,7 @@ import {editUser} from '../../../services/editUser';
 import Loading from '../../common/loading';
 import {FirstLoginEdit} from './first_login_edit';
 import {useDispatch} from 'react-redux';
-import { saveConfig } from '../../../redux/actions/config';
+import {saveConfig} from '../../../redux/actions/config';
 
 export const FirstLoginEditContainer = ({navigation, route}) => {
   const {photo: defaultPhoto, firstName, lastName} = route.params;
