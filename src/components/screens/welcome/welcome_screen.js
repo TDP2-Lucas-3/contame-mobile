@@ -17,7 +17,7 @@ const WelcomeScreen = () => {
     const fetchToken = async () => {
       const savedToken = await AsyncStorage.getItem('token');
       if (savedToken) {
-        dispatch(saveConfig({token: saveConfig, firstLogin: false}));
+        dispatch(saveConfig({token: savedToken, firstLogin: false}));
         tokenConfig.token = savedToken;
         configureHooks();
         const {data} = await fetchUser();
