@@ -6,6 +6,8 @@ import tokenConfig from '../../../services/token';
 import {configureHooks} from '../../../config/configure_app';
 import {useDispatch} from 'react-redux';
 import {saveConfig} from '../../../redux/actions/config';
+import {fetchUser} from '../../../services/fetchUser';
+import {saveUserData} from '../../../redux/actions/user';
 
 const WelcomeScreen = () => {
   const [loading, setLoading] = useState(true);
@@ -18,10 +20,22 @@ const WelcomeScreen = () => {
         dispatch(saveConfig({token: saveConfig, firstLogin: false}));
         tokenConfig.token = savedToken;
         configureHooks();
+        const {data} = await fetchUser();
+        dispatch(
+          saveUserData({
+            firstName: data.name,
+            lastName: data.surname,
+            photo: data.photo,
+          }),
+        );
       }
       setLoading(false);
     };
-    fetchToken();
+    try {
+      fetchToken();
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
   return loading ? <Loading /> : <MainNavigator />;

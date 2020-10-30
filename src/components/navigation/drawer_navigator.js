@@ -11,6 +11,8 @@ import {Avatar, Text, Icon} from 'react-native-elements';
 import {styles} from '../../styles/common';
 import {useDispatch, useSelector} from 'react-redux';
 import {saveConfig} from '../../redux/actions/config';
+import { GoogleSignin } from '@react-native-community/google-signin';
+import token from '../../services/token';
 
 const Drawer = createDrawerNavigator();
 
@@ -35,18 +37,24 @@ const DrawerContent = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
+  const onLogout = () => {
+    dispatch(saveConfig({token: null}));
+    token.token = null;
+    GoogleSignin.signOut();
+  };
+
   return (
     <DrawerContentScrollView
       contentContainerStyle={[styles.container, styles.justifyBetween]}>
       <View style={styles.fullW}>
         <View style={styles.alignCenter}>
           <Avatar
-            source={{uri: user.avatar}}
+            source={{uri: user.photo}}
             rounded
             size="large"
             containerStyle={styles.m_3}
           />
-          <Text>{`${user.name} ${user.lastName}`}</Text>
+          <Text>{`${user.firstName} ${user.lastName}`}</Text>
         </View>
         <View style={styles.mv_2}>
           <DrawerItemList {...props} />
@@ -58,7 +66,7 @@ const DrawerContent = (props) => {
           icon={() => (
             <Icon name="sign-out-alt" type="font-awesome-5" size={15} />
           )}
-          onPress={() => dispatch(saveConfig({token: null}))}
+          onPress={onLogout}
         />
       </View>
     </DrawerContentScrollView>

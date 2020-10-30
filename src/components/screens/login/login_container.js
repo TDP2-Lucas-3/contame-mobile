@@ -48,7 +48,6 @@ export const LoginContainer = ({navigation}) => {
     const data = await signIn();
 
     dispatch(saveConfig({token: data.token, firstLogin: data.firstLogin}));
-    console.log(data);
     token.token = data.token;
     configureHooks();
 

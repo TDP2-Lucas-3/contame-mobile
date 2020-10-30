@@ -4,6 +4,7 @@ import Loading from '../../common/loading';
 import {FirstLoginEdit} from './first_login_edit';
 import {useDispatch} from 'react-redux';
 import {saveConfig} from '../../../redux/actions/config';
+import { saveUserData } from '../../../redux/actions/user';
 
 export const FirstLoginEditContainer = ({navigation, route}) => {
   const {photo: defaultPhoto, firstName, lastName} = route.params;
@@ -30,11 +31,13 @@ export const FirstLoginEditContainer = ({navigation, route}) => {
   const onSubmit = async () => {
     await setLoading(true);
     try {
-      await editUser({
+      const userData = {
         firstName: stateFirstName,
         lastName: stateLastName,
         photo: statePhoto,
-      });
+      };
+      await editUser(userData);
+      dispatch(saveUserData(userData));
       dispatch(saveConfig({firstLogin: false}));
     } catch (e) {
       await setLoading(false);
