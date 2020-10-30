@@ -11,8 +11,8 @@ import {Avatar, Text, Icon} from 'react-native-elements';
 import {styles} from '../../styles/common';
 import {useDispatch, useSelector} from 'react-redux';
 import {saveConfig} from '../../redux/actions/config';
-import { GoogleSignin } from '@react-native-community/google-signin';
-import token from '../../services/token';
+import {GoogleSignin} from '@react-native-community/google-signin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Drawer = createDrawerNavigator();
 
@@ -37,9 +37,9 @@ const DrawerContent = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  const onLogout = () => {
+  const onLogout = async () => {
     dispatch(saveConfig({token: null}));
-    token.token = null;
+    await AsyncStorage.removeItem('token');
     GoogleSignin.signOut();
   };
 

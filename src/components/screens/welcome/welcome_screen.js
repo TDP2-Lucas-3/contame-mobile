@@ -21,13 +21,7 @@ const WelcomeScreen = () => {
         tokenConfig.token = savedToken;
         configureHooks();
         const {data} = await fetchUser();
-        dispatch(
-          saveUserData({
-            firstName: data.name,
-            lastName: data.surname,
-            photo: data.photo,
-          }),
-        );
+        dispatch(saveUserData(data));
       }
       setLoading(false);
     };
@@ -36,7 +30,7 @@ const WelcomeScreen = () => {
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  }, [dispatch]);
 
   return loading ? <Loading /> : <MainNavigator />;
 };

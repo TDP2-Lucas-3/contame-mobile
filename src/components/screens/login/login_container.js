@@ -13,6 +13,7 @@ import Loading from '../../common/loading';
 import {LoginScreen} from './login_screen';
 import {useDispatch} from 'react-redux';
 import {saveConfig} from '../../../redux/actions/config';
+import {saveUserData} from '../../../redux/actions/user';
 
 const signIn = async () => {
   try {
@@ -20,7 +21,6 @@ const signIn = async () => {
     const userInfo = await GoogleSignin.signIn();
 
     const resp = await axios.post(getLogin(), {token: userInfo.idToken});
-    await AsyncStorage.setItem('token', resp.data.token);
 
     return {
       ...userInfo,
@@ -47,9 +47,18 @@ export const LoginContainer = ({navigation}) => {
     await setLodaing(true);
     const data = await signIn();
 
-    dispatch(saveConfig({token: data.token, firstLogin: data.firstLogin}));
     token.token = data.token;
+    await AsyncStorage.setItem('token', data.token);
     configureHooks();
+
+    dispatch(saveConfig({token: data.token, firstLogin: data.firstLogin}));
+    dispatch(
+      saveUserData({
+        name: data.user.givenName,
+        surname: data.user.familyname,
+        photo: data.user.photo,
+      }),
+    );
 
     await setLodaing(false);
   };
