@@ -11,6 +11,8 @@ import token from '../../../services/token';
 import {configureHooks} from '../../../config/configure_app';
 import Loading from '../../common/loading';
 import {LoginScreen} from './login_screen';
+import {useDispatch} from 'react-redux';
+import {saveConfig} from '../../../redux/actions/config';
 
 const signIn = async () => {
   try {
@@ -19,6 +21,7 @@ const signIn = async () => {
 
     const resp = await axios.post(getLogin(), {token: userInfo.idToken});
     await AsyncStorage.setItem('token', resp.data.token);
+
     return {
       ...userInfo,
       ...resp.data,
@@ -38,22 +41,17 @@ const signIn = async () => {
 
 export const LoginContainer = ({navigation}) => {
   const [loading, setLodaing] = useState(false);
+  const dispatch = useDispatch();
+
   const onPress = async () => {
     await setLodaing(true);
     const data = await signIn();
-    token.token = data.token;
 
-    const firstLogin = data.firstLogin;
+    dispatch(saveConfig({token: data.token, firstLogin: data.firstLogin}));
+    console.log(data);
+    token.token = data.token;
     configureHooks();
-    if (firstLogin) {
-      navigation.navigate('Nueva incidencia');
-    } else {
-      navigation.navigate('login_edit', {
-        firstName: data.user.givenName,
-        lastName: data.user.familyName,
-        photo: data.user.photo,
-      });
-    }
+
     await setLodaing(false);
   };
   return loading ? <Loading /> : <LoginScreen onPress={onPress} />;
