@@ -75,6 +75,15 @@
 		<string>Signika-Light.ttf</string>
 		<string>Signika-Regular.ttf</string>
 		<string>Signika-Semibold.ttf</string>
+		<string>Raleway-Bold.ttf</string>
+		<string>Raleway-ExtraBold.ttf</string>
+		<string>Raleway-ExtraLight.ttf</string>
+		<string>Raleway-Heavy.ttf</string>
+		<string>Raleway-Light.ttf</string>
+		<string>Raleway-Medium.ttf</string>
+		<string>Raleway-Regular.ttf</string>
+		<string>Raleway-SemiBold.ttf</string>
+		<string>Raleway-Thin.ttf</string>
 	</array>
 </dict>
 </plist>

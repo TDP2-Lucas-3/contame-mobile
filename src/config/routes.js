@@ -5,6 +5,7 @@ const api = {
   CATEGORIES: '/contame/incident/categories',
   LOGIN: '/contame/login/google',
   USERS: '/contame/user',
+  USER: '/contame/user/me',
 };
 
 export function getReports() {
@@ -21,4 +22,8 @@ export function getLogin() {
 
 export function getUsers() {
   return `${host}${api.USERS}`;
+}
+
+export function getUser() {
+  return `${host}${api.USER}`;
 }

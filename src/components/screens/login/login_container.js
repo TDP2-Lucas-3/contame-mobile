@@ -1,9 +1,5 @@
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-  statusCodes,
-} from '@react-native-community/google-signin';
-
+import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useState} from 'react';
 import axios from 'axios';
 import {getLogin} from '../../../config/routes';
@@ -11,6 +7,9 @@ import token from '../../../services/token';
 import {configureHooks} from '../../../config/configure_app';
 import Loading from '../../common/loading';
 import {LoginScreen} from './login_screen';
+import {useDispatch} from 'react-redux';
+import {saveConfig} from '../../../redux/actions/config';
+import {saveUserData} from '../../../redux/actions/user';
 
 const signIn = async () => {
   try {
@@ -18,6 +17,7 @@ const signIn = async () => {
     const userInfo = await GoogleSignin.signIn();
 
     const resp = await axios.post(getLogin(), {token: userInfo.idToken});
+
     return {
       ...userInfo,
       ...resp.data,
@@ -37,22 +37,25 @@ const signIn = async () => {
 
 export const LoginContainer = ({navigation}) => {
   const [loading, setLodaing] = useState(false);
+  const dispatch = useDispatch();
+
   const onPress = async () => {
     await setLodaing(true);
     const data = await signIn();
-    token.token = data.token;
 
-    const firstLogin = data.firstLogin;
+    token.token = data.token;
+    await AsyncStorage.setItem('token', data.token);
     configureHooks();
-    if (firstLogin) {
-      navigation.navigate('Nueva incidencia');
-    } else {
-      navigation.navigate('login_edit', {
-        firstName: data.user.givenName,
-        lastName: data.user.familyName,
+
+    dispatch(saveConfig({token: data.token, firstLogin: data.firstLogin}));
+    dispatch(
+      saveUserData({
+        name: data.user.givenName,
+        surname: data.user.familyname,
         photo: data.user.photo,
-      });
-    }
+      }),
+    );
+
     await setLodaing(false);
   };
   return loading ? <Loading /> : <LoginScreen onPress={onPress} />;

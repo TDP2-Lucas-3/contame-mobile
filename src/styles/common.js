@@ -93,6 +93,10 @@ export const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: colors.primary,
   },
+  bottom: {
+    position: 'absolute',
+    bottom: 0,
+  },
   /* TEXT */
   underline: {
     textDecorationLine: 'underline',
@@ -105,8 +109,18 @@ export const styles = StyleSheet.create({
   m_1: {
     margin: 10,
   },
+  m_3: {
+    margin: 30,
+  },
   mr_1: {
     marginRight: 10,
+  },
+  mv_2: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  ml_2: {
+    marginLeft: 20,
   },
   /* PADDING */
   pb_1: {

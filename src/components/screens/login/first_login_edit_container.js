@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {editUser} from '../../../services/editUser';
 import Loading from '../../common/loading';
 import {FirstLoginEdit} from './first_login_edit';
+import {useDispatch} from 'react-redux';
+import {saveConfig} from '../../../redux/actions/config';
+import {saveUserData} from '../../../redux/actions/user';
 
 export const FirstLoginEditContainer = ({navigation, route}) => {
   const {photo: defaultPhoto, firstName, lastName} = route.params;
@@ -13,6 +16,8 @@ export const FirstLoginEditContainer = ({navigation, route}) => {
   const [statePhoto, setStatePhoto] = useState(null);
 
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   const imagePickerCallback = (response) => {
     if (response.didCancel || response.error) {
@@ -26,12 +31,14 @@ export const FirstLoginEditContainer = ({navigation, route}) => {
   const onSubmit = async () => {
     await setLoading(true);
     try {
-      await editUser({
+      const userData = {
         firstName: stateFirstName,
         lastName: stateLastName,
         photo: statePhoto,
-      });
-      navigation.navigate('Nueva incidencia');
+      };
+      await editUser(userData);
+      dispatch(saveUserData(userData));
+      dispatch(saveConfig({firstLogin: false}));
     } catch (e) {
       await setLoading(false);
     }
