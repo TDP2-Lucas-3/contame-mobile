@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 import {editUser} from '../../../services/editUser';
 import Loading from '../../common/loading';
-import {FirstLoginEdit} from './first_login_edit';
-import {useDispatch} from 'react-redux';
-import {saveConfig} from '../../../redux/actions/config';
+import {UserProfile} from './user_profile';
+import {ToastAndroid} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 import {saveUserData} from '../../../redux/actions/user';
-import {useSelector} from 'react-redux';
 
-export const FirstLoginEditContainer = () => {
+const PROFILE_UPDATED = '¡Perfil actualizado!';
+
+export const UserProfileContainer = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const {photo: defaultPhoto, firstName, lastName} = user;
+  const {photo: defaultPhoto, firstName, lastName, email} = user;
   const noImage = require('../../../../assets/images/no_image.jpeg');
 
   const [photo, setPhoto] = useState(defaultPhoto || noImage);
@@ -18,8 +20,6 @@ export const FirstLoginEditContainer = () => {
   const [statePhoto, setStatePhoto] = useState(null);
 
   const [loading, setLoading] = useState(false);
-
-  const dispatch = useDispatch();
 
   const imagePickerCallback = (response) => {
     if (response.didCancel || response.error) {
@@ -33,24 +33,33 @@ export const FirstLoginEditContainer = () => {
   const onSubmit = async () => {
     await setLoading(true);
     try {
-      const userData = {
+      await editUser({
         firstName: stateFirstName,
         lastName: stateLastName,
         photo: statePhoto,
-      };
-      await editUser(userData);
-      dispatch(saveUserData(userData));
-      dispatch(saveConfig({firstLogin: false}));
+      });
+      setLoading(false);
+      ToastAndroid.show(PROFILE_UPDATED, ToastAndroid.LONG);
+      dispatch(
+        saveUserData({
+          name: stateFirstName,
+          surname: stateLastName,
+          photo: statePhoto || defaultPhoto,
+          email,
+        }),
+      );
     } catch (e) {
       await setLoading(false);
+      console.log(e);
     }
   };
   return loading ? (
     <Loading />
   ) : (
-    <FirstLoginEdit
+    <UserProfile
       photo={photo}
       imagePickerCallback={imagePickerCallback}
+      email={email}
       firstName={stateFirstName}
       lastName={stateLastName}
       setFirstName={setFirstName}

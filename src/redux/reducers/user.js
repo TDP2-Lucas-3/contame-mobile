@@ -10,6 +10,7 @@ export const userReducer = (state, action) => {
         firstName: payload.name,
         lastName: payload.surname,
         photo: payload.photo,
+        email: payload.email,
       };
     default:
       return state || {};
