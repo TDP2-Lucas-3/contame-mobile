@@ -3,11 +3,15 @@ import {editUser} from '../../../services/editUser';
 import Loading from '../../common/loading';
 import {UserProfile} from './user_profile';
 import {ToastAndroid} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {saveUserData} from '../../../redux/actions/user';
 
 const PROFILE_UPDATED = '¡Perfil actualizado!';
 
-export const UserProfileContainer = (props) => {
-  const {photo: defaultPhoto, firstName, lastName, email} = props.route.params;
+export const UserProfileContainer = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const {photo: defaultPhoto, firstName, lastName, email} = user;
   const noImage = require('../../../../assets/images/no_image.jpeg');
 
   const [photo, setPhoto] = useState(defaultPhoto || noImage);
@@ -36,8 +40,17 @@ export const UserProfileContainer = (props) => {
       });
       setLoading(false);
       ToastAndroid.show(PROFILE_UPDATED, ToastAndroid.LONG);
+      dispatch(
+        saveUserData({
+          name: stateFirstName,
+          surname: stateLastName,
+          photo: statePhoto || defaultPhoto,
+          email,
+        }),
+      );
     } catch (e) {
       await setLoading(false);
+      console.log(e);
     }
   };
   return loading ? (

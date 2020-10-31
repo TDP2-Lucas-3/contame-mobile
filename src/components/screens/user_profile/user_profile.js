@@ -6,7 +6,7 @@ import React from 'react';
 import {ProfileField} from './profileField';
 
 const fieldValid = (field) => {
-  return field.length > 0;
+  return field && field.length > 0;
 };
 
 export const UserProfile = (props) => {

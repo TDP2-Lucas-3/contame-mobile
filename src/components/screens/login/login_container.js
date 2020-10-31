@@ -48,11 +48,13 @@ export const LoginContainer = ({navigation}) => {
     configureHooks();
 
     dispatch(saveConfig({token: data.token, firstLogin: data.firstLogin}));
+    console.log(data.user);
     dispatch(
       saveUserData({
         name: data.user.givenName,
-        surname: data.user.familyname,
+        surname: data.user.familyName,
         photo: data.user.photo,
+        email: data.user.email,
       }),
     );
 

@@ -5,9 +5,11 @@ import {FirstLoginEdit} from './first_login_edit';
 import {useDispatch} from 'react-redux';
 import {saveConfig} from '../../../redux/actions/config';
 import {saveUserData} from '../../../redux/actions/user';
+import {useSelector} from 'react-redux';
 
-export const FirstLoginEditContainer = ({navigation, route}) => {
-  const {photo: defaultPhoto, firstName, lastName} = route.params;
+export const FirstLoginEditContainer = () => {
+  const user = useSelector((state) => state.user);
+  const {photo: defaultPhoto, firstName, lastName} = user;
   const noImage = require('../../../../assets/images/no_image.jpeg');
 
   const [photo, setPhoto] = useState(defaultPhoto || noImage);
