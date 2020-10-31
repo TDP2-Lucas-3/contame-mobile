@@ -20,7 +20,8 @@ const signIn = async () => {
 
     return {
       ...userInfo,
-      ...resp.data,
+      token: resp.data.token,
+      firstLogin: resp.data.firstLogin,
     };
   } catch (error) {
     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -48,7 +49,6 @@ export const LoginContainer = ({navigation}) => {
     configureHooks();
 
     dispatch(saveConfig({token: data.token, firstLogin: data.firstLogin}));
-    console.log(data.user);
     dispatch(
       saveUserData({
         name: data.user.givenName,

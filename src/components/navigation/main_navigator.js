@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {FirstLoginEditContainer} from '../screens/login/first_login_edit_container';
+import FirstLoginEditContainer from '../screens/login/first_login_edit_container';
 import {LoginContainer} from '../screens/login/login_container';
 import {useSelector} from 'react-redux';
 import DrawerNavigator from './drawer_navigator';

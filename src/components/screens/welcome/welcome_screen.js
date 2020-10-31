@@ -15,6 +15,8 @@ const WelcomeScreen = () => {
 
   useEffect(() => {
     const fetchToken = async () => {
+      await AsyncStorage.removeItem('token');
+
       const savedToken = await AsyncStorage.getItem('token');
       if (savedToken) {
         dispatch(saveConfig({token: savedToken, firstLogin: false}));
