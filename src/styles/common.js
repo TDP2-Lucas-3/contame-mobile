@@ -137,6 +137,10 @@ export const styles = StyleSheet.create({
   zIndex_9: {
     zIndex: 9,
   },
+  bottom: {
+    position: 'absolute',
+    bottom: 0,
+  },
   /* TEXT */
   underline: {
     textDecorationLine: 'underline',
@@ -157,6 +161,10 @@ export const styles = StyleSheet.create({
   },
   mr_2: {
     marginRight: 20,
+  },
+  mv_2: {
+    marginTop: 20,
+    marginBottom: 20,
   },
   ml_2: {
     marginLeft: 20,
