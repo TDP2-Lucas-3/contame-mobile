@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {editUser} from '../../../services/editUser';
-import Loading from '../../common/loading';
 import {FirstLoginEdit} from './first_login_edit';
 import {useDispatch} from 'react-redux';
 import {saveConfig} from '../../../redux/actions/config';
