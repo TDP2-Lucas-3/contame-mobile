@@ -6,6 +6,7 @@ import {capitalize} from 'lodash';
 import moment from 'moment';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
+import {SliderBox} from 'react-native-image-slider-box';
 
 const ReportDetails = (props) => {
   const {
@@ -21,7 +22,7 @@ const ReportDetails = (props) => {
   return (
     <View style={styles.report_details_container}>
       <View style={styles.zIndex_9}>
-        <Image source={{uri: images[0]}} style={styles.report_header_image} />
+        <SliderBox images={images} style={styles.report_header_image} />
         <View style={styles.report_header_title}>
           <Text h3 style={styles.ml_2}>
             {capitalize(title)}
