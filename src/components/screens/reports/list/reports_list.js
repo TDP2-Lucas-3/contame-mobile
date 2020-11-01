@@ -7,11 +7,9 @@ import useAxios from 'axios-hooks';
 import {styles} from '../../../../styles/common';
 
 const ReportsList = ({navigation}) => {
-  const [{data, loading}] = useAxios(getReports());
+  const [{data, loading}, refetch] = useAxios(getReports());
 
-  return loading ? (
-    <Text>Loading...</Text>
-  ) : (
+  return (
     <View style={styles.container}>
       <FlatList
         data={data}
@@ -23,6 +21,8 @@ const ReportsList = ({navigation}) => {
             }
           />
         )}
+        refreshing={loading}
+        onRefresh={refetch}
       />
       <Icon
         name="plus"
