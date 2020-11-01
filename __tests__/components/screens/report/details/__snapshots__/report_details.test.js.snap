@@ -46,7 +46,7 @@ exports[`ReportDetails renders all values correctly 1`] = `
       }
     >
       <Themed.Text
-        h3={true}
+        h4={true}
         style={
           Array [
             Object {
