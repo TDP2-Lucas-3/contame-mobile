@@ -44,7 +44,7 @@ const ReportDetails = (props) => {
             </Text>
           </View>
           <View>
-            <Icon name="chevron-right" size={30}/>
+            <Icon name="chevron-right" size={30} />
           </View>
         </View>
       </Card>
