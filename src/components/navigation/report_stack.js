@@ -28,7 +28,7 @@ const ReportStack = ({navigation}) => (
     <Stack.Screen
       name="ReportDetails"
       component={ReportDetailsContainer}
-      options={{title: '"Detalle de incidencia"'}}
+      options={{title: 'Detalle de incidencia'}}
     />
     <Stack.Screen
       name="NewReport"

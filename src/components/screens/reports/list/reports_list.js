@@ -18,7 +18,9 @@ const ReportsList = ({navigation}) => {
         renderItem={({item}) => (
           <ReportDetails
             {...item}
-            onPress={() => navigation.navigate('ReportDetails')}
+            onPress={() =>
+              navigation.navigate('ReportDetails', {reportId: item.id})
+            }
           />
         )}
       />

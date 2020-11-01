@@ -8,7 +8,16 @@ import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 
 const ReportDetails = (props) => {
-  const {images, title, creationDate, description, location} = props.report;
+  const {
+    images,
+    title,
+    creationDate,
+    description,
+    lon: longitude,
+    lat: latitude,
+    location,
+  } = props.report;
+
   return (
     <View style={styles.report_details_container}>
       <View style={styles.zIndex_9}>
@@ -26,7 +35,9 @@ const ReportDetails = (props) => {
             type="font-awesome-5"
             containerStyle={styles.report_details_icon_container}
           />
-          <Text style={styles.ml_2}>{moment(creationDate).format('ll')}</Text>
+          <Text style={styles.ml_2}>
+            {moment(creationDate).format('D [de] MMMM, y')}
+          </Text>
         </View>
         <View style={[styles.row, styles.ml_3, styles.alignCenter]}>
           <Icon
@@ -34,18 +45,36 @@ const ReportDetails = (props) => {
             type="font-awesome-5"
             containerStyle={styles.report_details_icon_container}
           />
-          <Text style={styles.ml_2}>San Telmo, Buenos Aires</Text>
+          <Text style={styles.ml_2}>
+            {location || 'No se especifico ubicacion'}
+          </Text>
         </View>
         <View style={[styles.ml_3, styles.mt_2, styles.mr_2]}>
-          <Text h4>Detalles</Text>
-          <Text style={styles.mt_2}>{description}</Text>
+          {description && (
+            <>
+              <Text h4>Detalles</Text>
+              <Text style={styles.mt_2}>{description}</Text>
+            </>
+          )}
         </View>
-        <MapView
-          provider={PROVIDER_GOOGLE}
-          style={styles.report_details_map}
-          initialRegion={{...location, latitudeDelta: 1, longitudeDelta: 1}}>
-          <MapMarker coordinate={location} />
-        </MapView>
+        {Boolean(longitude && latitude) && (
+          <MapView
+            provider={PROVIDER_GOOGLE}
+            style={styles.report_details_map}
+            initialRegion={{
+              latitude,
+              longitude,
+              latitudeDelta: 1,
+              longitudeDelta: 1,
+            }}>
+            <MapMarker
+              coordinate={{
+                latitude,
+                longitude,
+              }}
+            />
+          </MapView>
+        )}
       </ScrollView>
     </View>
   );

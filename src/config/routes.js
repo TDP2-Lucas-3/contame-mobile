@@ -17,7 +17,7 @@ export function getCategories() {
 }
 
 export function getReport(reportId) {
-  return `${host}${api.REPORT}/${reportId}`;
+  return `${host}${api.REPORTS}/${reportId}`;
 }
 
 export function getLogin() {
