@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {colors} from 'react-native-elements';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import COLORS from './colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -98,18 +100,20 @@ export const styles = StyleSheet.create({
   },
   report_details_container: {
     flex: 1,
-    backgroundColor: colors.grey4,
+    backgroundColor: COLORS.main,
   },
   report_header_image: {
     width: '100%',
     height: 200,
+    justifyContent: 'center',
+    backgroundColor: colors.grey4,
   },
   report_header_title: {
     position: 'absolute',
     padding: 15,
     width: '85%',
     top: '82%',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.secondary,
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
   },
@@ -197,5 +201,11 @@ export const styles = StyleSheet.create({
   },
   color_grey: {
     color: 'grey',
+  },
+  color_white: {
+    color: 'white',
+  },
+  color_secondary: {
+    color: COLORS.secondary,
   },
 });

@@ -22,9 +22,18 @@ const ReportDetails = (props) => {
   return (
     <View style={styles.report_details_container}>
       <View style={styles.zIndex_9}>
-        <SliderBox images={images} style={styles.report_header_image} />
+        {images.length > 0 ? (
+          <SliderBox images={images} style={styles.report_header_image} />
+        ) : (
+          <Icon
+            name="image-not-supported"
+            testID="default_icon"
+            type="material"
+            containerStyle={styles.report_header_image}
+          />
+        )}
         <View style={styles.report_header_title}>
-          <Text h3 style={styles.ml_2}>
+          <Text h3 style={[styles.ml_2, styles.color_white]}>
             {capitalize(title)}
           </Text>
         </View>
@@ -36,7 +45,7 @@ const ReportDetails = (props) => {
             type="font-awesome-5"
             containerStyle={styles.report_details_icon_container}
           />
-          <Text style={styles.ml_2}>
+          <Text style={[styles.ml_2, styles.color_secondary]}>
             {moment(creationDate).format('D [de] MMMM, y')}
           </Text>
         </View>
@@ -46,15 +55,15 @@ const ReportDetails = (props) => {
             type="font-awesome-5"
             containerStyle={styles.report_details_icon_container}
           />
-          <Text style={styles.ml_2}>
+          <Text style={[styles.ml_2, styles.color_secondary]}>
             {location || 'No se especifico ubicacion'}
           </Text>
         </View>
         <View style={[styles.ml_3, styles.mt_2, styles.mr_2]}>
           {description && (
             <>
-              <Text h4>Detalles</Text>
-              <Text style={styles.mt_2}>{description}</Text>
+              <Text h4 style={styles.color_secondary}>Detalles</Text>
+              <Text style={[styles.mt_2, styles.color_secondary]}>{description}</Text>
             </>
           )}
         </View>
