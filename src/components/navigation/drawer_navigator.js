@@ -14,6 +14,7 @@ import {saveConfig} from '../../redux/actions/config';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {UserProfileContainer} from '../screens/user_profile/user_profile_container';
+import {saveUserData} from '../../redux/actions/user';
 
 const Drawer = createDrawerNavigator();
 
@@ -48,6 +49,7 @@ const DrawerContent = (props) => {
 
   const onLogout = async () => {
     dispatch(saveConfig({token: null}));
+    dispatch(saveUserData({}));
     await AsyncStorage.removeItem('token');
     GoogleSignin.signOut();
   };

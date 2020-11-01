@@ -6,7 +6,6 @@ export const userReducer = (state, action) => {
       const {payload} = action;
       return {
         ...state,
-        ...payload,
         firstName: payload.name,
         lastName: payload.surname,
         photo: payload.photo,

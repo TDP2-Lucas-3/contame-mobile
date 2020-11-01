@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {editUser} from '../../../services/editUser';
 import Loading from '../../common/loading';
 import {FirstLoginEdit} from './first_login_edit';
@@ -9,13 +9,9 @@ import {useSelector} from 'react-redux';
 
 export const FirstLoginEditContainer = () => {
   const user = useSelector((state) => state.user);
-  const {photo: defaultPhoto, firstName, lastName} = user;
-  const noImage = require('../../../../assets/images/no_image.jpeg');
 
-  const [photo, setPhoto] = useState(defaultPhoto || noImage);
-  const [stateFirstName, setFirstName] = useState(firstName);
-  const [stateLastName, setLastName] = useState(lastName);
-  const [statePhoto, setStatePhoto] = useState(null);
+  const [userData, setUserData] = useState({});
+  useEffect(() => setUserData({...user, photoToShow: user.photo}), [user]);
 
   const [loading, setLoading] = useState(false);
 
@@ -26,36 +22,39 @@ export const FirstLoginEditContainer = () => {
       return;
     }
 
-    setPhoto(response.uri);
-    setStatePhoto(response.data);
+    setUserData({
+      ...userData,
+      photo: response.data,
+      photoToShow: `data:image/jpeg;base64,${response.data}`,
+    });
   };
 
   const onSubmit = async () => {
-    await setLoading(true);
+    setLoading(true);
     try {
-      const userData = {
-        firstName: stateFirstName,
-        lastName: stateLastName,
-        photo: statePhoto,
-      };
       await editUser(userData);
-      dispatch(saveUserData(userData));
+      dispatch(
+        saveUserData({
+          name: userData.firstName,
+          surname: userData.lastName,
+          photo: userData.photoToShow,
+          email: userData.email,
+        }),
+      );
       dispatch(saveConfig({firstLogin: false}));
     } catch (e) {
-      await setLoading(false);
+      console.log(e);
     }
+    setLoading(false);
   };
-  return loading ? (
-    <Loading />
-  ) : (
+
+  return (
     <FirstLoginEdit
-      photo={photo}
       imagePickerCallback={imagePickerCallback}
-      firstName={stateFirstName}
-      lastName={stateLastName}
-      setFirstName={setFirstName}
-      setLastName={setLastName}
+      userData={userData}
+      onChange={(key, value) => setUserData({...userData, [key]: value})}
       onSubmit={onSubmit}
+      loading={loading}
     />
   );
 };
