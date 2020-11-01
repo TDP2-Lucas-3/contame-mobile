@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import NewReportForm from '../../../../src/components/screens/reports/new/new_report_form';
+import NewReportForm from '../../../../../src/components/screens/reports/new/new_report_form';
 
 describe('NewReportForm', () => {
   let render;

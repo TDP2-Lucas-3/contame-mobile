@@ -16,6 +16,10 @@ export function getCategories() {
   return `${host}${api.CATEGORIES}`;
 }
 
+export function getReport(reportId) {
+  return `${host}${api.REPORTS}/${reportId}`;
+}
+
 export function getLogin() {
   return `${host}${api.LOGIN}`;
 }

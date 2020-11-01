@@ -1,21 +1,31 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {getReports} from '../../../../config/routes';
 import ReportDetails from './report_details';
 import useAxios from 'axios-hooks';
 import {styles} from '../../../../styles/common';
+import moment from 'moment';
 
 const ReportsList = ({navigation}) => {
-  const [{data, loading}] = useAxios(getReports());
+  const [{data, loading}, refetch] = useAxios(getReports());
 
-  return loading ? (
-    <Text>Loading...</Text>
-  ) : (
+  return (
     <View style={styles.container}>
       <FlatList
-        data={data}
-        renderItem={({item}) => <ReportDetails {...item} />}
+        data={(data || []).sort(
+          (a, b) => moment(a.creationDate) < moment(b.creationDate),
+        )}
+        renderItem={({item}) => (
+          <ReportDetails
+            {...item}
+            onPress={() =>
+              navigation.navigate('ReportDetails', {reportId: item.id})
+            }
+          />
+        )}
+        refreshing={loading}
+        onRefresh={refetch}
       />
       <Icon
         name="plus"

@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReportDetails renders all values correctly 1`] = `
+<ForwardRef>
+  <Themed.Card
+    containerStyle={
+      Object {
+        "borderRadius": 10,
+        "elevation": 5,
+        "padding": 0,
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 5,
+          "width": 0,
+        },
+        "shadowOpacity": 0.34,
+        "shadowRadius": 6.27,
+      }
+    }
+  >
+    <Themed.CardImage
+      source={
+        Object {
+          "uri": "some image data",
+        }
+      }
+      style={
+        Object {
+          "borderTopLeftRadius": 10,
+          "borderTopRightRadius": 10,
+        }
+      }
+      testID="card_image"
+    />
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "margin": 10,
+        }
+      }
+    >
+      <View>
+        <Themed.CardTitle
+          style={
+            Object {
+              "alignSelf": "flex-start",
+            }
+          }
+        >
+          a report
+        </Themed.CardTitle>
+        <Themed.Text
+          style={
+            Object {
+              "color": "grey",
+            }
+          }
+        >
+          a few seconds ago
+        </Themed.Text>
+      </View>
+      <View>
+        <Themed.Icon
+          name="chevron-right"
+          size={30}
+        />
+      </View>
+    </View>
+  </Themed.Card>
+</ForwardRef>
+`;

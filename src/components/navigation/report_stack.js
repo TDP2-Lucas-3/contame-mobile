@@ -4,6 +4,7 @@ import NewReportScreen from '../screens/reports/new/new_report_screen';
 import ReportsList from '../screens/reports/list/reports_list';
 import {Icon} from 'react-native-elements';
 import {styles} from '../../styles/common';
+import ReportDetailsContainer from '../screens/reports/details/report_details_container';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,11 @@ const ReportStack = ({navigation}) => (
           />
         ),
       }}
+    />
+    <Stack.Screen
+      name="ReportDetails"
+      component={ReportDetailsContainer}
+      options={{title: 'Detalle de incidencia', headerShown: false}}
     />
     <Stack.Screen
       name="NewReport"
