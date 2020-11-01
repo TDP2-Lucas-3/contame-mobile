@@ -47,7 +47,7 @@ export const LoginContainer = ({navigation}) => {
     await AsyncStorage.setItem('token', data.token);
     configureHooks();
 
-    dispatch(saveConfig({token: data.token, firstLogin: true}));
+    dispatch(saveConfig({token: data.token, firstLogin: data.firstLogin}));
 
     dispatch(
       saveUserData({

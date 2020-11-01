@@ -1,8 +1,8 @@
-import {Button, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {styles} from '../../../styles/first_login_edit_user_data';
 import {ClickableImage} from '../../common/clickable_image';
 import {showImagePicker} from '../../common/image_picker';
-import {Input, Icon} from 'react-native-elements';
+import {Input, Icon, Button} from 'react-native-elements';
 import React from 'react';
 
 export const FirstLoginEdit = (props) => {
