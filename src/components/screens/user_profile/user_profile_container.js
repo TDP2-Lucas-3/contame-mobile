@@ -33,7 +33,7 @@ export const UserProfileContainer = () => {
   const onSubmit = async () => {
     await setLoading(true);
     try {
-      await editUser({
+      const {data} = await editUser({
         firstName: stateFirstName,
         lastName: stateLastName,
         photo: statePhoto,
@@ -42,9 +42,9 @@ export const UserProfileContainer = () => {
       ToastAndroid.show(PROFILE_UPDATED, ToastAndroid.LONG);
       dispatch(
         saveUserData({
-          name: stateFirstName,
-          surname: stateLastName,
-          photo: statePhoto || defaultPhoto,
+          name: data.name,
+          surname: data.surname,
+          photo: data.photo,
           email,
         }),
       );

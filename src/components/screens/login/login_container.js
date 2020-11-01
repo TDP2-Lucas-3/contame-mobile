@@ -10,8 +10,9 @@ import {LoginScreen} from './login_screen';
 import {useDispatch} from 'react-redux';
 import {saveConfig} from '../../../redux/actions/config';
 import {saveUserData} from '../../../redux/actions/user';
+import {ToastAndroid} from 'react-native';
 
-const signIn = async () => {
+const signIn = async (callback) => {
   try {
     await GoogleSignin.hasPlayServices();
     const userInfo = await GoogleSignin.signIn();
@@ -24,6 +25,11 @@ const signIn = async () => {
     };
   } catch (error) {
     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+      ToastAndroid.show(
+        'Tenes que seleccionar una cuenta para continar',
+        ToastAndroid.LONG,
+      );
+      callback();
     } else if (error.code === statusCodes.IN_PROGRESS) {
       // operation (e.g. sign in) is in progress already
     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
@@ -40,8 +46,8 @@ export const LoginContainer = ({navigation}) => {
   const dispatch = useDispatch();
 
   const onPress = async () => {
-    await setLodaing(true);
-    const data = await signIn();
+    setLodaing(true);
+    const data = await signIn(() => setLodaing(false));
 
     token.token = data.token;
     await AsyncStorage.setItem('token', data.token);
@@ -58,7 +64,7 @@ export const LoginContainer = ({navigation}) => {
       }),
     );
 
-    await setLodaing(false);
+    setLodaing(false);
   };
   return loading ? <Loading /> : <LoginScreen onPress={onPress} />;
 };

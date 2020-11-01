@@ -33,7 +33,7 @@ const ReportDetails = (props) => {
           />
         )}
         <View style={styles.report_header_title}>
-          <Text h3 style={[styles.ml_2, styles.color_white]}>
+          <Text h4 style={[styles.ml_2, styles.color_white]}>
             {capitalize(title)}
           </Text>
         </View>
