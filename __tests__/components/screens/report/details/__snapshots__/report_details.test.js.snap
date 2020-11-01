@@ -4,7 +4,7 @@ exports[`ReportDetails renders all values correctly 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#bdc6cf",
+      "backgroundColor": "#F4D35E",
       "flex": 1,
     }
   }
@@ -16,15 +16,18 @@ exports[`ReportDetails renders all values correctly 1`] = `
       }
     }
   >
-    <ForwardRef(Themed.Image)
-      source={
-        Object {
-          "uri": "some image data",
-        }
+    <SliderBox
+      ImageComponent={[Function]}
+      images={
+        Array [
+          "some image data",
+        ]
       }
       style={
         Object {
+          "backgroundColor": "#bdc6cf",
           "height": 200,
+          "justifyContent": "center",
           "width": "100%",
         }
       }
@@ -32,7 +35,7 @@ exports[`ReportDetails renders all values correctly 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "white",
+          "backgroundColor": "#1F271B",
           "borderBottomRightRadius": 10,
           "borderTopRightRadius": 10,
           "padding": 15,
@@ -45,9 +48,14 @@ exports[`ReportDetails renders all values correctly 1`] = `
       <Themed.Text
         h3={true}
         style={
-          Object {
-            "marginLeft": 20,
-          }
+          Array [
+            Object {
+              "marginLeft": 20,
+            },
+            Object {
+              "color": "white",
+            },
+          ]
         }
       >
         A report
@@ -96,12 +104,17 @@ exports[`ReportDetails renders all values correctly 1`] = `
       />
       <Themed.Text
         style={
-          Object {
-            "marginLeft": 20,
-          }
+          Array [
+            Object {
+              "marginLeft": 20,
+            },
+            Object {
+              "color": "#1F271B",
+            },
+          ]
         }
       >
-        Oct 25, 2020
+        1 de November, 2020
       </Themed.Text>
     </View>
     <View
@@ -142,12 +155,17 @@ exports[`ReportDetails renders all values correctly 1`] = `
       />
       <Themed.Text
         style={
-          Object {
-            "marginLeft": 20,
-          }
+          Array [
+            Object {
+              "marginLeft": 20,
+            },
+            Object {
+              "color": "#1F271B",
+            },
+          ]
         }
       >
-        San Telmo, Buenos Aires
+        <Component />
       </Themed.Text>
     </View>
     <View
@@ -167,47 +185,29 @@ exports[`ReportDetails renders all values correctly 1`] = `
     >
       <Themed.Text
         h4={true}
+        style={
+          Object {
+            "color": "#1F271B",
+          }
+        }
       >
         Detalles
       </Themed.Text>
       <Themed.Text
         style={
-          Object {
-            "marginTop": 20,
-          }
+          Array [
+            Object {
+              "marginTop": 20,
+            },
+            Object {
+              "color": "#1F271B",
+            },
+          ]
         }
       >
         some description
       </Themed.Text>
     </View>
-    <MapView
-      initialRegion={
-        Object {
-          "latitude": -1,
-          "latitudeDelta": 1,
-          "longitude": -1,
-          "longitudeDelta": 1,
-        }
-      }
-      provider="google"
-      style={
-        Object {
-          "height": 250,
-          "margin": 30,
-          "width": "80%",
-        }
-      }
-    >
-      <MapMarker
-        coordinate={
-          Object {
-            "latitude": -1,
-            "longitude": -1,
-          }
-        }
-        stopPropagation={false}
-      />
-    </MapView>
   </ScrollView>
 </View>
 `;
