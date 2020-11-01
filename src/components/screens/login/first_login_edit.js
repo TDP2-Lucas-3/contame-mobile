@@ -15,20 +15,11 @@ export const FirstLoginEdit = (props) => {
       </Text>
 
       <View style={styles.imageContainer}>
-        {userData.photoToShow ? (
-          <ClickableImage
-            source={{uri: userData.photoToShow}}
-            style={styles.image}
-            onPress={() => showImagePicker(imagePickerCallback)}
-          />
-        ) : (
-          <Icon
-            name="user"
-            type="font-awesome-5"
-            containerStyle={styles.default_image}
-            onPress={() => showImagePicker(imagePickerCallback)}
-          />
-        )}
+        <ClickableImage
+          source={{uri: userData.photoToShow}}
+          style={styles.image}
+          onPress={() => showImagePicker(imagePickerCallback)}
+        />
       </View>
 
       <Text style={styles.label}>Nombre</Text>
