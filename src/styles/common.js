@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {colors} from 'react-native-elements';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import COLORS from './colors';
 
 export const styles = StyleSheet.create({

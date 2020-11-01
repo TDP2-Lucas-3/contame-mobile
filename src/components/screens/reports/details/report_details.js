@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, ScrollView} from 'react-native';
-import {Image, Text, Icon} from 'react-native-elements';
+import {Text, Icon} from 'react-native-elements';
 import {styles} from '../../../../styles/common';
 import {capitalize} from 'lodash';
 import moment from 'moment';
@@ -62,8 +62,12 @@ const ReportDetails = (props) => {
         <View style={[styles.ml_3, styles.mt_2, styles.mr_2]}>
           {description && (
             <>
-              <Text h4 style={styles.color_secondary}>Detalles</Text>
-              <Text style={[styles.mt_2, styles.color_secondary]}>{description}</Text>
+              <Text h4 style={styles.color_secondary}>
+                Detalles
+              </Text>
+              <Text style={[styles.mt_2, styles.color_secondary]}>
+                {description}
+              </Text>
             </>
           )}
         </View>
