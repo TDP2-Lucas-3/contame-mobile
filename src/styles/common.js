@@ -101,6 +101,20 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.main,
   },
+  report_status_badge: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    margin: 10,
+    padding: 5,
+  },
+  report_status_badge_no_icon: {
+    position: 'absolute',
+    top: -150,
+    right: 0,
+    margin: 10,
+    padding: 5,
+  },
   report_header_image: {
     width: '100%',
     height: 200,

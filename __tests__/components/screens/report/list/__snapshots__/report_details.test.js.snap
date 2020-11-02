@@ -31,7 +31,20 @@ exports[`ReportDetails renders all values correctly 1`] = `
         }
       }
       testID="card_image"
-    />
+    >
+      <Themed.Badge
+        badgeStyle={
+          Object {
+            "margin": 10,
+            "padding": 5,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+        status="warning"
+      />
+    </Themed.CardImage>
     <View
       style={
         Object {
