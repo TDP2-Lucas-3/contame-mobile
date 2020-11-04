@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import {
   createDrawerNavigator,
@@ -15,54 +15,33 @@ import {GoogleSignin} from '@react-native-community/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {UserProfileContainer} from '../screens/user_profile/user_profile_container';
 import {saveUserData} from '../../redux/actions/user';
-import messaging from '@react-native-firebase/messaging';
-import Loading from '../common/loading';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerNavigator = () => {
-  const [loading, setLoading] = useState(true);
-
-  const saveTokenToDatabase = async (token) => {
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    const fetchFirebaseToken = async () => {
-      saveTokenToDatabase(await messaging().getToken());
-    };
-    fetchFirebaseToken();
-
-    return messaging().onTokenRefresh(token => {
-      saveTokenToDatabase(token);
-    });
-  }, []);
-
-  return loading ? <Loading /> : (
-    <Drawer.Navigator
-      initialRouteName="reports"
-      drawerContent={(props) => <DrawerContent {...props} />}>
-      <Drawer.Screen
-        name="reports"
-        component={ReportStack}
-        options={{
-          title: 'Incidencias',
-          drawerIcon: () => (
-            <Icon name="clipboard-list" type="font-awesome-5" size={15} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="profile"
-        component={UserProfileContainer}
-        options={{
-          title: 'Mi Cuenta',
-          drawerIcon: () => <Icon name="user" type="font-awesome-5" size={15} />,
-        }}
-      />
-    </Drawer.Navigator>
-  );
-};
+const DrawerNavigator = () => (
+  <Drawer.Navigator
+    initialRouteName="reports"
+    drawerContent={(props) => <DrawerContent {...props} />}>
+    <Drawer.Screen
+      name="reports"
+      component={ReportStack}
+      options={{
+        title: 'Incidencias',
+        drawerIcon: () => (
+          <Icon name="clipboard-list" type="font-awesome-5" size={15} />
+        ),
+      }}
+    />
+    <Drawer.Screen
+      name="profile"
+      component={UserProfileContainer}
+      options={{
+        title: 'Mi Cuenta',
+        drawerIcon: () => <Icon name="user" type="font-awesome-5" size={15} />,
+      }}
+    />
+  </Drawer.Navigator>
+);
 
 const DrawerContent = (props) => {
   const dispatch = useDispatch();
