@@ -15,6 +15,7 @@ import {GoogleSignin} from '@react-native-community/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {UserProfileContainer} from '../screens/user_profile/user_profile_container';
 import {saveUserData} from '../../redux/actions/user';
+import {IncidentsMapStack} from './incidents_map_stack';
 
 const Drawer = createDrawerNavigator();
 
@@ -38,6 +39,14 @@ const DrawerNavigator = () => (
       options={{
         title: 'Mi Cuenta',
         drawerIcon: () => <Icon name="user" type="font-awesome-5" size={15} />,
+      }}
+    />
+    <Drawer.Screen
+      name="map"
+      component={IncidentsMapStack}
+      options={{
+        title: 'Mapa',
+        drawerIcon: () => <Icon name="map" type="font-awesome-5" size={15} />,
       }}
     />
   </Drawer.Navigator>
