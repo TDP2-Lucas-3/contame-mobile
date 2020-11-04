@@ -5,12 +5,7 @@ import {styles} from '../../../../../styles/common';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 import {getUserLocation} from '../../../../../utils/get_user_location';
 import Loading from '../../../../common/loading';
-
-const DEFAULT_INITIAL_CENTER = {
-  // Congreso de la Nación Argentina
-  latitude: -34.609824,
-  longitude: -58.392705,
-};
+import {DEFAULT_INITIAL_CENTER} from '../../../../../config/constants';
 
 async function fetch(setCenter) {
   let initialCenter = DEFAULT_INITIAL_CENTER;

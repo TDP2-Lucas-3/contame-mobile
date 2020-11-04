@@ -2,7 +2,7 @@ import {Icon} from 'react-native-elements';
 import {styles} from '../../styles/common';
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {IncidentsMap} from '../screens/incidents_map/incidents_map';
+import {IncidentsMapContainer} from '../screens/incidents_map/incidents_map_container';
 
 const Stack = createStackNavigator();
 
@@ -10,7 +10,7 @@ export const IncidentsMapStack = ({navigation}) => (
   <Stack.Navigator>
     <Stack.Screen
       name="Reports"
-      component={IncidentsMap}
+      component={IncidentsMapContainer}
       options={{
         title: 'Mapa de Incidencias',
         headerLeft: () => (
