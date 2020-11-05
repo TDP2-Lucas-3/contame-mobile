@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import WelcomeScreen from './src/components/screens/welcome/welcome_screen';
 import configureStore from './src/redux/store';
 import {Provider} from 'react-redux';
-import messaging from '@react-native-firebase/messaging';
-
-messaging().setBackgroundMessageHandler(async remoteMessage => {
-  console.log('Message handled in the background!', remoteMessage);
-});
+import {configure} from './src/services/notifications';
 
 const App = () => {
+  useEffect(() => {
+    return configure();
+  }, []);
+
   return (
     <Provider store={configureStore()}>
       <NavigationContainer>

@@ -14,15 +14,17 @@ import {ToastAndroid} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 
 const signIn = async (callback) => {
-  const getFirebaseToken = async () =>
-    await messaging().getToken();
+  const getFirebaseToken = async () => await messaging().getToken();
 
   try {
     await GoogleSignin.hasPlayServices();
     const userInfo = await GoogleSignin.signIn();
     const firebaseToken = await getFirebaseToken();
 
-    const resp = await axios.post(getLogin(), {token: userInfo.idToken, firebaseToken});
+    const resp = await axios.post(getLogin(), {
+      token: userInfo.idToken,
+      firebaseToken,
+    });
 
     return {
       ...userInfo,

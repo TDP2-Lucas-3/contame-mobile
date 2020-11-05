@@ -15,33 +15,45 @@ import {GoogleSignin} from '@react-native-community/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {UserProfileContainer} from '../screens/user_profile/user_profile_container';
 import {saveUserData} from '../../redux/actions/user';
+import useHandleNotification from '../../hooks/useHandleNotification';
+import {useNavigation} from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerNavigator = () => (
-  <Drawer.Navigator
-    initialRouteName="reports"
-    drawerContent={(props) => <DrawerContent {...props} />}>
-    <Drawer.Screen
-      name="reports"
-      component={ReportStack}
-      options={{
-        title: 'Incidencias',
-        drawerIcon: () => (
-          <Icon name="clipboard-list" type="font-awesome-5" size={15} />
-        ),
-      }}
-    />
-    <Drawer.Screen
-      name="profile"
-      component={UserProfileContainer}
-      options={{
-        title: 'Mi Cuenta',
-        drawerIcon: () => <Icon name="user" type="font-awesome-5" size={15} />,
-      }}
-    />
-  </Drawer.Navigator>
-);
+const DrawerNavigator = () => {
+  const navigation = useNavigation();
+
+  useHandleNotification(() => {
+    navigation.navigate('ReportDetails', {reportId: 17});
+  });
+
+  return (
+    <Drawer.Navigator
+      initialRouteName="reports"
+      drawerContent={(props) => <DrawerContent {...props} />}>
+      <Drawer.Screen
+        name="reports"
+        component={ReportStack}
+        options={{
+          title: 'Incidencias',
+          drawerIcon: () => (
+            <Icon name="clipboard-list" type="font-awesome-5" size={15} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="profile"
+        component={UserProfileContainer}
+        options={{
+          title: 'Mi Cuenta',
+          drawerIcon: () => (
+            <Icon name="user" type="font-awesome-5" size={15} />
+          ),
+        }}
+      />
+    </Drawer.Navigator>
+  );
+};
 
 const DrawerContent = (props) => {
   const dispatch = useDispatch();
