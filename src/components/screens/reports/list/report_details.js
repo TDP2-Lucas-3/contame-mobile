@@ -6,7 +6,6 @@ import {styles} from '../../../../styles/common';
 import {verboseReportState} from '../../../../utils/verbose_report_names';
 
 const ReportDetails = (props) => {
-  console.log(props);
   return (
     <TouchableOpacity onPress={props.onPress}>
       <Card containerStyle={styles.report_card_container}>
