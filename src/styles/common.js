@@ -36,6 +36,10 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: '85%',
   },
+  incidentsMap: {
+    width: '100%',
+    height: '100%',
+  },
   flexWrap: {
     flexWrap: 'wrap',
   },

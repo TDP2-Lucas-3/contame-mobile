@@ -7,7 +7,6 @@ import React from 'react';
 
 export const FirstLoginEdit = (props) => {
   const {imagePickerCallback, userData, onChange, onSubmit, loading} = props;
-  console.log(userData.photo);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
