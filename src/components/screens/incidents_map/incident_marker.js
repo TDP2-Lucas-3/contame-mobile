@@ -5,7 +5,6 @@ import {styles} from './styles';
 import ReportDetails from '../reports/list/report_details';
 
 export const IncidentMarker = (props) => {
-  console.log(props.title);
   return (
     <MapMarker
       key={props.id}

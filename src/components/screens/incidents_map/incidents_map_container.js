@@ -5,7 +5,8 @@ import {getReports} from '../../../config/routes';
 import Loading from '../../common/loading';
 
 export const IncidentsMapContainer = (props) => {
-  const [{data, loading}, _] = useAxios(getReports());
+  // eslint-disable-next-line no-unused-vars
+  const [{data, loading}, refetch] = useAxios(getReports());
   return loading ? (
     <Loading />
   ) : (
