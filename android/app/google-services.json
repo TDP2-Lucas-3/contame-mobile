@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "363115003604",
+    "firebase_url": "https://contame-196c5.firebaseio.com",
+    "project_id": "contame-196c5",
+    "storage_bucket": "contame-196c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363115003604:android:691c7e0be173da70034541",
+        "android_client_info": {
+          "package_name": "com.contame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "363115003604-qqs4toctd18hnau1hrcva50esdchjfv4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGvnIKdJrwWS1cWv8RRvprPVxwcjE9t4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "363115003604-qqs4toctd18hnau1hrcva50esdchjfv4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
