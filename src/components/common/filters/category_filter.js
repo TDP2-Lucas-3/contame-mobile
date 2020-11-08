@@ -8,6 +8,7 @@ const CategoryFilter = (props) => {
     <List.Accordion title="Categoria">
       {values.map((category) => (
         <List.Item
+          key={category}
           title={category}
           right={() => (
             <Checkbox

@@ -7,6 +7,7 @@ const NeighborhoodFilter = (props) => {
     <List.Accordion title="Barrio">
       {values.map((neighborhood) => (
         <List.Item
+          key={neighborhood}
           title={neighborhood}
           right={() => (
             <RadioButton
