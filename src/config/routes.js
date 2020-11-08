@@ -37,3 +37,11 @@ export function getUsers() {
 export function getUser() {
   return `${host}${api.USER}`;
 }
+
+export function addVote(reportId) {
+  return `${getReport(reportId)}/vote`;
+}
+
+export function removeVote(reportId) {
+  return `${getReport(reportId)}/unvote`;
+}

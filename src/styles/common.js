@@ -225,4 +225,12 @@ export const styles = StyleSheet.create({
   color_secondary: {
     color: COLORS.secondary,
   },
+  report_details_footer: {
+    padding: 15,
+  },
+  voteIcon: {
+    padding: 5,
+    width: 75,
+    flexDirection: 'row',
+  },
 });

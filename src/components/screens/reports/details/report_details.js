@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, TouchableOpacity} from 'react-native';
 import {Text, Icon} from 'react-native-elements';
 import {styles} from '../../../../styles/common';
 import {capitalize} from 'lodash';
@@ -17,6 +17,7 @@ const ReportDetails = (props) => {
     lon: longitude,
     lat: latitude,
     location,
+    votes,
   } = props.report;
 
   return (
@@ -90,6 +91,15 @@ const ReportDetails = (props) => {
           </MapView>
         )}
       </ScrollView>
+
+      <View style={styles.zIndex_9}>
+        <View style={styles.report_details_footer}>
+          <TouchableOpacity onPress={props.onVotePress} style={styles.voteIcon}>
+            <Icon name={'thumb-up-alt'} type="material" />
+            <Text>{votes}</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 };
