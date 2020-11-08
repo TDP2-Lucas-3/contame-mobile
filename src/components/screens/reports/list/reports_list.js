@@ -28,7 +28,10 @@ const ReportsList = ({navigation}) => {
         refreshing={loading}
         onRefresh={refetch}
         ListHeaderComponent={() => (
-          <FilterMenu neighborhoods={['San Telmo', 'Palermo']} />
+          <FilterMenu
+            neighborhoods={['San Telmo', 'Palermo']}
+            categories={['Inseguridad', 'Edilicio']}
+          />
         )}
       />
       <Icon

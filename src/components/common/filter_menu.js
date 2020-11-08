@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {Text, Icon, Divider} from 'react-native-elements';
-import {Menu, TouchableRipple, List, RadioButton} from 'react-native-paper';
+import {
+  Menu,
+  TouchableRipple,
+  List,
+  RadioButton,
+  Checkbox,
+} from 'react-native-paper';
 import COLORS from '../../styles/colors';
 import {styles} from '../../styles/common';
 import {styles as filterStyles} from '../../styles/filter';
@@ -9,6 +15,7 @@ import {styles as filterStyles} from '../../styles/filter';
 const FilterMenu = (props) => {
   const [visible, setVisible] = useState(false);
   const [selectedNeighborhood, setSelectedNeighborhood] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   const anchor = (
     <TouchableRipple onPress={() => setVisible(true)}>
@@ -45,6 +52,32 @@ const FilterMenu = (props) => {
     </List.Accordion>
   );
 
+  const categoryList = (
+    <List.Accordion title="Categoria">
+      {props.categories.map((category) => (
+        <List.Item
+          title={category}
+          right={() => (
+            <Checkbox
+              status={
+                selectedCategories.includes(category) ? 'checked' : 'unchecked'
+              }
+              onPress={() =>
+                selectedCategories.includes(category)
+                  ? setSelectedCategories(
+                      selectedCategories.filter(
+                        (selectedCategory) => selectedCategory !== category,
+                      ),
+                    )
+                  : setSelectedCategories([...selectedCategories, category])
+              }
+            />
+          )}
+        />
+      ))}
+    </List.Accordion>
+  );
+
   return (
     <View style={[styles.alignSelfEnd, styles.mr_2]}>
       <Menu
@@ -56,6 +89,7 @@ const FilterMenu = (props) => {
         <Text h5>Filtrar Por:</Text>
         <Divider style={styles.strong_divider} />
         {neighborhoodList}
+        {categoryList}
       </Menu>
     </View>
   );
