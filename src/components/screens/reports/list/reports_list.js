@@ -62,6 +62,7 @@ const ReportsList = ({navigation}) => {
 
   const renderFilter = () => (
     <FilterMenu
+      onClear={() => setFilterData({category: [], neighborhood: ''})}
       filters={[
         <NeighborhoodFilter
           key="neighborhoodFilter"

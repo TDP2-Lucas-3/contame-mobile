@@ -8,7 +8,7 @@ import {styles as filterStyles} from '../../../styles/filter';
 
 const FilterMenu = (props) => {
   const [visible, setVisible] = useState(false);
-  const {filters} = props;
+  const {filters, onClear} = props;
 
   const anchor = (
     <TouchableRipple onPress={() => setVisible(true)}>
@@ -34,7 +34,14 @@ const FilterMenu = (props) => {
         onDismiss={() => setVisible(false)}
         statusBarHeight={20}
         contentStyle={filterStyles.filter_content_container}>
-        <Text h5>Filtrar Por:</Text>
+        <View style={[styles.row, styles.justifyBetween, styles.alignCenter]}>
+          <Text style={styles.font_md}>Filtrar Por:</Text>
+          <TouchableRipple onPress={onClear}>
+            <Text style={[styles.color_link, styles.underline, styles.font_sm]}>
+              Limpiar Filtros
+            </Text>
+          </TouchableRipple>
+        </View>
         <Divider style={styles.strong_divider} />
         {filters}
       </Menu>

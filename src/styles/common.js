@@ -180,6 +180,13 @@ export const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     color: colors.primary,
   },
+  /* FONT */
+  font_md: {
+    fontSize: 18,
+  },
+  font_sm: {
+    fontSize: 10,
+  },
   /* MARGIN */
   m_1: {
     margin: 10,
