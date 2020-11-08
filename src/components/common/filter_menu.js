@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import {Text, Icon, Divider} from 'react-native-elements';
-import {Menu, TouchableRipple} from 'react-native-paper';
+import {Menu, TouchableRipple, List, RadioButton} from 'react-native-paper';
 import COLORS from '../../styles/colors';
 import {styles} from '../../styles/common';
 import {styles as filterStyles} from '../../styles/filter';
 
 const FilterMenu = (props) => {
   const [visible, setVisible] = useState(false);
+  const [selectedNeighborhood, setSelectedNeighborhood] = useState('');
 
   const anchor = (
     <TouchableRipple onPress={() => setVisible(true)}>
@@ -25,6 +26,25 @@ const FilterMenu = (props) => {
     </TouchableRipple>
   );
 
+  const neighborhoodList = (
+    <List.Accordion title="Barrio">
+      {props.neighborhoods.map((neighborhood) => (
+        <List.Item
+          title={neighborhood}
+          right={() => (
+            <RadioButton
+              value={neighborhood}
+              status={
+                selectedNeighborhood === neighborhood ? 'checked' : 'unchecked'
+              }
+              onPress={() => setSelectedNeighborhood(neighborhood)}
+            />
+          )}
+        />
+      ))}
+    </List.Accordion>
+  );
+
   return (
     <View style={[styles.alignSelfEnd, styles.mr_2]}>
       <Menu
@@ -35,6 +55,7 @@ const FilterMenu = (props) => {
         contentStyle={filterStyles.filter_content_container}>
         <Text h5>Filtrar Por:</Text>
         <Divider style={styles.strong_divider} />
+        {neighborhoodList}
       </Menu>
     </View>
   );
