@@ -52,8 +52,11 @@ const ReportsList = ({navigation}) => {
     [filterData],
   );
 
-  const filteredData = useMemo(
-    () => (data || []).filter((report) => shouldShow(report)),
+  const dataToRender = useMemo(
+    () =>
+      (data || [])
+        .filter((report) => shouldShow(report))
+        .sort((a, b) => moment(a.creationDate) < moment(b.creationDate)),
     [shouldShow, data],
   );
 
@@ -74,14 +77,12 @@ const ReportsList = ({navigation}) => {
         />,
       ]}
     />
-  )
+  );
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={(filteredData || []).sort(
-          (a, b) => moment(a.creationDate) < moment(b.creationDate),
-        )}
+        data={dataToRender || []}
         renderItem={({item}) => (
           <ReportDetails
             {...item}
