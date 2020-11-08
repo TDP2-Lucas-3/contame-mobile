@@ -34,7 +34,13 @@ const FilterMenu = (props) => {
         onDismiss={() => setVisible(false)}
         statusBarHeight={20}
         contentStyle={filterStyles.filter_content_container}>
-        <View style={[styles.row, styles.justifyBetween, styles.alignCenter]}>
+        <View
+          style={[
+            styles.row,
+            styles.justifyBetween,
+            styles.alignCenter,
+            styles.m_1,
+          ]}>
           <Text style={styles.font_md}>Filtrar Por:</Text>
           <TouchableRipple onPress={onClear}>
             <Text style={[styles.color_link, styles.underline, styles.font_sm]}>
