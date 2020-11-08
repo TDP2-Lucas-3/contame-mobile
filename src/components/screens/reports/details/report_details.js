@@ -7,6 +7,7 @@ import moment from 'moment';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 import {SliderBox} from 'react-native-image-slider-box';
+import {VoteButton} from './vote_button';
 
 const ReportDetails = (props) => {
   const {
@@ -18,6 +19,7 @@ const ReportDetails = (props) => {
     lat: latitude,
     location,
     votes,
+    voteByUser,
   } = props.report;
 
   return (
@@ -91,14 +93,12 @@ const ReportDetails = (props) => {
           </MapView>
         )}
       </ScrollView>
-
-      <View style={styles.zIndex_9}>
-        <View style={styles.report_details_footer}>
-          <TouchableOpacity onPress={props.onVotePress} style={styles.voteIcon}>
-            <Icon name={'thumb-up-alt'} type="material" />
-            <Text>{votes}</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.report_details_footer}>
+        <VoteButton
+          votes={votes}
+          voteByUser={voteByUser}
+          onPress={props.onVotePress}
+        />
       </View>
     </View>
   );

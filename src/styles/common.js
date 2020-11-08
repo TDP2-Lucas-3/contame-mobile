@@ -227,6 +227,9 @@ export const styles = StyleSheet.create({
   },
   report_details_footer: {
     padding: 15,
+    borderTopWidth: 1,
+    borderTopColor: colors.grey3,
+    backgroundColor: COLORS.secondary,
   },
   voteIcon: {
     padding: 5,
