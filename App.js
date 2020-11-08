@@ -4,6 +4,7 @@ import WelcomeScreen from './src/components/screens/welcome/welcome_screen';
 import configureStore from './src/redux/store';
 import {Provider} from 'react-redux';
 import {configure} from './src/services/notifications';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 const App = () => {
   useEffect(() => {
@@ -12,9 +13,11 @@ const App = () => {
 
   return (
     <Provider store={configureStore()}>
-      <NavigationContainer>
-        <WelcomeScreen />
-      </NavigationContainer>
+      <PaperProvider>
+        <NavigationContainer>
+          <WelcomeScreen />
+        </NavigationContainer>
+      </PaperProvider>
     </Provider>
   );
 };
