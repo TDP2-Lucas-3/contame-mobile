@@ -172,6 +172,9 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.grey4,
   },
+  maxHeight5: {
+    maxHeight: '50%',
+  },
   /* TEXT */
   underline: {
     textDecorationLine: 'underline',

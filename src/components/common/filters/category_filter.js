@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import {List, Checkbox} from 'react-native-paper';
 import {upperFirst, toLower} from 'lodash';
 import {styles} from '../../../styles/filter';
@@ -11,19 +11,21 @@ const CategoryFilter = (props) => {
   return (
     <List.Accordion title="Categoria" titleStyle={styles.title}>
       <View style={styles.filter_items_container}>
-        {values.map((category) => (
-          <List.Item
-            key={category}
-            title={upperFirst(toLower(category))}
-            right={() => (
-              <Checkbox
-                color={COLORS.blue}
-                status={selected.includes(category) ? 'checked' : 'unchecked'}
-                onPress={() => onSelect(category)}
-              />
-            )}
-          />
-        ))}
+        <ScrollView>
+          {values.map((category) => (
+            <List.Item
+              key={category}
+              title={upperFirst(toLower(category))}
+              right={() => (
+                <Checkbox
+                  color={COLORS.blue}
+                  status={selected.includes(category) ? 'checked' : 'unchecked'}
+                  onPress={() => onSelect(category)}
+                />
+              )}
+            />
+          ))}
+        </ScrollView>
       </View>
     </List.Accordion>
   );

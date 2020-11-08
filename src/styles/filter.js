@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: colors.grey4,
     backgroundColor: '#E4E4E4',
+    maxHeight: '50%',
   },
   title: {
     color: 'black',
