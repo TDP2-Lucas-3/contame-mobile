@@ -6,6 +6,7 @@ import ReportDetails from './report_details';
 import useAxios from 'axios-hooks';
 import {styles} from '../../../../styles/common';
 import moment from 'moment';
+import FilterMenu from '../../../common/filter_menu';
 
 const ReportsList = ({navigation}) => {
   const [{data, loading}, refetch] = useAxios(getMyReports());
@@ -26,6 +27,7 @@ const ReportsList = ({navigation}) => {
         )}
         refreshing={loading}
         onRefresh={refetch}
+        ListHeaderComponent={() => <FilterMenu />}
       />
       <Icon
         name="plus"

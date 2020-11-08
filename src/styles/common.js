@@ -17,6 +17,9 @@ export const styles = StyleSheet.create({
   justifyBetween: {
     justifyContent: 'space-between',
   },
+  justifyEnd: {
+    justifyContent: 'flex-end',
+  },
   alignSelfStart: {
     alignSelf: 'flex-start',
   },
@@ -212,6 +215,9 @@ export const styles = StyleSheet.create({
   pl_1: {
     paddingLeft: 10,
   },
+  pl_1_sm: {
+    paddingLeft: 5,
+  },
   /* COLORS */
   bg_grey: {
     backgroundColor: colors.grey4,
@@ -224,5 +230,8 @@ export const styles = StyleSheet.create({
   },
   color_secondary: {
     color: COLORS.secondary,
+  },
+  color_link: {
+    color: COLORS.LINK,
   },
 });
