@@ -1,5 +1,6 @@
 import React from 'react';
 import {List, Checkbox} from 'react-native-paper';
+import {upperFirst, toLower} from 'lodash';
 
 const CategoryFilter = (props) => {
   const {selected, onSelect, values} = props;
@@ -9,7 +10,7 @@ const CategoryFilter = (props) => {
       {values.map((category) => (
         <List.Item
           key={category}
-          title={category}
+          title={upperFirst(toLower(category))}
           right={() => (
             <Checkbox
               status={selected.includes(category) ? 'checked' : 'unchecked'}
