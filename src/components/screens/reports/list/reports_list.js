@@ -57,7 +57,24 @@ const ReportsList = ({navigation}) => {
     [shouldShow, data],
   );
 
-  console.log(filteredData, filterData);
+  const renderFilter = () => (
+    <FilterMenu
+      filters={[
+        <NeighborhoodFilter
+          key="neighborhoodFilter"
+          selected={filterData.neighborhood}
+          onSelect={onSelecteNeighborhood}
+          values={neighborhoods}
+        />,
+        <CategoryFilter
+          key="categoryFilter"
+          selected={filterData.category}
+          onSelect={onSelectCategory}
+          values={categories}
+        />,
+      ]}
+    />
+  )
 
   return (
     <View style={styles.container}>
@@ -75,24 +92,7 @@ const ReportsList = ({navigation}) => {
         )}
         refreshing={loading}
         onRefresh={refetch}
-        ListHeaderComponent={() => (
-          <FilterMenu
-            filters={[
-              <NeighborhoodFilter
-                key="neighborhoodFilter"
-                selected={filterData.neighborhood}
-                onSelect={onSelecteNeighborhood}
-                values={neighborhoods}
-              />,
-              <CategoryFilter
-                key="categoryFilter"
-                selected={filterData.category}
-                onSelect={onSelectCategory}
-                values={categories}
-              />,
-            ]}
-          />
-        )}
+        ListHeaderComponent={renderFilter()}
       />
       <Icon
         name="plus"
