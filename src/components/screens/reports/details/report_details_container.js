@@ -1,27 +1,45 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {getReport} from '../../../../config/routes';
 import useAxios from 'axios-hooks';
 import ReportDetails from './report_details';
 import Loading from '../../../common/loading';
 import {unvote, vote} from '../../../../services/vote';
+import {fetchReport} from '../../../../services/fetchReport';
 
 const ReportDetailsContainer = ({route}) => {
   const {reportId} = route.params;
-  const [{data, loading}] = useAxios(getReport(reportId));
+  const [data, setReport] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const report = await fetchReport(reportId);
+      setReport(report.data);
+    })();
+  }, [reportId]);
 
   const onVotePress = async () => {
     if (!data.voteByUser) {
-      await vote(reportId);
-      data.votes += 1;
-      data.voteByUser = true;
+      try {
+        await vote(reportId);
+      } catch (e) {
+        console.log(e.response.data);
+      }
+      setReport({
+        ...data,
+        votes: data.votes + 1,
+        voteByUser: true,
+      });
       return;
     }
     await unvote(reportId);
-    data.votes -= 1;
-    data.voteByUser = false;
+    setReport({
+      ...data,
+      votes: data.votes - 1,
+      voteByUser: false,
+    });
   };
 
-  return loading ? (
+  return !data ? (
     <Loading />
   ) : (
     <ReportDetails onVotePress={onVotePress} report={data} />
