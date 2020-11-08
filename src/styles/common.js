@@ -23,6 +23,9 @@ export const styles = StyleSheet.create({
   alignSelfStart: {
     alignSelf: 'flex-start',
   },
+  alignSelfEnd: {
+    alignSelf: 'flex-end',
+  },
   alignCenter: {
     alignItems: 'center',
   },
@@ -164,6 +167,10 @@ export const styles = StyleSheet.create({
   bottom: {
     position: 'absolute',
     bottom: 0,
+  },
+  strong_divider: {
+    borderWidth: 1,
+    borderColor: colors.grey4,
   },
   /* TEXT */
   underline: {
