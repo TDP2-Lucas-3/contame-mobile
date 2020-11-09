@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {Text, Icon, Divider} from 'react-native-elements';
+import {Icon, Divider} from 'react-native-elements';
 import {Menu, TouchableRipple} from 'react-native-paper';
 import COLORS from '../../../styles/colors';
 import {styles} from '../../../styles/common';
@@ -45,7 +45,8 @@ const FilterMenu = (props) => {
           ]}>
           <RalewayText style={styles.font_md}>Filtrar Por:</RalewayText>
           <TouchableRipple onPress={onClear}>
-            <RalewayText style={[styles.color_link, styles.underline, styles.font_sm]}>
+            <RalewayText
+              style={[styles.color_link, styles.underline, styles.font_sm]}>
               Limpiar Filtros
             </RalewayText>
           </TouchableRipple>
