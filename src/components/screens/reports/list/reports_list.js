@@ -82,27 +82,29 @@ const ReportsList = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={dataToRender || []}
-        renderItem={({item}) => (
-          <ReportDetails
-            {...item}
-            onPress={() =>
-              navigation.navigate('ReportDetails', {reportId: item.id})
-            }
-          />
-        )}
-        refreshing={loading}
-        onRefresh={refetch}
-        ListHeaderComponent={renderFilter()}
-      />
-      <Icon
-        name="plus"
-        type="font-awesome-5"
-        color="white"
-        containerStyle={styles.action_button}
-        onPress={() => navigation.navigate('NewReport')}
-      />
+      <View style={styles.m_2}>
+        <FlatList
+          data={dataToRender || []}
+          renderItem={({item}) => (
+            <ReportDetails
+              {...item}
+              onPress={() =>
+                navigation.navigate('ReportDetails', {reportId: item.id})
+              }
+            />
+          )}
+          refreshing={loading}
+          onRefresh={refetch}
+          ListHeaderComponent={renderFilter()}
+        />
+        <Icon
+          name="plus"
+          type="font-awesome-5"
+          color="white"
+          containerStyle={styles.action_button}
+          onPress={() => navigation.navigate('NewReport')}
+        />
+      </View>
     </View>
   );
 };

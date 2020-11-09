@@ -4,6 +4,7 @@ import {List, Checkbox} from 'react-native-paper';
 import {upperFirst, toLower} from 'lodash';
 import {styles} from '../../../styles/filter';
 import COLORS from '../../../styles/colors';
+import {styles as commonStyles} from '../../../styles/common';
 
 const CategoryFilter = (props) => {
   const {selected, onSelect, values} = props;
@@ -16,6 +17,7 @@ const CategoryFilter = (props) => {
             <List.Item
               key={category}
               title={upperFirst(toLower(category))}
+              titleStyle={commonStyles.raleway}
               right={() => (
                 <Checkbox
                   color={COLORS.blue}

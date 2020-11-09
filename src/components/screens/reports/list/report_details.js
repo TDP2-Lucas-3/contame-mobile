@@ -36,14 +36,14 @@ const ReportDetails = (props) => {
           </View>
         )}
         <View style={styles.report_card_body}>
-          <View>
-            <Card.Title style={styles.alignSelfStart}>{props.title}</Card.Title>
-            <Text style={styles.color_grey}>
+          <View style={styles.m_1}>
+            <Text style={styles.report_card_title}>{props.title}</Text>
+            <Text style={[styles.color_grey, styles.raleway, styles.font_14]}>
               {moment(props.creationDate).fromNow()}
             </Text>
           </View>
-          <View>
-            <Icon name="chevron-right" size={30} />
+          <View style={styles.m_1}>
+            <Icon name="chevron-right" size={30} color="white" />
           </View>
         </View>
       </Card>

@@ -3,6 +3,7 @@ import {View, ScrollView} from 'react-native';
 import {List, RadioButton} from 'react-native-paper';
 import COLORS from '../../../styles/colors';
 import {styles} from '../../../styles/filter';
+import {styles as commonStyles} from '../../../styles/common';
 
 const NeighborhoodFilter = (props) => {
   const {selected, onSelect, values} = props;
@@ -14,6 +15,7 @@ const NeighborhoodFilter = (props) => {
             <List.Item
               key={neighborhood}
               title={neighborhood}
+              titleStyle={commonStyles.raleway}
               right={() => (
                 <RadioButton
                   color={COLORS.blue}

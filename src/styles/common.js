@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    margin: 20,
+    backgroundColor: COLORS.main,  
   },
   flex_1: {
     flex: 1,
@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-
+    borderWidth: 0,
     elevation: 5,
   },
   report_card_body: {
@@ -85,7 +85,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
-    margin: 10,
+    backgroundColor: COLORS.secondary,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
   report_default_icon_container: {
     height: 150,
@@ -93,6 +95,12 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.grey3,
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
+  },
+  report_card_title: {
+    fontFamily: 'Raleway-Bold',
+    fontSize: 16,
+    color: 'white',
+    marginBottom: 10,
   },
   borderTopRadius_1: {
     borderTopLeftRadius: 10,
@@ -105,7 +113,7 @@ export const styles = StyleSheet.create({
     padding: 14,
     height: 50,
     borderRadius: 25,
-    backgroundColor: colors.primary,
+    backgroundColor: 'black',
   },
   report_details_container: {
     flex: 1,
@@ -175,6 +183,22 @@ export const styles = StyleSheet.create({
   maxHeight5: {
     maxHeight: '50%',
   },
+  menu_bars_container: {
+    backgroundColor: 'white',
+    marginLeft: 20,
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    borderRadius: 10,
+  },
+  notification_icon_container: {
+    backgroundColor: 'white',
+    marginRight: 20,
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    borderRadius: 10,
+  },
   /* TEXT */
   underline: {
     textDecorationLine: 'underline',
@@ -187,12 +211,21 @@ export const styles = StyleSheet.create({
   font_md: {
     fontSize: 18,
   },
+  font_14: {
+    fontSize: 14,
+  },
   font_sm: {
     fontSize: 10,
+  },
+  raleway: {
+    fontFamily: 'Raleway-Regular',
   },
   /* MARGIN */
   m_1: {
     margin: 10,
+  },
+  m_2: {
+    margin: 20,
   },
   m_3: {
     margin: 30,
@@ -238,6 +271,12 @@ export const styles = StyleSheet.create({
   /* COLORS */
   bg_grey: {
     backgroundColor: colors.grey4,
+  },
+  bg_main: {
+    backgroundColor: COLORS.main,
+  },
+  bg_secondary: {
+    backgroundColor: COLORS.secondary,
   },
   color_grey: {
     color: 'grey',

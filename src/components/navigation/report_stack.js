@@ -14,15 +14,27 @@ const ReportStack = ({navigation}) => (
       name="Reports"
       component={ReportsList}
       options={{
-        title: 'Incidencias',
+        title: 'Mis Incidencias',
         headerLeft: () => (
           <Icon
             name="bars"
             type="font-awesome-5"
-            containerStyle={styles.ml_2}
+            containerStyle={styles.menu_bars_container}
             onPress={() => navigation.openDrawer()}
+            size={15}
           />
         ),
+        headerRight: () => (
+          <Icon
+            name="bell"
+            type="font-awesome-5"
+            containerStyle={styles.notification_icon_container}
+            size={15}
+          />
+        ),
+        headerTitleAlign: 'center',
+        headerStyle: styles.bg_secondary,
+        headerTitleStyle: [styles.color_white, styles.raleway],
       }}
     />
     <Stack.Screen

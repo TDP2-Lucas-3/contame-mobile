@@ -5,6 +5,7 @@ import {Menu, TouchableRipple} from 'react-native-paper';
 import COLORS from '../../../styles/colors';
 import {styles} from '../../../styles/common';
 import {styles as filterStyles} from '../../../styles/filter';
+import RalewayText from '../raleway_text';
 
 const FilterMenu = (props) => {
   const [visible, setVisible] = useState(false);
@@ -19,9 +20,10 @@ const FilterMenu = (props) => {
           color={COLORS.LINK}
           size={15}
         />
-        <Text style={[styles.color_link, styles.pl_1_sm, styles.underline]}>
+        <RalewayText
+          style={[styles.color_link, styles.pl_1_sm, styles.underline]}>
           Filtros
-        </Text>
+        </RalewayText>
       </View>
     </TouchableRipple>
   );
@@ -41,11 +43,11 @@ const FilterMenu = (props) => {
             styles.alignCenter,
             styles.m_1,
           ]}>
-          <Text style={styles.font_md}>Filtrar Por:</Text>
+          <RalewayText style={styles.font_md}>Filtrar Por:</RalewayText>
           <TouchableRipple onPress={onClear}>
-            <Text style={[styles.color_link, styles.underline, styles.font_sm]}>
+            <RalewayText style={[styles.color_link, styles.underline, styles.font_sm]}>
               Limpiar Filtros
-            </Text>
+            </RalewayText>
           </TouchableRipple>
         </View>
         <Divider style={styles.strong_divider} />
