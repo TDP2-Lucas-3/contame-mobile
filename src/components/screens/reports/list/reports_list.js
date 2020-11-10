@@ -12,6 +12,7 @@ import FilterMenu from '../../../common/filters/filter_menu';
 import CategoryFilter from '../../../common/filters/category_filter';
 import NeighborhoodFilter from '../../../common/filters/neighborhood_filter';
 import {uniq, capitalize, flatten} from 'lodash';
+import EmptyMessage from '../../../common/empty_message';
 
 const ReportsList = ({navigation}) => {
   const [{data, loading}, refetch] = useAxios(getMyReports());
@@ -86,6 +87,7 @@ const ReportsList = ({navigation}) => {
           filterData[filterType].map((filter) =>
             filter.length > 0 ? (
               <Chip
+                key={filter}
                 textStyle={[styles.font_sm, styles.raleway]}
                 style={filterStyles.chip}
                 onClose={() => onSelect(filterType, filter)}>
@@ -100,7 +102,7 @@ const ReportsList = ({navigation}) => {
 
   return (
     <View style={[styles.container, styles.justifyStart]}>
-      <View style={styles.m_2}>
+      <View style={[styles.m_2]}>
         <FlatList
           data={dataToRender || []}
           renderItem={({item}) => (
@@ -114,6 +116,12 @@ const ReportsList = ({navigation}) => {
           refreshing={loading}
           onRefresh={refetch}
           ListHeaderComponent={renderFilter()}
+          ListEmptyComponent={() => (
+            <EmptyMessage
+              title="No hay incidencias"
+              message="Chequea tus filtros o recarga la pagina"
+            />
+          )}
         />
       </View>
       <Icon

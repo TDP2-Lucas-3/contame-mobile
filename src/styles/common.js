@@ -23,6 +23,9 @@ export const styles = StyleSheet.create({
   justifyStart: {
     justifyContent: 'flex-start',
   },
+  justifyCenter: {
+    justifyContent: 'center',
+  },
   alignSelfStart: {
     alignSelf: 'flex-start',
   },
