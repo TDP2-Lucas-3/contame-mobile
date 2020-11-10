@@ -18,6 +18,7 @@ export const notVotedStyles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     borderColor: 'white',
+    alignItems: 'center',
   },
   counter: {
     fontWeight: 'bold',
