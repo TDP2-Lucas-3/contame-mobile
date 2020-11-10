@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, ScrollView} from 'react-native';
-import {List, RadioButton} from 'react-native-paper';
+import {List, Checkbox} from 'react-native-paper';
 import COLORS from '../../../styles/colors';
 import {styles} from '../../../styles/filter';
 import {styles as commonStyles} from '../../../styles/common';
@@ -17,10 +17,12 @@ const NeighborhoodFilter = (props) => {
               title={neighborhood}
               titleStyle={commonStyles.raleway}
               right={() => (
-                <RadioButton
+                <Checkbox
                   color={COLORS.blue}
                   value={neighborhood}
-                  status={selected === neighborhood ? 'checked' : 'unchecked'}
+                  status={
+                    selected.includes(neighborhood) ? 'checked' : 'unchecked'
+                  }
                   onPress={() => onSelect(neighborhood)}
                 />
               )}

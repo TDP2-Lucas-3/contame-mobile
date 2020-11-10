@@ -1,20 +1,22 @@
 import React, {useState, useMemo, useCallback} from 'react';
 import {FlatList, View} from 'react-native';
 import {Icon} from 'react-native-elements';
+chipsimport {Chip} from 'react-native-paper';
 import {getMyReports} from '../../../../config/routes';
 import ReportDetails from './report_details';
 import useAxios from 'axios-hooks';
 import {styles} from '../../../../styles/common';
+import {styles as filterStyles} from '../../../../styles/filter';
 import moment from 'moment';
 import FilterMenu from '../../../common/filters/filter_menu';
 import CategoryFilter from '../../../common/filters/category_filter';
 import NeighborhoodFilter from '../../../common/filters/neighborhood_filter';
-import {uniq} from 'lodash';
+import {uniq, capitalize} from 'lodash';
 
 const ReportsList = ({navigation}) => {
   const [{data, loading}, refetch] = useAxios(getMyReports());
   const [filterData, setFilterData] = useState({
-    neighborhood: '',
+    neighborhood: [],
     category: [],
   });
 
@@ -23,17 +25,14 @@ const ReportsList = ({navigation}) => {
     (data || []).map((report) => report.location.split(',').pop().trim()),
   );
 
-  const onSelecteNeighborhood = (selected) =>
-    setFilterData({...filterData, neighborhood: selected});
-
-  const onSelectCategory = (selected) =>
+  const onSelect = (filter, selected) =>
     setFilterData({
       ...filterData,
-      category: filterData.category.includes(selected)
-        ? filterData.category.filter(
-            (selectedCategory) => selectedCategory !== selected,
+      [filter]: filterData[filter].includes(selected)
+        ? filterData[filter].filter(
+            (selectedValue) => selectedValue !== selected,
           )
-        : [...filterData.category, selected],
+        : [...filterData[filter], selected],
     });
 
   const shouldShow = useCallback(
@@ -43,8 +42,10 @@ const ReportsList = ({navigation}) => {
           ? filterData.category.includes(report.category.name)
           : true;
       const matchsNeighborhood =
-        filterData.neighborhood !== ''
-          ? report.location.includes(filterData.neighborhood)
+        filterData.neighborhood.length > 0
+          ? filterData.neighborhood.some((neighborhoodFilter) =>
+              report.location.includes(neighborhoodFilter),
+            )
           : true;
 
       return matchsCategories && matchsNeighborhood;
@@ -61,27 +62,43 @@ const ReportsList = ({navigation}) => {
   );
 
   const renderFilter = () => (
-    <FilterMenu
-      onClear={() => setFilterData({category: [], neighborhood: ''})}
-      filters={[
-        <NeighborhoodFilter
-          key="neighborhoodFilter"
-          selected={filterData.neighborhood}
-          onSelect={onSelecteNeighborhood}
-          values={neighborhoods}
-        />,
-        <CategoryFilter
-          key="categoryFilter"
-          selected={filterData.category}
-          onSelect={onSelectCategory}
-          values={categories}
-        />,
-      ]}
-    />
+    <View style={styles.row}>
+      <FilterMenu
+        onClear={() => setFilterData({category: [], neighborhood: []})}
+        filters={[
+          <NeighborhoodFilter
+            key="neighborhoodFilter"
+            selected={filterData.neighborhood}
+            onSelect={(value) => onSelect('neighborhood', value)}
+            values={neighborhoods}
+          />,
+          <CategoryFilter
+            key="categoryFilter"
+            selected={filterData.category}
+            onSelect={(value) => onSelect('category', value)}
+            values={categories}
+          />,
+        ]}
+      />
+      <View style={[styles.row, styles.flexWrap, styles.flex_1]}>
+        {Object.keys(filterData).map((filterType) =>
+          filterData[filterType].map((filter) =>
+            filter.length > 0 ? (
+              <Chip
+                textStyle={[styles.font_sm, styles.raleway]}
+                style={filterStyles.chip}
+                onClose={() => onSelect(filterType, filter)}>
+                {capitalize(filter)}
+              </Chip>
+            ) : null,
+          ),
+        )}
+      </View>
+    </View>
   );
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, styles.justifyStart]}>
       <View style={styles.m_2}>
         <FlatList
           data={dataToRender || []}
@@ -97,14 +114,14 @@ const ReportsList = ({navigation}) => {
           onRefresh={refetch}
           ListHeaderComponent={renderFilter()}
         />
-        <Icon
-          name="plus"
-          type="font-awesome-5"
-          color="white"
-          containerStyle={styles.action_button}
-          onPress={() => navigation.navigate('NewReport')}
-        />
       </View>
+      <Icon
+        name="plus"
+        type="font-awesome-5"
+        color="white"
+        containerStyle={styles.action_button}
+        onPress={() => navigation.navigate('NewReport')}
+      />
     </View>
   );
 };

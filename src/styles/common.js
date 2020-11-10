@@ -20,6 +20,9 @@ export const styles = StyleSheet.create({
   justifyEnd: {
     justifyContent: 'flex-end',
   },
+  justifyStart: {
+    justifyContent: 'flex-start',
+  },
   alignSelfStart: {
     alignSelf: 'flex-start',
   },

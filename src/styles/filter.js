@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {colors} from 'react-native-elements';
+import COLORS from './colors';
 
 export const styles = StyleSheet.create({
   filter_content_container: {
@@ -15,5 +16,12 @@ export const styles = StyleSheet.create({
   title: {
     color: 'black',
     fontFamily: 'Raleway-SemiBold',
+  },
+  chip: {
+    height: 20,
+    alignItems: 'center',
+    marginLeft: 5,
+    marginBottom: 5,
+    backgroundColor: colors.grey3,
   },
 });

@@ -22,14 +22,14 @@ const FilterMenu = (props) => {
         />
         <RalewayText
           style={[styles.color_link, styles.pl_1_sm, styles.underline]}>
-          Filtros
+          Filtros:
         </RalewayText>
       </View>
     </TouchableRipple>
   );
 
   return (
-    <View style={[styles.alignSelfEnd, styles.mr_2]}>
+    <View style={[styles.row, styles.ml_2]}>
       <Menu
         visible={visible}
         anchor={anchor}
