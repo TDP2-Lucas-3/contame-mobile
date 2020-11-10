@@ -1,7 +1,7 @@
 import React, {useState, useMemo, useCallback} from 'react';
 import {FlatList, View} from 'react-native';
 import {Icon} from 'react-native-elements';
-chipsimport {Chip} from 'react-native-paper';
+import {Chip} from 'react-native-paper';
 import {getMyReports} from '../../../../config/routes';
 import ReportDetails from './report_details';
 import useAxios from 'axios-hooks';
