@@ -22,7 +22,7 @@ const FilterMenu = (props) => {
         />
         <RalewayText
           style={[styles.color_link, styles.pl_1_sm, styles.underline]}>
-          Filtros:
+          Filtros
         </RalewayText>
       </View>
     </TouchableRipple>
