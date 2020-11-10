@@ -80,6 +80,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     margin: 10,
+    borderBottomWidth: 1,
   },
   report_default_icon_container: {
     height: 150,
@@ -224,5 +225,16 @@ export const styles = StyleSheet.create({
   },
   color_secondary: {
     color: COLORS.secondary,
+  },
+  report_details_footer: {
+    padding: 15,
+    borderTopWidth: 1,
+    borderTopColor: colors.grey3,
+    backgroundColor: COLORS.secondary,
+  },
+  voteIcon: {
+    padding: 5,
+    width: 75,
+    flexDirection: 'row',
   },
 });
