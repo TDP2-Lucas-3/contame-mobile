@@ -21,24 +21,23 @@ const ReportDetailsContainer = ({route}) => {
   }, [reportId]);
 
   const onVotePress = async () => {
+    if (data.user.email === user.email) {
+      // can't vote yourself
+      return;
+    }
+
     if (!data.voteByUser) {
+      setReport({
+        ...data,
+        votes: data.votes + 1,
+        voteByUser: true,
+      });
       try {
         await vote(reportId);
       } catch (e) {
         ToastAndroid.show(e.response.data.message, ToastAndroid.LONG);
         return;
       }
-      setReport({
-        ...data,
-        votes: data.votes + 1,
-        voteByUser: true,
-      });
-      return;
-    }
-    try {
-      await unvote(reportId);
-    } catch (e) {
-      ToastAndroid.show(e.response.data.message, ToastAndroid.LONG);
       return;
     }
     setReport({
@@ -46,6 +45,11 @@ const ReportDetailsContainer = ({route}) => {
       votes: data.votes - 1,
       voteByUser: false,
     });
+    try {
+      await unvote(reportId);
+    } catch (e) {
+      ToastAndroid.show(e.response.data.message, ToastAndroid.LONG);
+    }
   };
 
   return !data ? (
