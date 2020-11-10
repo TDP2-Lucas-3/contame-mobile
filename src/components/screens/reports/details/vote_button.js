@@ -9,7 +9,6 @@ export const VoteButton = (props) => {
     voteStyles = alreadyVotedStyles;
   }
 
-  console.log(props.votes);
   return (
     <View>
       <TouchableOpacity onPress={props.onPress} style={voteStyles.voteIcon}>

@@ -4,6 +4,8 @@ import {View, TouchableOpacity} from 'react-native';
 import {Card, Text, Icon, Badge} from 'react-native-elements';
 import {styles} from '../../../../styles/common';
 import {verboseReportState} from '../../../../utils/verbose_report_names';
+import {VoteButton} from '../details/vote_button';
+import {ReportCardBottomBar} from './report_card_bottom_bar';
 
 const ReportDetails = (props) => {
   return (
@@ -46,6 +48,10 @@ const ReportDetails = (props) => {
             <Icon name="chevron-right" size={30} />
           </View>
         </View>
+        <ReportCardBottomBar
+          voteByUser={props.voteByUser}
+          votes={props.votes}
+        />
       </Card>
     </TouchableOpacity>
   );

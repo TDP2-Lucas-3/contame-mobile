@@ -80,6 +80,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     margin: 10,
+    borderBottomWidth: 1,
   },
   report_default_icon_container: {
     height: 150,
