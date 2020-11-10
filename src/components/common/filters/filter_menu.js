@@ -9,7 +9,7 @@ import RalewayText from '../raleway_text';
 
 const FilterMenu = (props) => {
   const [visible, setVisible] = useState(false);
-  const {filters, onClear} = props;
+  const {filters, onClear, filterCount} = props;
 
   const anchor = (
     <TouchableRipple onPress={() => setVisible(true)}>
@@ -22,7 +22,7 @@ const FilterMenu = (props) => {
         />
         <RalewayText
           style={[styles.color_link, styles.pl_1_sm, styles.underline]}>
-          Filtros
+          {`Filtros ${filterCount > 0 ? `(${filterCount})` : ''}`}
         </RalewayText>
       </View>
     </TouchableRipple>

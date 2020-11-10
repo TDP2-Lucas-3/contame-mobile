@@ -11,7 +11,7 @@ import moment from 'moment';
 import FilterMenu from '../../../common/filters/filter_menu';
 import CategoryFilter from '../../../common/filters/category_filter';
 import NeighborhoodFilter from '../../../common/filters/neighborhood_filter';
-import {uniq, capitalize} from 'lodash';
+import {uniq, capitalize, flatten} from 'lodash';
 
 const ReportsList = ({navigation}) => {
   const [{data, loading}, refetch] = useAxios(getMyReports());
@@ -79,6 +79,7 @@ const ReportsList = ({navigation}) => {
             values={categories}
           />,
         ]}
+        filterCount={flatten(Object.values(filterData)).length}
       />
       <View style={[styles.row, styles.flexWrap, styles.flex_1]}>
         {Object.keys(filterData).map((filterType) =>
