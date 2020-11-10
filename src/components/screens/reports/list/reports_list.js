@@ -11,7 +11,7 @@ import moment from 'moment';
 import FilterMenu from '../../../common/filters/filter_menu';
 import CategoryFilter from '../../../common/filters/category_filter';
 import NeighborhoodFilter from '../../../common/filters/neighborhood_filter';
-import {uniq, capitalize, flatten} from 'lodash';
+import {uniq, capitalize, flatten, compact} from 'lodash';
 import EmptyMessage from '../../../common/empty_message';
 
 const ReportsList = ({navigation}) => {
@@ -21,9 +21,11 @@ const ReportsList = ({navigation}) => {
     category: [],
   });
 
-  const categories = uniq((data || []).map((report) => report.category.name));
-  const neighborhoods = uniq(
-    (data || []).map((report) => report.location.split(',').pop().trim()),
+  const categories = compact(
+    uniq((data || []).map((report) => report.category.name)),
+  );
+  const neighborhoods = compact(
+    uniq((data || []).map((report) => report.location.split(',').pop().trim())),
   );
 
   const onSelect = (filter, selected) =>
