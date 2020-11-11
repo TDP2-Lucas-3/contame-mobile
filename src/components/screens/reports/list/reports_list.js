@@ -118,7 +118,7 @@ const ReportsList = ({navigation}) => {
   );
 
   const renderList = () => (
-    <View style={[styles.m_2]}>
+    <View style={[styles.mh_2]}>
       <FlatList
         data={dataToRender || []}
         renderItem={({item}) => (
@@ -131,7 +131,6 @@ const ReportsList = ({navigation}) => {
         )}
         refreshing={loading}
         onRefresh={refetch}
-        ListHeaderComponent={renderFilter()}
         ListEmptyComponent={() => (
           <EmptyMessage
             title="No hay incidencias"
@@ -152,6 +151,9 @@ const ReportsList = ({navigation}) => {
 
   return (
     <View style={[styles.container, styles.justifyStart]}>
+      <View style={[styles.mt_2, styles.ml_2]}>
+        {renderFilter()}
+      </View>
       <FlipCard flip={viewType === viewTypes.MAP} flipHorizontal={true} flipVertical={false} clickable={false}>
         {renderList()}
         {renderMap()}
