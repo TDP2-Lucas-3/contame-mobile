@@ -23,8 +23,10 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => {
   const navigation = useNavigation();
 
-  useHandleNotification(() => {
-    navigation.navigate('ReportDetails', {reportId: 17});
+  useHandleNotification((notification) => {
+    navigation.navigate('ReportDetails', {
+      reportId: notification.data.reportId,
+    });
   });
 
   return (
