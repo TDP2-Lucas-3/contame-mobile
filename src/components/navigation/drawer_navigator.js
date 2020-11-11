@@ -17,7 +17,6 @@ import {UserProfileContainer} from '../screens/user_profile/user_profile_contain
 import {saveUserData} from '../../redux/actions/user';
 import useHandleNotification from '../../hooks/useHandleNotification';
 import {useNavigation} from '@react-navigation/native';
-import {IncidentsMapStack} from '../navigation/incidents_map_stack';
 
 const Drawer = createDrawerNavigator();
 
@@ -50,14 +49,6 @@ const DrawerNavigator = () => {
           drawerIcon: () => (
             <Icon name="user" type="font-awesome-5" size={15} />
           ),
-        }}
-      />
-      <Drawer.Screen
-        name="map"
-        component={IncidentsMapStack}
-        options={{
-          title: 'Mapa',
-          drawerIcon: () => <Icon name="map" type="font-awesome-5" size={15} />,
         }}
       />
     </Drawer.Navigator>
