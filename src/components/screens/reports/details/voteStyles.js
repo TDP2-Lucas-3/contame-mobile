@@ -21,7 +21,7 @@ export const notVotedStyles = StyleSheet.create({
     alignItems: 'center',
   },
   counter: {
-    fontWeight: 'bold',
+    fontFamily: 'Raleway-Bold',
     color: 'white',
   },
 });

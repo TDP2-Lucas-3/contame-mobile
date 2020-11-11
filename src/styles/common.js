@@ -95,9 +95,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: COLORS.secondary,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
     borderBottomWidth: 1,
+    borderBottomColor: 'white',
   },
   report_default_icon_container: {
     height: 150,
@@ -115,6 +114,10 @@ export const styles = StyleSheet.create({
   borderTopRadius_1: {
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+  },
+  border_bottom_radius_1: {
+    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 10,
   },
   action_button: {
     position: 'absolute',
