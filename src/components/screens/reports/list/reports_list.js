@@ -13,6 +13,14 @@ import CategoryFilter from '../../../common/filters/category_filter';
 import NeighborhoodFilter from '../../../common/filters/neighborhood_filter';
 import {uniq, capitalize, flatten, compact} from 'lodash';
 import EmptyMessage from '../../../common/empty_message';
+import FlipCard from 'react-native-flip-card';
+import Loading from '../../../common/loading';
+import {IncidentsMap} from '../../incidents_map/incidents_map';
+
+const viewTypes = {
+  LIST: 'LIST',
+  MAP: 'MAP',
+};
 
 const ReportsList = ({navigation}) => {
   const [{data, loading}, refetch] = useAxios(getMyReports());
@@ -20,6 +28,13 @@ const ReportsList = ({navigation}) => {
     neighborhood: [],
     category: [],
   });
+  const [viewType, setViewType] = useState(viewTypes.LIST);
+
+  const switchViewType = () => {
+    const types = Object.values(viewTypes);
+    const currentIndex = types.findIndex((type) => type === viewType);
+    setViewType(types[(currentIndex + 1) % types.length]);
+  };
 
   const categories = compact(
     uniq((data || []).map((report) => report.category.name)),
@@ -102,30 +117,56 @@ const ReportsList = ({navigation}) => {
     </View>
   );
 
+  const renderList = () => (
+    <View style={[styles.mh_2]}>
+      <FlatList
+        data={dataToRender || []}
+        renderItem={({item}) => (
+          <ReportDetails
+            {...item}
+            onPress={() =>
+              navigation.navigate('ReportDetails', {reportId: item.id})
+            }
+          />
+        )}
+        refreshing={loading}
+        onRefresh={refetch}
+        ListEmptyComponent={() => (
+          <EmptyMessage
+            title="No hay incidencias"
+            message="Chequea tus filtros o recarga la pagina"
+          />
+        )}
+      />
+    </View>
+  );
+
+  const renderMap = () =>
+    loading ? (
+      <Loading />
+    ) : (
+      <IncidentsMap navigation={navigation} data={dataToRender || []} />
+    );
+
   return (
     <View style={[styles.container, styles.justifyStart]}>
-      <View style={[styles.m_2]}>
-        <FlatList
-          data={dataToRender || []}
-          renderItem={({item}) => (
-            <ReportDetails
-              {...item}
-              onPress={() =>
-                navigation.navigate('ReportDetails', {reportId: item.id})
-              }
-            />
-          )}
-          refreshing={loading}
-          onRefresh={refetch}
-          ListHeaderComponent={renderFilter()}
-          ListEmptyComponent={() => (
-            <EmptyMessage
-              title="No hay incidencias"
-              message="Chequea tus filtros o recarga la pagina"
-            />
-          )}
-        />
-      </View>
+      <View style={[styles.mt_2, styles.ml_2]}>{renderFilter()}</View>
+      <FlipCard
+        flip={viewType === viewTypes.MAP}
+        flipHorizontal={true}
+        flipVertical={false}
+        clickable={false}>
+        {renderList()}
+        {renderMap()}
+      </FlipCard>
+      <Icon
+        name={viewType === viewTypes.MAP ? 'map' : 'list'}
+        type="font-awesome-5"
+        color="white"
+        size={15}
+        containerStyle={styles.top_action_button}
+        onPress={switchViewType}
+      />
       <Icon
         name="plus"
         type="font-awesome-5"

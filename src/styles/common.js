@@ -128,6 +128,16 @@ export const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: 'black',
   },
+  top_action_button: {
+    position: 'absolute',
+    bottom: 90,
+    right: 20,
+    height: 30,
+    width: 30,
+    borderRadius: 25,
+    backgroundColor: colors.primary,
+    justifyContent: 'center',
+  },
   report_details_container: {
     flex: 1,
     backgroundColor: COLORS.main,
@@ -252,6 +262,10 @@ export const styles = StyleSheet.create({
   mv_2: {
     marginTop: 20,
     marginBottom: 20,
+  },
+  mh_2: {
+    marginLeft: 20,
+    marginRight: 20,
   },
   ml_2: {
     marginLeft: 20,
