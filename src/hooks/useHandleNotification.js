@@ -23,7 +23,8 @@ const useHandleNotification = (handler) => {
     };
     notifee.onForegroundEvent(event);
     notifee.onBackgroundEvent(async (x) => event(x));
-  }, [handler]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };
 
 export default useHandleNotification;
