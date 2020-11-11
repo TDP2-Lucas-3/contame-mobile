@@ -41,7 +41,7 @@ const ReportsList = ({navigation}) => {
   );
   const neighborhoods = compact(
     uniq((data || []).map((report) => report.location.split(',').pop().trim())),
-  ).filter(location => location !== 'null');
+  ).filter((location) => location !== 'null');
 
   const onSelect = (filter, selected) =>
     setFilterData({

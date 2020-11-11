@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ScrollView, TouchableOpacity} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import {Text, Icon} from 'react-native-elements';
 import {styles} from '../../../../styles/common';
 import {capitalize} from 'lodash';

@@ -1,6 +1,6 @@
 import {TouchableOpacity, View} from 'react-native';
 import {notVotedStyles, alreadyVotedStyles} from './voteStyles';
-import {colors, Icon, Text} from 'react-native-elements';
+import {colors, Icon} from 'react-native-elements';
 import React from 'react';
 import RalewayText from '../../../common/raleway_text';
 
