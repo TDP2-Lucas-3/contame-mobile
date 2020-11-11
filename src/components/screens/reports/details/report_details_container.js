@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {getReport} from '../../../../config/routes';
-import useAxios from 'axios-hooks';
 import ReportDetails from './report_details';
 import Loading from '../../../common/loading';
 import {unvote, vote} from '../../../../services/vote';
