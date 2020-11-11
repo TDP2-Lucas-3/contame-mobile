@@ -141,25 +141,26 @@ const ReportsList = ({navigation}) => {
     </View>
   );
 
-  const renderMap = () => (
+  const renderMap = () =>
     loading ? (
       <Loading />
     ) : (
       <IncidentsMap navigation={navigation} data={dataToRender || []} />
-    )
-  );
+    );
 
   return (
     <View style={[styles.container, styles.justifyStart]}>
-      <View style={[styles.mt_2, styles.ml_2]}>
-        {renderFilter()}
-      </View>
-      <FlipCard flip={viewType === viewTypes.MAP} flipHorizontal={true} flipVertical={false} clickable={false}>
+      <View style={[styles.mt_2, styles.ml_2]}>{renderFilter()}</View>
+      <FlipCard
+        flip={viewType === viewTypes.MAP}
+        flipHorizontal={true}
+        flipVertical={false}
+        clickable={false}>
         {renderList()}
         {renderMap()}
       </FlipCard>
       <Icon
-        name={viewType === viewTypes.MAP ? "map" : "list"}
+        name={viewType === viewTypes.MAP ? 'map' : 'list'}
         type="font-awesome-5"
         color="white"
         size={15}
