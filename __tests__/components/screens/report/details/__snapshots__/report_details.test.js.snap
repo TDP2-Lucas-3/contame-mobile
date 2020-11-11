@@ -209,5 +209,17 @@ exports[`ReportDetails renders all values correctly 1`] = `
       </Themed.Text>
     </View>
   </ScrollView>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#1F271B",
+        "borderTopColor": "#86939e",
+        "borderTopWidth": 1,
+        "padding": 15,
+      }
+    }
+  >
+    <VoteButton />
+  </View>
 </View>
 `;

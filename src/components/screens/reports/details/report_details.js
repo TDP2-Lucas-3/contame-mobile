@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, TouchableOpacity} from 'react-native';
 import {Text, Icon} from 'react-native-elements';
 import {styles} from '../../../../styles/common';
 import {capitalize} from 'lodash';
@@ -7,6 +7,7 @@ import moment from 'moment';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 import {SliderBox} from 'react-native-image-slider-box';
+import {VoteButton} from './vote_button';
 
 const ReportDetails = (props) => {
   const {
@@ -17,6 +18,8 @@ const ReportDetails = (props) => {
     lon: longitude,
     lat: latitude,
     location,
+    votes,
+    voteByUser,
   } = props.report;
 
   return (
@@ -90,6 +93,13 @@ const ReportDetails = (props) => {
           </MapView>
         )}
       </ScrollView>
+      <View style={styles.report_details_footer}>
+        <VoteButton
+          votes={votes}
+          voteByUser={voteByUser}
+          onPress={props.onVotePress}
+        />
+      </View>
     </View>
   );
 };
