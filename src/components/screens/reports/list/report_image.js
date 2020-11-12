@@ -5,7 +5,6 @@ import {verboseReportState} from '../../../../utils/verbose_report_names';
 import React from 'react';
 
 export const ReportImage = (props) => {
-  console.log(props.image);
   return (
     <View style={styles.borderTopRadius_1}>
       {props.image ? (

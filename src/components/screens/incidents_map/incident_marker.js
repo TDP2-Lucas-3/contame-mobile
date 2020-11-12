@@ -13,7 +13,7 @@ export const IncidentMarker = (props) => {
         style={styles.callout}
         tooltip={true}
         onPress={() =>
-          props.navigation.navigate('MapReportDetails', {reportId: props.id})
+          props.navigation.navigate('ReportDetails', {reportId: props.id})
         }>
         <Popup {...props} />
       </Callout>

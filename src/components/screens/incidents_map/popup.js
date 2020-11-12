@@ -2,13 +2,12 @@ import React from 'react';
 import {ReportImage} from '../reports/list/report_image';
 import {View} from 'react-native';
 import {styles} from '../../../styles/common';
-import {Card, Icon, Text} from 'react-native-elements';
-import moment from 'moment';
+import {Icon, Text} from 'react-native-elements';
 import {ReportCardBottomBar} from '../reports/list/report_card_bottom_bar';
 
 export const Popup = (props) => {
   return (
-    <View style={styles.map_popup}>
+    <View>
       <ReportImage image={props.images[0]} state={props.state} />
       <View style={styles.popup_body}>
         <View style={styles.popup_content}>

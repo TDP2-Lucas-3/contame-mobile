@@ -4,7 +4,5 @@ export const styles = StyleSheet.create({
   callout: {
     flex: 1,
     width: 300,
-    height: 250,
-    borderRadius: 20,
   },
 });
