@@ -14,11 +14,11 @@ export const Popup = (props) => {
           <Text style={styles.report_card_title}>{props.title}</Text>
           <View style={styles.popup_location}>
             <Icon
-              name="location_on"
+              name="place"
               testID="default_icon"
               type="material"
-              size={10}
-              color={'white'}
+              size={20}
+              color={'grey'}
             />
             <Text
               style={[

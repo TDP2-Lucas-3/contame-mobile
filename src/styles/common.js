@@ -107,7 +107,6 @@ export const styles = StyleSheet.create({
     fontFamily: 'Raleway-Bold',
     fontSize: 16,
     color: 'white',
-    marginBottom: 10,
   },
   borderTopRadius_1: {
     borderTopLeftRadius: 10,
@@ -225,17 +224,21 @@ export const styles = StyleSheet.create({
   },
   popup_body: {
     backgroundColor: COLORS.secondary,
-    height: 100,
+    height: 60,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   popup_content: {
     marginTop: 10,
     marginLeft: 10,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     backgroundColor: COLORS.secondary,
   },
   popup_location: {
     alignItems: 'center',
     flexDirection: 'row',
+    marginLeft: -4,
   },
   /* TEXT */
   underline: {
