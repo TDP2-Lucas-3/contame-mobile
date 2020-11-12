@@ -92,7 +92,7 @@ const DrawerContent = (props) => {
     await AsyncStorage.removeItem('token');
     GoogleSignin.signOut();
   };
-  console.log(props);
+
   return (
     <DrawerContentScrollView
       contentContainerStyle={[
