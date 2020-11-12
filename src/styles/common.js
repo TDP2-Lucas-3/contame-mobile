@@ -102,8 +102,6 @@ export const styles = StyleSheet.create({
     height: 150,
     justifyContent: 'center',
     backgroundColor: colors.grey3,
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
   },
   report_card_title: {
     fontFamily: 'Raleway-Bold',
@@ -221,6 +219,23 @@ export const styles = StyleSheet.create({
     height: 30,
     justifyContent: 'center',
     borderRadius: 10,
+  },
+  map_popup: {
+    borderRadius: 20,
+  },
+  popup_body: {
+    backgroundColor: COLORS.secondary,
+    height: 100,
+  },
+  popup_content: {
+    marginTop: 10,
+    marginLeft: 10,
+    justifyContent: 'center',
+    backgroundColor: COLORS.secondary,
+  },
+  popup_location: {
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   /* TEXT */
   underline: {
