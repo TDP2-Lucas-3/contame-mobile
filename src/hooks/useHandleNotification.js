@@ -16,12 +16,15 @@ const useHandleNotification = (handler) => {
         }
       });
 
-    return notifee.onForegroundEvent(({type, detail}) => {
+    const event = ({type, detail}) => {
       if (type === EventType.PRESS) {
         handler(detail.notification);
       }
-    });
-  }, [handler]);
+    };
+    notifee.onForegroundEvent(event);
+    notifee.onBackgroundEvent(async (x) => event(x));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };
 
 export default useHandleNotification;
