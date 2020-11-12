@@ -22,8 +22,8 @@ const viewTypes = {
   MAP: 'MAP',
 };
 
-const ReportsList = ({navigation}) => {
-  const [{data, loading}, refetch] = useAxios(getMyReports());
+const ReportsList = ({navigation, reportsAPI}) => {
+  const [{data, loading}, refetch] = useAxios(reportsAPI);
   const [filterData, setFilterData] = useState({
     neighborhood: [],
     category: [],

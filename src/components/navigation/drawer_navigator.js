@@ -17,6 +17,8 @@ import {UserProfileContainer} from '../screens/user_profile/user_profile_contain
 import {saveUserData} from '../../redux/actions/user';
 import useHandleNotification from '../../hooks/useHandleNotification';
 import {useNavigation} from '@react-navigation/native';
+import MyReportsStack from './my_reports_stack';
+import GeneralReportsStack from './general_reports_stack';
 
 const Drawer = createDrawerNavigator();
 
@@ -31,11 +33,21 @@ const DrawerNavigator = () => {
 
   return (
     <Drawer.Navigator
-      initialRouteName="reports"
+      initialRouteName="myReports"
       drawerContent={(props) => <DrawerContent {...props} />}>
       <Drawer.Screen
+        name="myReports"
+        component={MyReportsStack}
+        options={{
+          title: 'Mis Incidencias',
+          drawerIcon: () => (
+            <Icon name="clipboard-check" type="font-awesome-5" size={15} />
+          ),
+        }}
+      />
+      <Drawer.Screen
         name="reports"
-        component={ReportStack}
+        component={GeneralReportsStack}
         options={{
           title: 'Incidencias',
           drawerIcon: () => (
