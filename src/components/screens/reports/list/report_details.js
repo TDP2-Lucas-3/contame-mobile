@@ -6,7 +6,6 @@ import {styles} from '../../../../styles/common';
 import {ReportCardBottomBar} from './report_card_bottom_bar';
 import {ReportImage} from './report_image';
 
-
 const ReportDetails = (props) => {
   return (
     <TouchableOpacity onPress={props.onPress}>

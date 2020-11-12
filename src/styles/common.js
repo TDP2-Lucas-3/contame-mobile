@@ -228,6 +228,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    borderBottomWidth: 0.5,
+    borderColor: 'white',
   },
   popup_content: {
     marginTop: 10,
