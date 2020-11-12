@@ -243,6 +243,9 @@ export const styles = StyleSheet.create({
   raleway: {
     fontFamily: 'Raleway-Regular',
   },
+  raleway_bold: {
+    fontFamily: 'Raleway-Bold',
+  },
   /* MARGIN */
   m_1: {
     margin: 10,

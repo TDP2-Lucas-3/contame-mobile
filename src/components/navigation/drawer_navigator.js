@@ -19,6 +19,7 @@ import useHandleNotification from '../../hooks/useHandleNotification';
 import {useNavigation} from '@react-navigation/native';
 import MyReportsStack from './my_reports_stack';
 import GeneralReportsStack from './general_reports_stack';
+import RalewayText from '../common/raleway_text';
 
 const Drawer = createDrawerNavigator();
 
@@ -34,14 +35,22 @@ const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
       initialRouteName="myReports"
-      drawerContent={(props) => <DrawerContent {...props} />}>
+      drawerContent={(props) => <DrawerContent {...props} />}
+      drawerContentOptions={{
+        labelStyle: [styles.color_white, styles.raleway],
+      }}>
       <Drawer.Screen
         name="myReports"
         component={MyReportsStack}
         options={{
           title: 'Mis Incidencias',
           drawerIcon: () => (
-            <Icon name="clipboard-check" type="font-awesome-5" size={15} />
+            <Icon
+              name="clipboard-check"
+              type="font-awesome-5"
+              size={15}
+              color="white"
+            />
           ),
         }}
       />
@@ -51,7 +60,12 @@ const DrawerNavigator = () => {
         options={{
           title: 'Incidencias',
           drawerIcon: () => (
-            <Icon name="clipboard-list" type="font-awesome-5" size={15} />
+            <Icon
+              name="clipboard-list"
+              type="font-awesome-5"
+              size={15}
+              color="white"
+            />
           ),
         }}
       />
@@ -61,7 +75,7 @@ const DrawerNavigator = () => {
         options={{
           title: 'Mi Cuenta',
           drawerIcon: () => (
-            <Icon name="user" type="font-awesome-5" size={15} />
+            <Icon name="user" type="font-awesome-5" size={15} color="white" />
           ),
         }}
       />
@@ -79,10 +93,14 @@ const DrawerContent = (props) => {
     await AsyncStorage.removeItem('token');
     GoogleSignin.signOut();
   };
-
+  console.log(props);
   return (
     <DrawerContentScrollView
-      contentContainerStyle={[styles.container, styles.justifyBetween]}>
+      contentContainerStyle={[
+        styles.container,
+        styles.justifyBetween,
+        styles.bg_secondary,
+      ]}>
       <View style={styles.fullW}>
         <View style={styles.alignCenter}>
           <Avatar
@@ -91,7 +109,11 @@ const DrawerContent = (props) => {
             size="large"
             containerStyle={styles.m_3}
           />
-          <Text>{`${user.firstName} ${user.lastName}`}</Text>
+          <RalewayText
+            bold
+            style={
+              styles.color_white
+            }>{`${user.firstName} ${user.lastName}`}</RalewayText>
         </View>
         <View style={styles.mv_2}>
           <DrawerItemList {...props} />
@@ -99,9 +121,16 @@ const DrawerContent = (props) => {
       </View>
       <View style={[styles.bottom, styles.fullW]}>
         <DrawerItem
-          label="Salir"
+          label={() => (
+            <RalewayText style={styles.color_white}>Salir</RalewayText>
+          )}
           icon={() => (
-            <Icon name="sign-out-alt" type="font-awesome-5" size={15} />
+            <Icon
+              name="sign-out-alt"
+              type="font-awesome-5"
+              size={15}
+              color="white"
+            />
           )}
           onPress={onLogout}
         />

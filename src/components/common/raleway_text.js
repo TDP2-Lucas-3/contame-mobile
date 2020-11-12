@@ -7,7 +7,9 @@ const RalewayText = (props) => {
   const textProps = {...props};
   delete textProps.style;
 
-  return <Text style={[styles.raleway, ...styleProp]} {...textProps} />;
+  const textStyle = props.bold ? styles.raleway_bold : styles.raleway;
+
+  return <Text style={[textStyle, ...styleProp]} {...textProps} />;
 };
 
 export default RalewayText;
