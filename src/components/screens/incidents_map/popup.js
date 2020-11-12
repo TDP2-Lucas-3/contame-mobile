@@ -9,7 +9,7 @@ export const Popup = (props) => {
   return (
     <View style={styles.map_popup}>
       <ReportImage image={props.images[0]} state={props.state} />
-      <View style={styles.popup_body}>
+      <View style={[styles.border_bottom_radius_1, styles.popup_body]}>
         <View style={styles.popup_content}>
           <Text style={styles.report_card_title}>{props.title}</Text>
           <View style={styles.popup_location}>

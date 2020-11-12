@@ -6,7 +6,7 @@ import React from 'react';
 
 export const ReportImage = (props) => {
   return (
-    <View>
+    <View style={styles.borderTopRadius_1}>
       {props.image ? (
         <Card.Image
           testID="card_image"
@@ -24,7 +24,7 @@ export const ReportImage = (props) => {
             name="image-not-supported"
             testID="default_icon"
             type="material"
-            containerStyle={styles.report_default_icon_container}
+            containerStyle={[styles.borderTopRadius_1, styles.report_default_icon_container]}
           />
           <Badge
             badgeStyle={styles.report_status_badge_no_icon}
