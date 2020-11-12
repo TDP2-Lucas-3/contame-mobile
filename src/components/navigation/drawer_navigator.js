@@ -6,8 +6,7 @@ import {
   DrawerContentScrollView,
   DrawerItem,
 } from '@react-navigation/drawer';
-import ReportStack from './report_stack';
-import {Avatar, Text, Icon} from 'react-native-elements';
+import {Avatar, Icon} from 'react-native-elements';
 import {styles} from '../../styles/common';
 import {useDispatch, useSelector} from 'react-redux';
 import {saveConfig} from '../../redux/actions/config';
