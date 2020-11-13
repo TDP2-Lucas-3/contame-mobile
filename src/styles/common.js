@@ -242,6 +242,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: -4,
   },
+  popup_image: {
+    height: 150,
+    width: 300,
+  },
   /* TEXT */
   underline: {
     textDecorationLine: 'underline',

@@ -3,19 +3,18 @@ import {styles} from '../../../styles/common';
 import {Badge, Card, Icon} from 'react-native-elements';
 import {verboseReportState} from '../../../utils/verbose_report_names';
 import React from 'react';
+import {WebView} from 'react-native-webview';
 
 export const MapReportImage = (props) => {
-  console.log(props.image);
   return (
-    <View style={{width: 300, height: 150}}>
+    <View>
       {props.image ? (
-        <Image
-          source={{uri: props.image}}
-          style={[
-            styles.borderTopRadius_1,
-            {width: 300, height: 150},
-          ]}
-        />
+        <View style={styles.popup_image}>
+          <WebView
+            containerStyle={styles.borderTopRadius_1}
+            source={{uri: props.image}}
+          />
+        </View>
       ) : (
         <Icon
           name="image-not-supported"
