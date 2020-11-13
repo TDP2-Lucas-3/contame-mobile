@@ -102,14 +102,11 @@ export const styles = StyleSheet.create({
     height: 150,
     justifyContent: 'center',
     backgroundColor: colors.grey3,
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
   },
   report_card_title: {
     fontFamily: 'Raleway-Bold',
     fontSize: 16,
     color: 'white',
-    marginBottom: 10,
   },
   borderTopRadius_1: {
     borderTopLeftRadius: 10,
@@ -221,6 +218,33 @@ export const styles = StyleSheet.create({
     height: 30,
     justifyContent: 'center',
     borderRadius: 10,
+  },
+  map_popup: {
+    borderRadius: 20,
+  },
+  popup_body: {
+    backgroundColor: COLORS.secondary,
+    height: 60,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottomWidth: 0.5,
+    borderColor: 'white',
+  },
+  popup_content: {
+    marginTop: 10,
+    marginLeft: 10,
+    justifyContent: 'space-around',
+    backgroundColor: COLORS.secondary,
+  },
+  popup_location: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginLeft: -4,
+  },
+  popup_image: {
+    height: 150,
+    width: 300,
   },
   /* TEXT */
   underline: {

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReportImage renders all values correctly 1`] = `
+<View
+  style={
+    Object {
+      "borderTopLeftRadius": 10,
+      "borderTopRightRadius": 10,
+    }
+  }
+>
+  <Themed.CardImage
+    source={
+      Object {
+        "uri": "some image data",
+      }
+    }
+    style={
+      Object {
+        "borderTopLeftRadius": 10,
+        "borderTopRightRadius": 10,
+      }
+    }
+    testID="card_image"
+  >
+    <Themed.Badge
+      badgeStyle={
+        Object {
+          "margin": 10,
+          "padding": 5,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      status="warning"
+    />
+  </Themed.CardImage>
+</View>
+`;
