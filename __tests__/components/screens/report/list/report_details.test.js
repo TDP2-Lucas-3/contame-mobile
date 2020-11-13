@@ -23,40 +23,4 @@ describe('ReportDetails', () => {
   it('renders all values correctly', () => {
     expect(render(props)).toMatchSnapshot();
   });
-
-  describe('when there is only one image', () => {
-    it('renders given image', () => {
-      expect(findByTestId(render(props), 'card_image')).toHaveProp(
-        'source',
-        expect.objectContaining({uri: props.images[0]}),
-      );
-    });
-  });
-
-  describe('when there are multiple images', () => {
-    beforeEach(() => {
-      props.images = ['first image data', 'second image data'];
-    });
-
-    it('renders first image', () => {
-      expect(findByTestId(render(props), 'card_image')).toHaveProp(
-        'source',
-        expect.objectContaining({uri: props.images[0]}),
-      );
-    });
-  });
-
-  describe('when there is no images', () => {
-    beforeEach(() => {
-      props.images = [];
-    });
-
-    it("doesn't render any image", () => {
-      expect(findByTestId(render(props), 'card_image')).toHaveLength(0);
-    });
-
-    it('renders default icon', () => {
-      expect(findByTestId(render(props), 'default_icon')).toHaveLength(1);
-    });
-  });
 });
