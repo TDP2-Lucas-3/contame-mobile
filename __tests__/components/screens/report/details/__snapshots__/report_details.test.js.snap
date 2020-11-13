@@ -114,7 +114,7 @@ exports[`ReportDetails renders all values correctly 1`] = `
           ]
         }
       >
-        11 de November, 2020
+        12 de November, 2020
       </Themed.Text>
     </View>
     <View
