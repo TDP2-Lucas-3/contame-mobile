@@ -1,6 +1,5 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import ReportDetails from '../../../../../src/components/screens/reports/list/report_details';
 import {findByTestId} from '../../../../support/helpers';
 import {ReportImage} from '../../../../../src/components/screens/reports/list/report_image';
 

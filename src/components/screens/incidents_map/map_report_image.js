@@ -1,6 +1,6 @@
-import {Image, View} from 'react-native';
+import {View} from 'react-native';
 import {styles} from '../../../styles/common';
-import {Badge, Card, Icon} from 'react-native-elements';
+import {Badge, Icon} from 'react-native-elements';
 import {verboseReportState} from '../../../utils/verbose_report_names';
 import React from 'react';
 import {WebView} from 'react-native-webview';
