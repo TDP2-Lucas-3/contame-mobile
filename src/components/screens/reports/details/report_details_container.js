@@ -18,8 +18,10 @@ const ReportDetailsContainer = ({route}) => {
     })();
   }, [reportId]);
 
+  const votesDisabled = data && data.user.email === user.email;
+
   const onVotePress = async () => {
-    if (data.user.email === user.email) {
+    if (votesDisabled) {
       // can't vote yourself
       return;
     }
@@ -53,7 +55,11 @@ const ReportDetailsContainer = ({route}) => {
   return !data ? (
     <Loading />
   ) : (
-    <ReportDetails onVotePress={onVotePress} report={data} />
+    <ReportDetails
+      onVotePress={onVotePress}
+      report={data}
+      votesDisabled={votesDisabled}
+    />
   );
 };
 

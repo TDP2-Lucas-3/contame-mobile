@@ -20,6 +20,7 @@ const ReportDetails = (props) => {
     location,
     votes,
     voteByUser,
+    category,
   } = props.report;
 
   return (
@@ -62,6 +63,17 @@ const ReportDetails = (props) => {
             {location || 'No se especifico ubicacion'}
           </Text>
         </View>
+        <View
+          style={[styles.row, styles.ml_3, styles.mt_3, styles.alignCenter]}>
+          <Icon
+            name="layer-group"
+            type="font-awesome-5"
+            containerStyle={styles.report_details_icon_container}
+          />
+          <Text style={[styles.ml_2, styles.color_secondary]}>
+            {category.name}
+          </Text>
+        </View>
         <View style={[styles.ml_3, styles.mt_2, styles.mr_2]}>
           {description && (
             <>
@@ -98,6 +110,7 @@ const ReportDetails = (props) => {
           votes={votes}
           voteByUser={voteByUser}
           onPress={props.onVotePress}
+          disabled={props.votesDisabled}
         />
       </View>
     </View>

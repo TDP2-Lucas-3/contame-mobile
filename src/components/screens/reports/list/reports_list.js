@@ -39,7 +39,7 @@ const ReportsList = ({navigation, reportsAPI}) => {
     uniq((data || []).map((report) => report.category.name)),
   );
   const neighborhoods = compact(
-    uniq((data || []).map((report) => report.location.split(',').pop().trim())),
+    uniq((data || []).map((report) => report.hood)),
   ).filter((location) => location !== 'null');
 
   const onSelect = (filter, selected) =>
@@ -60,9 +60,7 @@ const ReportsList = ({navigation, reportsAPI}) => {
           : true;
       const matchsNeighborhood =
         filterData.neighborhood.length > 0
-          ? filterData.neighborhood.some((neighborhoodFilter) =>
-              report.location.includes(neighborhoodFilter),
-            )
+          ? filterData.neighborhood.includes(report.hood)
           : true;
 
       return matchsCategories && matchsNeighborhood;
@@ -117,7 +115,7 @@ const ReportsList = ({navigation, reportsAPI}) => {
   );
 
   const renderList = () => (
-    <View style={[styles.mh_2]}>
+    <View style={[styles.mh_2, styles.mb_2]}>
       <FlatList
         data={dataToRender || []}
         renderItem={({item}) => (

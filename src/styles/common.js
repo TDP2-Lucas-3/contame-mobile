@@ -297,6 +297,9 @@ export const styles = StyleSheet.create({
   ml_2: {
     marginLeft: 20,
   },
+  mb_2: {
+    marginBottom: 20,
+  },
   ml_3: {
     marginLeft: 30,
   },
@@ -305,6 +308,9 @@ export const styles = StyleSheet.create({
   },
   mt_2: {
     marginTop: 20,
+  },
+  mt_3: {
+    marginTop: 30,
   },
   /* PADDING */
   pb_1: {
