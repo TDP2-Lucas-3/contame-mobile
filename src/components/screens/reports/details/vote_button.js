@@ -22,6 +22,7 @@ export const VoteButton = (props) => {
             color={props.voteByUser ? colors.primary : 'white'}
             name={'thumb-up-alt'}
             type="material"
+            size={20}
           />
           <RalewayText style={voteStyles.counter}>{props.votes}</RalewayText>
         </React.Fragment>

@@ -7,7 +7,7 @@ import moment from 'moment';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 import {SliderBox} from 'react-native-image-slider-box';
-import {VoteButton} from './vote_button';
+import ReportToolbar from './report_toolbar';
 
 const ReportDetails = (props) => {
   const {
@@ -105,14 +105,11 @@ const ReportDetails = (props) => {
           </MapView>
         )}
       </ScrollView>
-      <View style={styles.report_details_footer}>
-        <VoteButton
-          votes={votes}
-          voteByUser={voteByUser}
-          onPress={props.onVotePress}
-          disabled={props.votesDisabled}
-        />
-      </View>
+      <ReportToolbar
+        report={props.report}
+        onVotePress={props.onVotePress}
+        votesDisabled={props.votesDisabled}
+      />
     </View>
   );
 };

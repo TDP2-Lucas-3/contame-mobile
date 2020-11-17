@@ -351,7 +351,7 @@ export const styles = StyleSheet.create({
     color: COLORS.LINK,
   },
   report_details_footer: {
-    padding: 15,
+    padding: 10,
     borderTopWidth: 1,
     borderTopColor: colors.grey3,
     backgroundColor: COLORS.secondary,

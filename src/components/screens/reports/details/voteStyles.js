@@ -12,7 +12,7 @@ export const notVotedStyles = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     paddingRight: 10,
-    width: 75,
+    width: 60,
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderWidth: 1,
