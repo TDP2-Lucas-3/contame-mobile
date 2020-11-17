@@ -303,6 +303,9 @@ export const styles = StyleSheet.create({
   ml_3: {
     marginLeft: 30,
   },
+  ml_4: {
+    marginLeft: 40,
+  },
   mt_9: {
     marginTop: 90,
   },
@@ -385,5 +388,16 @@ export const styles = StyleSheet.create({
     padding: 5,
     width: 75,
     flexDirection: 'row',
+  },
+  comment_body_container: {
+    backgroundColor: COLORS.secondary,
+    padding: 12,
+    borderRadius: 10,
+    marginLeft: 10,
+    marginBottom: 5,
+  },
+  comment_footer: {
+    marginLeft: 45,
+    fontSize: 12,
   },
 });

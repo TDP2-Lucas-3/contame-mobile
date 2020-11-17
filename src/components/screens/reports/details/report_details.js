@@ -8,6 +8,9 @@ import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 import {SliderBox} from 'react-native-image-slider-box';
 import ReportToolbar from './report_toolbar';
+import RalewayText from '../../../common/raleway_text';
+import EmptyMessage from '../../../common/empty_message';
+import ReportComment from './report_comment';
 
 const ReportDetails = (props) => {
   const {
@@ -18,10 +21,10 @@ const ReportDetails = (props) => {
     lon: longitude,
     lat: latitude,
     location,
-    votes,
-    voteByUser,
     category,
   } = props.report;
+
+  const comments = [{avatar: 'https://picsum.photos/200', body: 'a comment', user: 'Facundo Gerstner'}];
 
   return (
     <View style={styles.report_details_container}>
@@ -77,9 +80,9 @@ const ReportDetails = (props) => {
         <View style={[styles.ml_3, styles.mt_2, styles.mr_2]}>
           {description && (
             <>
-              <Text h4 style={styles.color_secondary}>
+              <RalewayText bold h4 style={styles.color_secondary}>
                 Detalles
-              </Text>
+              </RalewayText>
               <Text style={[styles.mt_2, styles.color_secondary]}>
                 {description}
               </Text>
@@ -104,6 +107,19 @@ const ReportDetails = (props) => {
             />
           </MapView>
         )}
+        <View style={[styles.ml_3]}>
+          <RalewayText bold h4 style={[styles.color_secondary, styles.mb_2]}>
+            Comentarios
+          </RalewayText>
+          {comments && comments.length > 0 ? (
+            comments.map((comment) => <ReportComment comment={comment} />)
+          ) : (
+            <EmptyMessage
+              title="Todavia no hay comentarios"
+              message="Se el primero!"
+            />
+          )}
+        </View>
       </ScrollView>
       <ReportToolbar
         report={props.report}
