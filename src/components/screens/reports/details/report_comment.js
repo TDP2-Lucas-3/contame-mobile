@@ -29,7 +29,7 @@ const GeneralReportComment = ({comment}) => (
 );
 
 const OwnerReportComment = ({comment}) => (
-  <View style={[styles.mb_2, styles.mr_5]}>
+  <View style={[styles.mb_2, styles.mr_3]}>
     <View style={[styles.row, styles.justifyEnd]}>
       <View style={styles.owner_comment_body_container}>
         {commentBody(comment.user, comment.body)}

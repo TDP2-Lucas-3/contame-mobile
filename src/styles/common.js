@@ -186,7 +186,7 @@ export const styles = StyleSheet.create({
   },
   report_details_map: {
     height: 250,
-    width: '80%',
+    width: '85%',
     margin: 30,
   },
   zIndex_9: {
@@ -285,6 +285,9 @@ export const styles = StyleSheet.create({
   },
   mr_2: {
     marginRight: 20,
+  },
+  mr_3: {
+    marginRight: 30,
   },
   mv_2: {
     marginTop: 20,
@@ -398,12 +401,14 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 10,
     marginBottom: 5,
+    width: 100,
   },
   owner_comment_body_container: {
     backgroundColor: '#3B5998',
     padding: 12,
     borderRadius: 10,
     marginRight: 10,
+    width: 100,
     marginBottom: 5,
   },
   general_comment_footer: {
@@ -413,6 +418,6 @@ export const styles = StyleSheet.create({
   owner_comment_footer: {
     alignSelf: 'flex-end',
     fontSize: 12,
-    marginRight: 45,
+    marginRight: 25,
   },
 });

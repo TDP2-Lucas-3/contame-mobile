@@ -22,6 +22,7 @@ const ReportDetails = (props) => {
     lat: latitude,
     location,
     category,
+    comments,
   } = props.report;
 
   return (
@@ -105,16 +106,19 @@ const ReportDetails = (props) => {
             />
           </MapView>
         )}
-        <View style={[styles.ml_3]}>
-          <RalewayText bold h4 style={[styles.color_secondary, styles.mb_2]}>
-            Comentarios
-          </RalewayText>
+        <View style={[styles.ml_3, styles.mb_2]}>
+          {comments && comments.length > 0 && (
+            <RalewayText bold h4 style={[styles.color_secondary, styles.mb_2]}>
+              Comentarios
+            </RalewayText>
+          )}
           {comments && comments.length > 0 ? (
             comments.map((comment) => (
               <ReportComment comment={comment} key={comment.id} />
             ))
           ) : (
             <EmptyMessage
+              small
               title="Todavia no hay comentarios"
               message="Se el primero!"
             />
