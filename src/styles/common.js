@@ -351,10 +351,35 @@ export const styles = StyleSheet.create({
     color: COLORS.LINK,
   },
   report_details_footer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     padding: 10,
     borderTopWidth: 1,
     borderTopColor: colors.grey3,
     backgroundColor: COLORS.secondary,
+  },
+  report_comments_container: {
+    height: 30,
+    width: '70%',
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: 'white',
+    marginLeft: 10,
+    backgroundColor: '#E5E5E5',
+  },
+  report_comments_input_container: {
+    borderBottomColor: COLORS.secondary,
+    height: 30,
+  },
+  report_comment_input: {
+    fontFamily: 'Raleway-Regular',
+    color: COLORS.secondary,
+    fontSize: 14,
+  },
+  report_comment_icon: {
+    borderRightColor: COLORS.secondary,
+    borderRightWidth: 1,
+    paddingRight: 10,
   },
   voteIcon: {
     padding: 5,
