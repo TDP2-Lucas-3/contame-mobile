@@ -24,8 +24,6 @@ const ReportDetails = (props) => {
     category,
   } = props.report;
 
-  const comments = [{avatar: 'https://picsum.photos/200', body: 'a comment', user: 'Facundo Gerstner'}];
-
   return (
     <View style={styles.report_details_container}>
       <View style={styles.zIndex_9}>
@@ -112,7 +110,9 @@ const ReportDetails = (props) => {
             Comentarios
           </RalewayText>
           {comments && comments.length > 0 ? (
-            comments.map((comment) => <ReportComment comment={comment} />)
+            comments.map((comment) => (
+              <ReportComment comment={comment} key={comment.id} />
+            ))
           ) : (
             <EmptyMessage
               title="Todavia no hay comentarios"

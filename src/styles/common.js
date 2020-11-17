@@ -303,6 +303,9 @@ export const styles = StyleSheet.create({
   ml_3: {
     marginLeft: 30,
   },
+  mr_5: {
+    marginRight: 50,
+  },
   ml_4: {
     marginLeft: 40,
   },
@@ -389,15 +392,27 @@ export const styles = StyleSheet.create({
     width: 75,
     flexDirection: 'row',
   },
-  comment_body_container: {
+  general_comment_body_container: {
     backgroundColor: COLORS.secondary,
     padding: 12,
     borderRadius: 10,
     marginLeft: 10,
     marginBottom: 5,
   },
-  comment_footer: {
+  owner_comment_body_container: {
+    backgroundColor: '#3B5998',
+    padding: 12,
+    borderRadius: 10,
+    marginRight: 10,
+    marginBottom: 5,
+  },
+  general_comment_footer: {
     marginLeft: 45,
     fontSize: 12,
+  },
+  owner_comment_footer: {
+    alignSelf: 'flex-end',
+    fontSize: 12,
+    marginRight: 45,
   },
 });
