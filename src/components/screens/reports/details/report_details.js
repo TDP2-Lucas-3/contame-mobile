@@ -8,6 +8,7 @@ import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 import {SliderBox} from 'react-native-image-slider-box';
 import {VoteButton} from './vote_button';
+import Badge from 'react-native-paper';
 
 const ReportDetails = (props) => {
   const {
@@ -21,6 +22,7 @@ const ReportDetails = (props) => {
     votes,
     voteByUser,
     category,
+    parent,
   } = props.report;
 
   return (
@@ -74,6 +76,23 @@ const ReportDetails = (props) => {
             {category.name}
           </Text>
         </View>
+
+        {parent ? (
+          <View
+            style={[styles.row, styles.mt_3, styles.ml_3, styles.alignCenter]}>
+            <Icon
+              name="arrow-upward"
+              type="material"
+              containerStyle={styles.report_details_icon_container}
+            />
+            <Text
+              onPress={props.onParentPress}
+              style={[styles.ml_2, styles.link]}>
+              Ver Incidencia padre
+            </Text>
+          </View>
+        ) : null}
+
         <View style={[styles.ml_3, styles.mt_2, styles.mr_2]}>
           {description && (
             <>

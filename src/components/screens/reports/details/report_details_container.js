@@ -6,7 +6,7 @@ import {fetchReport} from '../../../../services/fetchReport';
 import {useSelector} from 'react-redux';
 import {ToastAndroid} from 'react-native';
 
-const ReportDetailsContainer = ({route}) => {
+const ReportDetailsContainer = ({route, navigation}) => {
   const {reportId} = route.params;
   const [data, setReport] = useState(null);
   const user = useSelector((state) => state.user);
@@ -52,6 +52,13 @@ const ReportDetailsContainer = ({route}) => {
     }
   };
 
+  const onParentPress = () => {
+    if (data.parent === null) {
+      return;
+    }
+    navigation.push('ReportDetails', {reportId: data.parent});
+  };
+
   return !data ? (
     <Loading />
   ) : (
@@ -59,6 +66,7 @@ const ReportDetailsContainer = ({route}) => {
       onVotePress={onVotePress}
       report={data}
       votesDisabled={votesDisabled}
+      onParentPress={onParentPress}
     />
   );
 };
