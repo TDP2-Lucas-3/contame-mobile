@@ -53,9 +53,12 @@ const OwnerReportComment = ({comment}) => (
   <View style={[styles.mb_2, styles.mr_3]}>
     <View style={[styles.row, styles.justifyEnd]}>
       <View style={styles.owner_comment_body_container}>
-        {commentBody(comment.user, comment.comment)}
+        {commentBody(
+          `${comment.user.profile.name} ${comment.user.profile.surename}`,
+          comment.comment,
+        )}
       </View>
-      <Avatar source={{uri: comment.avatar}} rounded />
+      <Avatar source={{uri: comment.user.profile.photo}} rounded />
     </View>
     <RalewayText style={styles.owner_comment_footer}>
       {moment(comment.creationDate).fromNow()}
@@ -64,7 +67,7 @@ const OwnerReportComment = ({comment}) => (
 );
 
 const ReportComment = (props) =>
-  props.comment.isOwner ? (
+  props.comment.owner ? (
     <OwnerReportComment {...props} />
   ) : (
     <GeneralReportComment {...props} />

@@ -1,10 +1,11 @@
 import React, {useState, useRef} from 'react';
-import {View} from 'react-native';
+import {View, ActivityIndicator} from 'react-native';
 import {VoteButton} from './vote_button';
 import {styles} from '../../../../styles/common';
 import {Input} from 'react-native-elements';
+import COLORS from '../../../../styles/colors';
 
-const ReportToolbar = ({report, currentComment, ...props}) => {
+const ReportToolbar = ({report, currentComment, loading, ...props}) => {
   const [inputHeight, setInputHeight] = useState(
     styles.report_comments_container.height,
   );
@@ -42,14 +43,20 @@ const ReportToolbar = ({report, currentComment, ...props}) => {
           size: 15,
           containerStyle: styles.report_comment_icon,
         }}
-        rightIcon={{
-          name: 'paper-plane',
-          type: 'font-awesome-5',
-          size: 15,
-          onPress: onPostComment,
-          disabled: currentComment.length === 0,
-          disabledStyle: styles.report_comment_disabled_icon,
-        }}
+        rightIcon={
+          loading ? (
+            <ActivityIndicator size="small" color={COLORS.secondary} />
+          ) : (
+            {
+              name: 'paper-plane',
+              type: 'font-awesome-5',
+              size: 15,
+              onPress: onPostComment,
+              disabled: currentComment.length === 0,
+              disabledStyle: styles.report_comment_disabled_icon,
+            }
+          )
+        }
         placeholder="Escribe un comentario..."
         onContentSizeChange={(e) =>
           setInputHeight(e.nativeEvent.contentSize.height)

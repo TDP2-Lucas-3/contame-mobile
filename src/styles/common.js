@@ -411,7 +411,7 @@ export const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 10,
     marginRight: 10,
-    width: 100,
+    width: 200,
     marginBottom: 5,
   },
   general_comment_footer: {
@@ -421,7 +421,7 @@ export const styles = StyleSheet.create({
   owner_comment_footer: {
     alignSelf: 'flex-end',
     fontSize: 12,
-    marginRight: 25,
+    marginRight: 45,
   },
   report_comment_disabled_icon: {
     backgroundColor: '#E5E5E5',

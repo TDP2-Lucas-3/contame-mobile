@@ -11,6 +11,8 @@ const ReportDetailsContainer = ({route}) => {
   const {reportId} = route.params;
   const [data, setReport] = useState(null);
   const [comment, setComment] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -56,6 +58,7 @@ const ReportDetailsContainer = ({route}) => {
 
   const onPostComment = async () => {
     try {
+      setLoading(true);
       const response = await postComment(comment, reportId);
       setReport({
         ...data,
@@ -63,6 +66,8 @@ const ReportDetailsContainer = ({route}) => {
       });
     } catch (e) {
       console.log('Error al crear comentario', e);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -76,6 +81,7 @@ const ReportDetailsContainer = ({route}) => {
       onPostComment={onPostComment}
       onChangeComment={(newComment) => setComment(newComment)}
       currentComment={comment}
+      loading={loading}
     />
   );
 };

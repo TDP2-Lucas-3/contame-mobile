@@ -132,6 +132,7 @@ const ReportDetails = (props) => {
         onPostComment={props.onPostComment}
         onChangeComment={props.onChangeComment}
         currentComment={props.currentComment}
+        loading={props.loading}
       />
     </View>
   );
