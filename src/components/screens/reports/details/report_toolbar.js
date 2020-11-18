@@ -16,6 +16,7 @@ const ReportToolbar = ({report, currentComment, loading, ...props}) => {
     input.current.blur();
     input.current.clear();
     props.onPostComment();
+    props.onChangeComment('');
   };
 
   return (
