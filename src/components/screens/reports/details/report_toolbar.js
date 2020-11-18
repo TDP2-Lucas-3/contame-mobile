@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {View} from 'react-native';
 import {VoteButton} from './vote_button';
 import {styles} from '../../../../styles/common';
 import {Input} from 'react-native-elements';
 
-const ReportToolbar = ({report, ...props}) => {
+const ReportToolbar = ({report, currentComment, ...props}) => {
   const [inputHeight, setInputHeight] = useState(
     styles.report_comments_container.height,
   );
+
+  const input = useRef(null);
+
+  const onPostComment = () => {
+    input.current.blur();
+    props.onPostComment();
+  };
+
   return (
     <View style={styles.report_details_footer}>
       <VoteButton
@@ -17,6 +25,7 @@ const ReportToolbar = ({report, ...props}) => {
         disabled={props.votesDisabled}
       />
       <Input
+        ref={input}
         multiline={true}
         containerStyle={[
           styles.report_comments_container,
@@ -33,10 +42,20 @@ const ReportToolbar = ({report, ...props}) => {
           size: 15,
           containerStyle: styles.report_comment_icon,
         }}
+        rightIcon={{
+          name: 'paper-plane',
+          type: 'font-awesome-5',
+          size: 15,
+          onPress: onPostComment,
+          disabled: currentComment.length === 0,
+          disabledStyle: styles.report_comment_disabled_icon,
+        }}
         placeholder="Escribe un comentario..."
         onContentSizeChange={(e) =>
           setInputHeight(e.nativeEvent.contentSize.height)
         }
+        onChangeText={props.onChangeComment}
+        value={currentComment}
       />
     </View>
   );

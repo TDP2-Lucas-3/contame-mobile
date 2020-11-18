@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ReportDetails from './report_details';
 import Loading from '../../../common/loading';
 import {unvote, vote} from '../../../../services/vote';
+import {postComment} from '../../../../services/comment'
 import {fetchReport} from '../../../../services/fetchReport';
 import {useSelector} from 'react-redux';
 import {ToastAndroid} from 'react-native';
@@ -9,6 +10,7 @@ import {ToastAndroid} from 'react-native';
 const ReportDetailsContainer = ({route}) => {
   const {reportId} = route.params;
   const [data, setReport] = useState(null);
+  const [comment, setComment] = useState('');
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -52,6 +54,18 @@ const ReportDetailsContainer = ({route}) => {
     }
   };
 
+  const onPostComment = async () => {
+    try {
+      const response = await postComment(comment, reportId);
+      setReport({
+        ...data,
+        comments: [...data.comments, response.data],
+      });
+    } catch (e) {
+      console.log('Error al crear comentario', e);
+    }
+  };
+
   return !data ? (
     <Loading />
   ) : (
@@ -59,6 +73,9 @@ const ReportDetailsContainer = ({route}) => {
       onVotePress={onVotePress}
       report={data}
       votesDisabled={votesDisabled}
+      onPostComment={onPostComment}
+      onChangeComment={(newComment) => setComment(newComment)}
+      currentComment={comment}
     />
   );
 };

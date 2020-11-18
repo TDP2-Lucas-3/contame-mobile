@@ -129,6 +129,9 @@ const ReportDetails = (props) => {
         report={props.report}
         onVotePress={props.onVotePress}
         votesDisabled={props.votesDisabled}
+        onPostComment={props.onPostComment}
+        onChangeComment={props.onChangeComment}
+        currentComment={props.currentComment}
       />
     </View>
   );

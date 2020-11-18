@@ -261,6 +261,9 @@ export const styles = StyleSheet.create({
   font_14: {
     fontSize: 14,
   },
+  font_12: {
+    fontSize: 12,
+  },
   font_sm: {
     fontSize: 10,
   },
@@ -401,7 +404,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 10,
     marginBottom: 5,
-    width: 100,
+    width: 200,
   },
   owner_comment_body_container: {
     backgroundColor: '#3B5998',
@@ -419,5 +422,9 @@ export const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     fontSize: 12,
     marginRight: 25,
+  },
+  report_comment_disabled_icon: {
+    backgroundColor: '#E5E5E5',
+    opacity: 0.3,
   },
 });
