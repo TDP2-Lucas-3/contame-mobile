@@ -23,8 +23,9 @@ exports[`ReportImage renders all values correctly 1`] = `
     }
     testID="card_image"
   >
-    <Themed.Badge
-      badgeStyle={
+    <StatusBadge
+      state="REPORTED"
+      styles={
         Object {
           "margin": 10,
           "padding": 5,
@@ -33,7 +34,6 @@ exports[`ReportImage renders all values correctly 1`] = `
           "top": 0,
         }
       }
-      status="warning"
     />
   </Themed.CardImage>
 </View>

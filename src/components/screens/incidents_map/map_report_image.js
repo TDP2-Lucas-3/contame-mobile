@@ -4,6 +4,7 @@ import {Badge, Icon} from 'react-native-elements';
 import {verboseReportState} from '../../../utils/verbose_report_names';
 import React from 'react';
 import {WebView} from 'react-native-webview';
+import {StatusBadge} from '../../common/status_badge';
 
 export const MapReportImage = (props) => {
   return (
@@ -26,11 +27,7 @@ export const MapReportImage = (props) => {
           ]}
         />
       )}
-      <Badge
-        badgeStyle={styles.report_status_badge_no_icon}
-        status={'warning'}
-        value={verboseReportState(props.state)}
-      />
+      <StatusBadge state={props.state} />
     </View>
   );
 };
