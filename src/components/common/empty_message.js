@@ -8,7 +8,9 @@ const EmptyMessage = (props) => (
   <View style={styles.alignCenter}>
     <Icon name="exclamation-triangle" type="font-awesome-5" />
     {props.small ? (
-      <RalewayText style={styles.font_md} bold>{props.title}</RalewayText>
+      <RalewayText style={styles.font_md} bold>
+        {props.title}
+      </RalewayText>
     ) : (
       <RalewayText h3>{props.title}</RalewayText>
     )}

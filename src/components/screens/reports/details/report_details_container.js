@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ReportDetails from './report_details';
 import Loading from '../../../common/loading';
 import {unvote, vote} from '../../../../services/vote';
-import {postComment} from '../../../../services/comment'
+import {postComment} from '../../../../services/comment';
 import {fetchReport} from '../../../../services/fetchReport';
 import {useSelector} from 'react-redux';
 import {ToastAndroid} from 'react-native';
