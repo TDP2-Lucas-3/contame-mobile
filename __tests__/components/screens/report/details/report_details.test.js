@@ -17,6 +17,7 @@ describe('ReportDetails', () => {
           longitude: -1,
         },
         creationDate: new Date(),
+        category: {},
       },
     };
     render = (appProps) => shallow(<ReportDetails {...appProps} />);
