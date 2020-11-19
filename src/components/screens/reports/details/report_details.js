@@ -93,8 +93,8 @@ const ReportDetails = (props) => {
             initialRegion={{
               latitude,
               longitude,
-              latitudeDelta: 1,
-              longitudeDelta: 1,
+              latitudeDelta: 0.005,
+              longitudeDelta: 0.005,
             }}>
             <MapMarker
               coordinate={{
