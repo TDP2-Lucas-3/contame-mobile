@@ -235,7 +235,8 @@ exports[`ReportDetails renders all values correctly 1`] = `
         ]
       }
     >
-      <Themed.Text
+      <RalewayText
+        bold={true}
         h4={true}
         style={
           Object {
@@ -244,7 +245,7 @@ exports[`ReportDetails renders all values correctly 1`] = `
         }
       >
         Detalles
-      </Themed.Text>
+      </RalewayText>
       <Themed.Text
         style={
           Array [
@@ -260,18 +261,41 @@ exports[`ReportDetails renders all values correctly 1`] = `
         some description
       </Themed.Text>
     </View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginLeft": 30,
+          },
+          Object {
+            "marginBottom": 20,
+          },
+        ]
+      }
+    >
+      <EmptyMessage
+        message="Se el primero!"
+        small={true}
+        title="Todavia no hay comentarios"
+      />
+    </View>
   </ScrollView>
-  <View
-    style={
+  <ReportToolbar
+    report={
       Object {
-        "backgroundColor": "#1F271B",
-        "borderTopColor": "#86939e",
-        "borderTopWidth": 1,
-        "padding": 15,
+        "category": Object {},
+        "creationDate": 2020-11-18T22:15:46.629Z,
+        "description": "some description",
+        "images": Array [
+          "some image data",
+        ],
+        "location": Object {
+          "latitude": -1,
+          "longitude": -1,
+        },
+        "title": "a report",
       }
     }
-  >
-    <VoteButton />
-  </View>
+  />
 </View>
 `;

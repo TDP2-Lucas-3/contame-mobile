@@ -24,7 +24,7 @@ const ReportDetails = (props) => {
     category,
     comments,
   } = props.report;
-
+  console.log(props.report);
   return (
     <View style={styles.report_details_container}>
       <View style={styles.zIndex_9}>

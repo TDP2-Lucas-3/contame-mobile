@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {View} from 'react-native';
-import {Avatar} from 'react-native-elements';
+import {Avatar, Icon} from 'react-native-elements';
 import {styles} from '../../../../styles/common';
 import RalewayText from '../../../common/raleway_text';
 import moment from 'moment';
@@ -17,30 +17,37 @@ const commentStyles = StyleSheet.create({
     ...commonCommentStyles.fontColor,
     fontSize: 12,
   },
+  creatorText: {
+    fontSize: 8,
+    color: 'grey',
+  },
   body: {
     ...commonCommentStyles.fontColor,
     fontSize: 10,
   },
 });
 
-const commentBody = (user, comment) => (
-  <>
-    <RalewayText bold style={commentStyles.creatorName}>
-      {user}
-    </RalewayText>
-    <RalewayText style={commentStyles.body}>{comment}</RalewayText>
-  </>
-);
-
-const GeneralReportComment = ({comment}) => (
+const ReportComment = ({comment}) => (
   <View style={styles.mb_2}>
     <View style={styles.row}>
       <Avatar source={{uri: comment.user.profile.photo}} rounded />
       <View style={styles.general_comment_body_container}>
-        {commentBody(
-          `${comment.user.profile.name} ${comment.user.profile.surename}`,
-          comment.comment,
+        {comment.owner && (
+          <View style={[styles.row]}>
+            <Icon
+              name="user-edit"
+              type="font-awesome-5"
+              size={7}
+              color="grey"
+              iconStyle={styles.mr_1_sm}
+            />
+            <RalewayText style={commentStyles.creatorText}>Creador</RalewayText>
+          </View>
         )}
+        <RalewayText bold style={commentStyles.creatorName}>
+          {`${comment.user.profile.name} ${comment.user.profile.surename}`}
+        </RalewayText>
+        <RalewayText style={commentStyles.body}>{comment.comment}</RalewayText>
       </View>
     </View>
     <RalewayText style={styles.general_comment_footer}>
@@ -48,29 +55,5 @@ const GeneralReportComment = ({comment}) => (
     </RalewayText>
   </View>
 );
-
-const OwnerReportComment = ({comment}) => (
-  <View style={[styles.mb_2, styles.mr_3]}>
-    <View style={[styles.row, styles.justifyEnd]}>
-      <View style={styles.owner_comment_body_container}>
-        {commentBody(
-          `${comment.user.profile.name} ${comment.user.profile.surename}`,
-          comment.comment,
-        )}
-      </View>
-      <Avatar source={{uri: comment.user.profile.photo}} rounded />
-    </View>
-    <RalewayText style={styles.owner_comment_footer}>
-      {moment(comment.creationDate).fromNow()}
-    </RalewayText>
-  </View>
-);
-
-const ReportComment = (props) =>
-  props.comment.owner ? (
-    <OwnerReportComment {...props} />
-  ) : (
-    <GeneralReportComment {...props} />
-  );
 
 export default ReportComment;

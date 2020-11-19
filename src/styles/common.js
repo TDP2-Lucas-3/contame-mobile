@@ -286,6 +286,9 @@ export const styles = StyleSheet.create({
   mr_1: {
     marginRight: 10,
   },
+  mr_1_sm: {
+    marginRight: 3,
+  },
   mr_2: {
     marginRight: 20,
   },
@@ -302,6 +305,9 @@ export const styles = StyleSheet.create({
   },
   ml_2: {
     marginLeft: 20,
+  },
+  mb_1: {
+    marginBottom: 10,
   },
   mb_2: {
     marginBottom: 20,
@@ -401,27 +407,14 @@ export const styles = StyleSheet.create({
   general_comment_body_container: {
     backgroundColor: COLORS.secondary,
     padding: 12,
+    paddingVertical: 7,
     borderRadius: 10,
     marginLeft: 10,
-    marginBottom: 5,
-    width: 200,
-  },
-  owner_comment_body_container: {
-    backgroundColor: '#3B5998',
-    padding: 12,
-    borderRadius: 10,
-    marginRight: 10,
-    width: 200,
     marginBottom: 5,
   },
   general_comment_footer: {
     marginLeft: 45,
     fontSize: 12,
-  },
-  owner_comment_footer: {
-    alignSelf: 'flex-end',
-    fontSize: 12,
-    marginRight: 45,
   },
   report_comment_disabled_icon: {
     backgroundColor: '#E5E5E5',
