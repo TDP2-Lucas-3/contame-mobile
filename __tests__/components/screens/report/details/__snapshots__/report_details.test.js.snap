@@ -61,6 +61,22 @@ exports[`ReportDetails renders all values correctly 1`] = `
         A report
       </Themed.Text>
     </View>
+    <StatusBadge
+      styles={
+        Object {
+          "margin": 15,
+          "padding": 5,
+          "position": "absolute",
+          "right": 0,
+          "top": -200,
+        }
+      }
+      textStyle={
+        Object {
+          "fontSize": 14,
+        }
+      }
+    />
   </View>
   <ScrollView>
     <View

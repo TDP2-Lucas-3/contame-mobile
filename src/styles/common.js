@@ -153,6 +153,13 @@ export const styles = StyleSheet.create({
     margin: 10,
     padding: 5,
   },
+  report_status_badge_detail: {
+    position: 'absolute',
+    top: -200,
+    right: 0,
+    margin: 15,
+    padding: 5,
+  },
   report_header_image: {
     width: '100%',
     height: 200,

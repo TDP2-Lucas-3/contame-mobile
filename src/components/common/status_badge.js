@@ -6,11 +6,15 @@ import React from 'react';
 export const StatusBadge = (props) => {
   const statusMap = {
     REPORTADO: 'warning',
+    EN_PROGRESO: 'warning',
+    RESUELTO: 'success',
+    ARCHIVADO: 'error',
   };
   return (
     <Badge
       badgeStyle={props.styles || styles.report_status_badge_no_icon}
       status={statusMap[props.state]}
+      textStyle={props.textStyle}
       value={verboseReportState(props.state)}
     />
   );

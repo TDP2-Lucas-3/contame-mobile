@@ -8,6 +8,7 @@ import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 import {SliderBox} from 'react-native-image-slider-box';
 import {VoteButton} from './vote_button';
+import {StatusBadge} from '../../../common/status_badge';
 
 const ReportDetails = (props) => {
   const {
@@ -21,6 +22,7 @@ const ReportDetails = (props) => {
     votes,
     voteByUser,
     category,
+    state,
   } = props.report;
 
   return (
@@ -41,6 +43,11 @@ const ReportDetails = (props) => {
             {capitalize(title)}
           </Text>
         </View>
+        <StatusBadge
+          state={state}
+          styles={styles.report_status_badge_detail}
+          textStyle={styles.font_14}
+        />
       </View>
       <ScrollView>
         <View style={[styles.row, styles.mt_9, styles.m_3, styles.alignCenter]}>
