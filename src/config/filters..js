@@ -5,7 +5,7 @@ export const reportAttributesToFilterBy = [
     stateKey: 'neighborhoods',
   },
   {
-    label: 'Category',
+    label: 'Categoria',
     accesor: 'category.name',
     stateKey: 'categories',
   },
