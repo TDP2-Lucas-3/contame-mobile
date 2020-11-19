@@ -9,4 +9,9 @@ export const reportAttributesToFilterBy = [
     accesor: 'category.name',
     stateKey: 'categories',
   },
+  {
+    label: 'Estado',
+    accesor: 'state',
+    stateKey: 'states',
+  },
 ];
