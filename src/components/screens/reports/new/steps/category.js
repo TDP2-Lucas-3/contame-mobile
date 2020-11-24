@@ -1,12 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import {Picker} from '@react-native-community/picker';
-import {getCategories} from '../../../../../config/routes';
+import {getCategories, getSubCategories} from '../../../../../config/routes';
 import useAxios from 'axios-hooks';
-import Loading from '../../../../common/loading';
 import {capitalize} from 'lodash';
 import RalewayText from '../../../../common/raleway_text';
-import {styles} from '../../../../../styles/common';
 import COLORS from '../../../../../styles/colors';
 
 const categoryStyles = StyleSheet.create({
@@ -25,44 +23,100 @@ const categoryStyles = StyleSheet.create({
   },
 });
 
-const CategoryStep = (props) => {
+const CommonPicker = (props) =>
+  props.loading ? (
+    <View style={categoryStyles.loadingContainer}>
+      <ActivityIndicator color={COLORS.secondary} />
+    </View>
+  ) : (
+    <View style={categoryStyles.pickerContainer}>
+      <Picker
+        style={categoryStyles.picker}
+        itemStyle={categoryStyles.item}
+        mode="dropdown"
+        selectedValue={props.selected}
+        onValueChange={props.onChange}>
+        {props.data.map((category) => (
+          <Picker.Item
+            label={capitalize(category.value)}
+            value={category.key}
+            key={category.key}
+            style={categoryStyles.item}
+          />
+        ))}
+      </Picker>
+    </View>
+  );
+
+const CategoryPicker = (props) => {
   const [{data, loading}] = useAxios(getCategories());
 
   const categories = [{key: 'category', value: 'Categoria'}, ...(data || [])];
+
+  return (
+    <CommonPicker
+      onChange={(itemValue) =>
+        props.onChange(
+          'category',
+          data.find((category) => category.key === itemValue).key,
+        )
+      }
+      loading={loading}
+      data={categories}
+      selected={props.category}
+    />
+  );
+};
+
+const SubCategoryPicker = (props) => {
+  console.log(props);
+  const [{data, loading}] = useAxios(getSubCategories(props.category));
+
+  const subcategories = [
+    {key: 'subcategory', value: 'Sub-Categoria'},
+    ...(data || []).map((subcategory, index) => ({
+      key: index,
+      value: subcategory,
+    })),
+  ];
+
+  return (
+    <CommonPicker
+      onChange={(itemValue) =>
+        props.onChange(
+          'subcategory',
+          subcategories.find((subcategory) => subcategory.key === itemValue)
+            .value,
+        )
+      }
+      loading={loading}
+      data={subcategories}
+      selected={
+        (
+          subcategories.find(
+            (subcategory) => subcategory.value === props.subcategory,
+          ) || {}
+        ).key
+      }
+    />
+  );
+};
+
+const CategoryStep = (props) => {
+  const [showSubCategories, setShowSubcategories] = useState(false);
+
+  const onSelectCategory = (...args) => {
+    props.onChange(...args);
+    setShowSubcategories(true);
+  };
 
   return (
     <View>
       <RalewayText h4>
         Seleccioná la categoría que te parezca apropiada...
       </RalewayText>
-      {loading ? (
-        <View style={categoryStyles.loadingContainer}>
-          <ActivityIndicator color={COLORS.secondary} />
-        </View>
-      ) : (
-        <View style={categoryStyles.pickerContainer}>
-          <Picker
-            style={categoryStyles.picker}
-            itemStyle={categoryStyles.item}
-            mode="dropdown"
-            selectedValue={props.selected}
-            onValueChange={(itemValue) =>
-              props.onChange(
-                'category',
-                data.find((category) => category.key === itemValue).key,
-              )
-            }>
-            {categories.map((category) => (
-              <Picker.Item
-                label={capitalize(category.value)}
-                value={category.key}
-                key={category.key}
-                style={categoryStyles.item}
-              />
-            ))}
-          </Picker>
-        </View>
-      )}
+      <CategoryPicker {...props} onChange={onSelectCategory} />
+      {showSubCategories && <SubCategoryPicker {...props} />}
     </View>
   );
 };

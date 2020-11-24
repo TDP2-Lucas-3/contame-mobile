@@ -43,7 +43,13 @@ const NewReportForm = (props) => {
 
   const stepList = [
     {
-      content: <CategoryStep onChange={onSelect} selected={props.category} />,
+      content: (
+        <CategoryStep
+          onChange={props.onChange}
+          category={props.data.category}
+          subcategory={props.data.subcategory}
+        />
+      ),
     },
     {
       content: (
