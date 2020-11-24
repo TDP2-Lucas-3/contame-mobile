@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import Wizard from 'react-native-wizard';
 import CategoryStep from './steps/category';
 import TitleStep from './steps/title';
@@ -7,6 +7,19 @@ import IncidentLocationMapViewStep from './steps/incident_location_map_view';
 import DescriptionStep from './steps/description';
 import ImagesStep from './steps/images';
 import ConfirmStep from './steps/confirm';
+import COLORS from '../../../../styles/colors';
+
+const newReportFormStyles = StyleSheet.create({
+  container: {
+    backgroundColor: COLORS.main,
+    flex: 1,
+    borderTopRightRadius: 15,
+    borderTopLeftRadius: 15,
+  },
+  wizardContainer: {
+    margin: 20,
+  },
+});
 
 const NewReportForm = (props) => {
   const wizard = useRef(null);
@@ -70,13 +83,15 @@ const NewReportForm = (props) => {
   ];
 
   return (
-    <View>
-      <Wizard
-        ref={wizard}
-        steps={stepList}
-        nextStepAnimation="slideRight"
-        prevStepAnimation="slideLeft"
-      />
+    <View style={newReportFormStyles.container}>
+      <View style={newReportFormStyles.wizardContainer}>
+        <Wizard
+          ref={wizard}
+          steps={stepList}
+          nextStepAnimation="slideRight"
+          prevStepAnimation="slideLeft"
+        />
+      </View>
     </View>
   );
 };

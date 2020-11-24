@@ -4,7 +4,7 @@ const api = {
   MY_REPORTS: '/contame/incident/self',
   REPORTS: '/contame/incident',
   REPORT: '/contame/incident',
-  CATEGORIES: '/contame/incident/categories',
+  CATEGORIES: '/contame/incident/category',
   LOGIN: '/contame/login/google',
   USERS: '/contame/user',
   USER: '/contame/user/me',
