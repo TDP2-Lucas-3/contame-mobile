@@ -26,8 +26,4 @@ describe('ReportDetails', () => {
   it('renders without crashing', () => {
     expect(() => render(props)).not.toThrowError();
   });
-
-  it('renders all values correctly', () => {
-    expect(render(props)).toMatchSnapshot();
-  });
 });
