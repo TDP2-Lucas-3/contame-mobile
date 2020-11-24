@@ -9,15 +9,6 @@ const Stack = createStackNavigator();
 const ReportStack = ({navigation, screen, title}) => (
   <Stack.Navigator>
     <Stack.Screen
-      name="NewReport"
-      component={NewReportScreen}
-      options={{
-        title: '',
-        headerTransparent: true,
-        headerLeft: () => getHeaderBack(navigation),
-      }}
-    />
-    <Stack.Screen
       name="Reports"
       component={screen}
       options={getHeaderOptions(title, navigation)}
@@ -26,6 +17,15 @@ const ReportStack = ({navigation, screen, title}) => (
       name="ReportDetails"
       component={ReportDetailsContainer}
       options={{title: 'Detalle de incidencia', headerShown: false}}
+    />
+    <Stack.Screen
+      name="NewReport"
+      component={NewReportScreen}
+      options={{
+        title: '',
+        headerTransparent: true,
+        headerLeft: () => getHeaderBack(navigation),
+      }}
     />
   </Stack.Navigator>
 );
