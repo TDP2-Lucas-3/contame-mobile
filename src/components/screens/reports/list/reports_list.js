@@ -8,13 +8,14 @@ import {styles} from '../../../../styles/common';
 import {styles as filterStyles} from '../../../../styles/filter';
 import moment from 'moment';
 import FilterMenu from '../../../common/filters/filter_menu';
-import CategoryFilter from '../../../common/filters/category_filter';
-import NeighborhoodFilter from '../../../common/filters/neighborhood_filter';
+import CheckboxFilter from '../../../common/filters/checkbox_filter';
 import {uniq, capitalize, flatten, compact} from 'lodash';
 import EmptyMessage from '../../../common/empty_message';
 import FlipCard from 'react-native-flip-card';
 import Loading from '../../../common/loading';
 import {IncidentsMap} from '../../incidents_map/incidents_map';
+import {reportAttributesToFilterBy} from '../../../../config/filters.';
+import {get} from 'lodash';
 
 const viewTypes = {
   LIST: 'LIST',
@@ -23,10 +24,13 @@ const viewTypes = {
 
 const ReportsList = ({navigation, reportsAPI}) => {
   const [{data, loading}, refetch] = useAxios(reportsAPI);
-  const [filterData, setFilterData] = useState({
-    neighborhood: [],
-    category: [],
-  });
+  const [filterData, setFilterData] = useState(
+    reportAttributesToFilterBy.reduce(
+      (initialState, filter) => ({...initialState, [filter.stateKey]: []}),
+      {},
+    ),
+  );
+
   const [viewType, setViewType] = useState(viewTypes.LIST);
 
   const switchViewType = () => {
@@ -35,36 +39,23 @@ const ReportsList = ({navigation, reportsAPI}) => {
     setViewType(types[(currentIndex + 1) % types.length]);
   };
 
-  const categories = compact(
-    uniq((data || []).map((report) => report.category.name)),
-  );
-  const neighborhoods = compact(
-    uniq((data || []).map((report) => report.hood)),
-  ).filter((location) => location !== 'null');
-
-  const onSelect = (filter, selected) =>
+  const onSelect = (filterKey, selected) =>
     setFilterData({
       ...filterData,
-      [filter]: filterData[filter].includes(selected)
-        ? filterData[filter].filter(
+      [filterKey]: filterData[filterKey].includes(selected)
+        ? filterData[filterKey].filter(
             (selectedValue) => selectedValue !== selected,
           )
-        : [...filterData[filter], selected],
+        : [...filterData[filterKey], selected],
     });
 
   const shouldShow = useCallback(
-    (report) => {
-      const matchsCategories =
-        filterData.category.length > 0
-          ? filterData.category.includes(report.category.name)
-          : true;
-      const matchsNeighborhood =
-        filterData.neighborhood.length > 0
-          ? filterData.neighborhood.includes(report.hood)
-          : true;
-
-      return matchsCategories && matchsNeighborhood;
-    },
+    (report) =>
+      reportAttributesToFilterBy.every((filter) =>
+        filterData[filter.stateKey].length > 0
+          ? filterData[filter.stateKey].includes(get(report, filter.accesor))
+          : true,
+      ),
     [filterData],
   );
 
@@ -80,20 +71,17 @@ const ReportsList = ({navigation, reportsAPI}) => {
     <View style={styles.row}>
       <FilterMenu
         onClear={() => setFilterData({category: [], neighborhood: []})}
-        filters={[
-          <NeighborhoodFilter
-            key="neighborhoodFilter"
-            selected={filterData.neighborhood}
-            onSelect={(value) => onSelect('neighborhood', value)}
-            values={neighborhoods}
-          />,
-          <CategoryFilter
-            key="categoryFilter"
-            selected={filterData.category}
-            onSelect={(value) => onSelect('category', value)}
-            values={categories}
-          />,
-        ]}
+        filters={reportAttributesToFilterBy.map((filter) => (
+          <CheckboxFilter
+            title={filter.label}
+            key={filter.label}
+            selected={filterData[filter.stateKey]}
+            onSelect={(value) => onSelect(filter.stateKey, value)}
+            values={compact(
+              uniq((data || []).map((report) => get(report, filter.accesor))),
+            )}
+          />
+        ))}
         filterCount={flatten(Object.values(filterData)).length}
       />
       <View style={[styles.row, styles.flexWrap, styles.flex_1]}>
