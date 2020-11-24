@@ -284,7 +284,7 @@ exports[`ReportDetails renders all values correctly 1`] = `
     report={
       Object {
         "category": Object {},
-        "creationDate": 2020-11-18T22:15:46.629Z,
+        "creationDate": 2020-11-18T03:00:00.000Z,
         "description": "some description",
         "images": Array [
           "some image data",

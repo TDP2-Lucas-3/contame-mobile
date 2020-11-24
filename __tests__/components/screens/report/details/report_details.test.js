@@ -16,7 +16,7 @@ describe('ReportDetails', () => {
           latitude: -1,
           longitude: -1,
         },
-        creationDate: new Date('11/18/2020'),
+        creationDate: new Date('11/18/2020 00:00:00'),
         category: {},
       },
     };
