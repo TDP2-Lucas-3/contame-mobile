@@ -79,7 +79,7 @@ const SubCategoryPicker = (props) => {
   const [{data, loading}] = useAxios(getSubCategories(props.category));
 
   const subcategories = [
-    {key: 'subcategory', value: 'Sub-Categoria'},
+    {key: 'subcategory', value: 'Tipo'},
     ...(data || []).map((subcategory, index) => ({
       key: index,
       value: subcategory,
