@@ -7,6 +7,7 @@ import {capitalize} from 'lodash';
 import RalewayText from '../../../../common/raleway_text';
 import COLORS from '../../../../../styles/colors';
 import {Next} from '../buttons';
+import wizardStyles from '../styles';
 
 const categoryStyles = StyleSheet.create({
   pickerContainer: {
@@ -118,7 +119,7 @@ const CategoryStep = (props) => {
   return (
     <>
       <View style={categoryStyles.stepContainer}>
-        <RalewayText h4>
+        <RalewayText bold style={wizardStyles.title}>
           Seleccioná la categoría que te parezca apropiada...
         </RalewayText>
         <CategoryPicker {...props} onChange={onSelectCategory} />
