@@ -28,7 +28,6 @@ export const Next = (props) => (
   <Button
     {...props}
     title="Siguiente"
-    onPress={props.onPress}
     containerStyle={buttonsStyle.container}
     buttonStyle={buttonsStyle.button}
     titleStyle={buttonsStyle.title}

@@ -97,6 +97,7 @@ const NewReportForm = (props) => {
           steps={stepList}
           nextStepAnimation="slideRight"
           prevStepAnimation="slideLeft"
+          useNativeDriver={true}
         />
       </View>
     </View>
