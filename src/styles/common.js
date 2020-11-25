@@ -46,7 +46,8 @@ export const styles = StyleSheet.create({
   },
   map: {
     width: '100%',
-    height: '85%',
+    height: '50%',
+    marginTop: 20,
   },
   incidentsMap: {
     width: '100%',

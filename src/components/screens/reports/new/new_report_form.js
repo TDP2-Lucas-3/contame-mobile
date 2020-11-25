@@ -73,7 +73,13 @@ const NewReportForm = (props) => {
       ),
     },
     {
-      content: <IncidentLocationMapViewStep onSelect={onSelect} skip={next} />,
+      content: (
+        <IncidentLocationMapViewStep
+          onSelect={onSelect}
+          skip={next}
+          onBack={back}
+        />
+      ),
     },
     {
       content: <ImagesStep onNext={next} onChange={props.onChange} />,
