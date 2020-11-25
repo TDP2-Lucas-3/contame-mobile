@@ -13,6 +13,7 @@ const categoryStyles = StyleSheet.create({
     borderColor: '#A9A9A9',
     backgroundColor: 'white',
     borderRadius: 10,
+    height: 50,
     marginTop: 20,
   },
   loadingContainer: {
