@@ -1,23 +1,12 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import {Input} from 'react-native-elements';
 import {truncate} from 'lodash';
 import {Back, Next} from '../buttons';
 import wizardStyles from '../styles';
-import COLORS from '../../../../../styles/colors';
 
 const MIN_LENGTH = 10;
 const MAX_TITLE_LENGTH = 20;
-
-const titleStyles = StyleSheet.create({
-  inputContainer: {
-    paddingBottom: 100,
-    borderColor: COLORS.secondary,
-  },
-  input: {
-    color: COLORS.secondary,
-  },
-});
 
 const TitleStep = (props) => (
   <View>
@@ -25,9 +14,9 @@ const TitleStep = (props) => (
       placeholder="Contanos brevemente"
       label="¿Que pasó?"
       labelStyle={wizardStyles.title}
-      inputContainerStyle={titleStyles.inputContainer}
-      inputStyle={titleStyles.input}
-      containerStyle={titleStyles.container}
+      inputContainerStyle={wizardStyles.inputContainer}
+      inputStyle={wizardStyles.input}
+      containerStyle={wizardStyles.container}
       onChangeText={(value) =>
         props.onChange(
           'title',

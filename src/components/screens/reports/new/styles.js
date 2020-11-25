@@ -7,4 +7,11 @@ export default StyleSheet.create({
     color: COLORS.secondary,
     fontSize: 24,
   },
+  inputContainer: {
+    paddingBottom: 100,
+    borderColor: COLORS.secondary,
+  },
+  input: {
+    color: COLORS.secondary,
+  },
 });
