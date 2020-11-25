@@ -6,6 +6,7 @@ import useAxios from 'axios-hooks';
 import {capitalize} from 'lodash';
 import RalewayText from '../../../../common/raleway_text';
 import COLORS from '../../../../../styles/colors';
+import {Next} from '../buttons';
 
 const categoryStyles = StyleSheet.create({
   pickerContainer: {
@@ -21,6 +22,9 @@ const categoryStyles = StyleSheet.create({
   },
   item: {
     backgroundColor: COLORS.secondary,
+  },
+  stepContainer: {
+    height: '60%',
   },
 });
 
@@ -112,13 +116,16 @@ const CategoryStep = (props) => {
   };
 
   return (
-    <View>
-      <RalewayText h4>
-        Seleccioná la categoría que te parezca apropiada...
-      </RalewayText>
-      <CategoryPicker {...props} onChange={onSelectCategory} />
-      {showSubCategories && <SubCategoryPicker {...props} />}
-    </View>
+    <>
+      <View style={categoryStyles.stepContainer}>
+        <RalewayText h4>
+          Seleccioná la categoría que te parezca apropiada...
+        </RalewayText>
+        <CategoryPicker {...props} onChange={onSelectCategory} />
+        {showSubCategories && <SubCategoryPicker {...props} />}
+      </View>
+      <Next disabled={Boolean(!props.subcategory)} onPress={props.onNext} />
+    </>
   );
 };
 

@@ -10,6 +10,7 @@ const buttonsStyle = StyleSheet.create({
     margin: 20,
     marginBottom: 50,
     borderRadius: 10,
+    height: 50,
   },
   button: {
     backgroundColor: COLORS.secondary,
@@ -18,14 +19,19 @@ const buttonsStyle = StyleSheet.create({
   title: {
     fontFamily: 'Raleway-Regular',
   },
+  disabled: {
+    backgroundColor: 'grey',
+  },
 });
 
 export const Next = (props) => (
   <Button
+    {...props}
     title="Siguiente"
     onPress={props.onPress}
     containerStyle={buttonsStyle.container}
     buttonStyle={buttonsStyle.button}
     titleStyle={buttonsStyle.title}
+    disabledStyle={buttonsStyle.disabled}
   />
 );

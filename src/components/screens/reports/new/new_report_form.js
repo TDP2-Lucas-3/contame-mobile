@@ -8,14 +8,11 @@ import DescriptionStep from './steps/description';
 import ImagesStep from './steps/images';
 import ConfirmStep from './steps/confirm';
 import COLORS from '../../../../styles/colors';
-import RalewayText from '../../../common/raleway_text';
-import { Next } from './buttons';
 
 const newReportFormStyles = StyleSheet.create({
   container: {
+    height: '100%',
     backgroundColor: COLORS.main,
-    flex: 1,
-    justifyContent: 'space-between',
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
   },
@@ -51,6 +48,7 @@ const NewReportForm = (props) => {
           onChange={props.onChange}
           category={props.data.category}
           subcategory={props.data.subcategory}
+          onNext={next}
         />
       ),
     },
@@ -101,7 +99,6 @@ const NewReportForm = (props) => {
           prevStepAnimation="slideLeft"
         />
       </View>
-      <Next />
     </View>
   );
 };
