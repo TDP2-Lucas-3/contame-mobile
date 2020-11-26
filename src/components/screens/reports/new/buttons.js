@@ -31,8 +31,8 @@ const buttonsStyle = StyleSheet.create({
 
 export const Next = (props) => (
   <Button
-    {...props}
     title="Siguiente"
+    {...props}
     containerStyle={buttonsStyle.container}
     buttonStyle={buttonsStyle.button}
     titleStyle={buttonsStyle.title}

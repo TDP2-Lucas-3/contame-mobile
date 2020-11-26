@@ -7,7 +7,7 @@ import {styles} from '../../styles/common';
 const MAX_IMAGE_NAME_LENGTH = 10;
 
 const ImageIcon = (props) => (
-  <View style={[styles.m_1, styles.positionRelative]}>
+  <View style={[styles.mt_2, styles.ml_2, styles.positionRelative]}>
     <Image source={{uri: props.image}} style={styles.image_icon} />
     <Text>{truncate(props.name, {length: MAX_IMAGE_NAME_LENGTH})}</Text>
     <Icon

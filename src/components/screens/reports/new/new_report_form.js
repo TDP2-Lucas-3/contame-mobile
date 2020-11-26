@@ -82,7 +82,9 @@ const NewReportForm = (props) => {
       ),
     },
     {
-      content: <ImagesStep onNext={next} onChange={props.onChange} />,
+      content: (
+        <ImagesStep onNext={next} onChange={props.onChange} onBack={back} />
+      ),
     },
     {
       content: (
