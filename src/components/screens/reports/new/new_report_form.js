@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import Wizard from 'react-native-wizard';
 import CategoryStep from './steps/category';
@@ -8,6 +8,7 @@ import DescriptionStep from './steps/description';
 import ImagesStep from './steps/images';
 import ConfirmStep from './steps/confirm';
 import COLORS from '../../../../styles/colors';
+import RalewayText from '../../../common/raleway_text';
 
 const newReportFormStyles = StyleSheet.create({
   container: {
@@ -19,10 +20,32 @@ const newReportFormStyles = StyleSheet.create({
   wizardContainer: {
     margin: 20,
   },
+  header: {
+    height: 200,
+    marginTop: 60,
+    marginLeft: 20,
+  },
+  title: {
+    fontSize: 48,
+    color: 'white',
+  },
+  stepIndicator: {
+    width: 10,
+    height: 10,
+    borderRadius: 20,
+    color: 'white',
+    marginRight: 10,
+  },
+  stepIndicatorContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 40,
+  },
 });
 
 const NewReportForm = (props) => {
   const wizard = useRef(null);
+  const [currentStep, setCurrentStep] = useState(0);
 
   const next = () => {
     wizard.current.next();
@@ -98,17 +121,43 @@ const NewReportForm = (props) => {
   ];
 
   return (
-    <View style={newReportFormStyles.container}>
-      <View style={newReportFormStyles.wizardContainer}>
-        <Wizard
-          ref={wizard}
-          steps={stepList}
-          nextStepAnimation="slideRight"
-          prevStepAnimation="slideLeft"
-          useNativeDriver={true}
-        />
+    <>
+      <View style={newReportFormStyles.header}>
+        <RalewayText style={newReportFormStyles.title}>
+          {'Nueva \nIncidencia'}
+        </RalewayText>
+        <View style={newReportFormStyles.stepIndicatorContainer}>
+          {stepList.map((step, index) => (
+            <View
+              key={`indicator-${index}`}
+              style={[
+                newReportFormStyles.stepIndicator,
+                {
+                  backgroundColor:
+                    currentStep === index
+                      ? COLORS.main
+                      : newReportFormStyles.stepIndicator.color,
+                },
+              ]}
+            />
+          ))}
+        </View>
       </View>
-    </View>
+      <View style={newReportFormStyles.container}>
+        <View style={newReportFormStyles.wizardContainer}>
+          <Wizard
+            ref={wizard}
+            steps={stepList}
+            nextStepAnimation="slideRight"
+            prevStepAnimation="slideLeft"
+            useNativeDriver={true}
+            currentStep={({currentStep}) => {
+              setCurrentStep(currentStep);
+            }}
+          />
+        </View>
+      </View>
+    </>
   );
 };
 
