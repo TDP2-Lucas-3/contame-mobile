@@ -40,7 +40,9 @@ const ReportDetails = (props) => {
           />
         )}
         <View style={styles.report_header_title}>
-          <RalewayText bold style={[styles.ml_2, styles.color_white, styles.h4]}>
+          <RalewayText
+            bold
+            style={[styles.ml_2, styles.color_white, styles.h4]}>
             {capitalize(title)}
           </RalewayText>
         </View>
