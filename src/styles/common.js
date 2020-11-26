@@ -259,6 +259,9 @@ export const styles = StyleSheet.create({
   font_md: {
     fontSize: 18,
   },
+  h4: {
+    fontSize: 24,
+  },
   font_14: {
     fontSize: 14,
   },

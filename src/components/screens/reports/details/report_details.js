@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, ScrollView} from 'react-native';
-import {Text, Icon} from 'react-native-elements';
+import {Icon} from 'react-native-elements';
 import {styles} from '../../../../styles/common';
 import {capitalize} from 'lodash';
 import moment from 'moment';
@@ -22,6 +22,7 @@ const ReportDetails = (props) => {
     lat: latitude,
     location,
     category,
+    subcategory,
     comments,
   } = props.report;
 
@@ -39,9 +40,9 @@ const ReportDetails = (props) => {
           />
         )}
         <View style={styles.report_header_title}>
-          <Text h4 style={[styles.ml_2, styles.color_white]}>
+          <RalewayText bold style={[styles.ml_2, styles.color_white, styles.h4]}>
             {capitalize(title)}
-          </Text>
+          </RalewayText>
         </View>
       </View>
       <ScrollView>
@@ -51,9 +52,9 @@ const ReportDetails = (props) => {
             type="font-awesome-5"
             containerStyle={styles.report_details_icon_container}
           />
-          <Text style={[styles.ml_2, styles.color_secondary]}>
+          <RalewayText style={[styles.ml_2, styles.color_secondary]}>
             {moment(creationDate).format('D [de] MMMM, y')}
-          </Text>
+          </RalewayText>
         </View>
         <View style={[styles.row, styles.ml_3, styles.alignCenter]}>
           <Icon
@@ -61,9 +62,9 @@ const ReportDetails = (props) => {
             type="font-awesome-5"
             containerStyle={styles.report_details_icon_container}
           />
-          <Text style={[styles.ml_2, styles.color_secondary]}>
+          <RalewayText style={[styles.ml_2, styles.color_secondary]}>
             {location || 'No se especifico ubicacion'}
-          </Text>
+          </RalewayText>
         </View>
         <View
           style={[styles.row, styles.ml_3, styles.mt_3, styles.alignCenter]}>
@@ -72,9 +73,10 @@ const ReportDetails = (props) => {
             type="font-awesome-5"
             containerStyle={styles.report_details_icon_container}
           />
-          <Text style={[styles.ml_2, styles.color_secondary]}>
-            {category.name}
-          </Text>
+          <RalewayText bold style={[styles.ml_2, styles.color_secondary]}>
+            {`${category} - `}
+          </RalewayText>
+          <RalewayText>{subcategory}</RalewayText>
         </View>
         <View style={[styles.ml_3, styles.mt_2, styles.mr_2]}>
           {description && (
@@ -82,9 +84,9 @@ const ReportDetails = (props) => {
               <RalewayText bold h4 style={styles.color_secondary}>
                 Detalles
               </RalewayText>
-              <Text style={[styles.mt_2, styles.color_secondary]}>
+              <RalewayText style={[styles.mt_2, styles.color_secondary]}>
                 {description}
-              </Text>
+              </RalewayText>
             </>
           )}
         </View>
