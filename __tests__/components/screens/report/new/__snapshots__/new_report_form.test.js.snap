@@ -154,8 +154,6 @@ Incidencia
     >
       <ForwardRef
         currentStep={[Function]}
-        nextStepAnimation="slideRight"
-        prevStepAnimation="slideLeft"
         steps={
           Array [
             Object {
