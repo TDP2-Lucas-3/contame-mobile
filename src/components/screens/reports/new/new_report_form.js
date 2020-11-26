@@ -47,17 +47,9 @@ const NewReportForm = (props) => {
   const wizard = useRef(null);
   const [currentStep, setCurrentStep] = useState(0);
 
-  const next = () => {
-    wizard.current.next();
-  };
-
-  const back = () => {
-    wizard.current.prev();
-  };
-
-  const first = () => {
-    wizard.current.goTo(0);
-  };
+  const next = () => wizard.current.next();
+  const back = () => wizard.current.prev();
+  const first = () => wizard.current.goTo(0);
 
   const onSelect = (...params) => {
     props.onChange(...params);
@@ -148,8 +140,6 @@ const NewReportForm = (props) => {
           <Wizard
             ref={wizard}
             steps={stepList}
-            nextStepAnimation="slideRight"
-            prevStepAnimation="slideLeft"
             useNativeDriver={true}
             currentStep={({currentStep: current}) => {
               setCurrentStep(current);
