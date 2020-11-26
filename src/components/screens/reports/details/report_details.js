@@ -7,7 +7,10 @@ import moment from 'moment';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 import {SliderBox} from 'react-native-image-slider-box';
-import {VoteButton} from './vote_button';
+import ReportToolbar from './report_toolbar';
+import RalewayText from '../../../common/raleway_text';
+import EmptyMessage from '../../../common/empty_message';
+import ReportComment from './report_comment';
 
 const ReportDetails = (props) => {
   const {
@@ -18,9 +21,8 @@ const ReportDetails = (props) => {
     lon: longitude,
     lat: latitude,
     location,
-    votes,
-    voteByUser,
     category,
+    comments,
   } = props.report;
 
   return (
@@ -77,9 +79,9 @@ const ReportDetails = (props) => {
         <View style={[styles.ml_3, styles.mt_2, styles.mr_2]}>
           {description && (
             <>
-              <Text h4 style={styles.color_secondary}>
+              <RalewayText bold h4 style={styles.color_secondary}>
                 Detalles
-              </Text>
+              </RalewayText>
               <Text style={[styles.mt_2, styles.color_secondary]}>
                 {description}
               </Text>
@@ -104,15 +106,34 @@ const ReportDetails = (props) => {
             />
           </MapView>
         )}
+        <View style={[styles.ml_3, styles.mb_2]}>
+          {comments && comments.length > 0 && (
+            <RalewayText bold h4 style={[styles.color_secondary, styles.mb_2]}>
+              Comentarios
+            </RalewayText>
+          )}
+          {comments && comments.length > 0 ? (
+            comments.map((comment) => (
+              <ReportComment comment={comment} key={comment.id} />
+            ))
+          ) : (
+            <EmptyMessage
+              small
+              title="Todavia no hay comentarios"
+              message="Se el primero!"
+            />
+          )}
+        </View>
       </ScrollView>
-      <View style={styles.report_details_footer}>
-        <VoteButton
-          votes={votes}
-          voteByUser={voteByUser}
-          onPress={props.onVotePress}
-          disabled={props.votesDisabled}
-        />
-      </View>
+      <ReportToolbar
+        report={props.report}
+        onVotePress={props.onVotePress}
+        votesDisabled={props.votesDisabled}
+        onPostComment={props.onPostComment}
+        onChangeComment={props.onChangeComment}
+        currentComment={props.currentComment}
+        loading={props.loading}
+      />
     </View>
   );
 };

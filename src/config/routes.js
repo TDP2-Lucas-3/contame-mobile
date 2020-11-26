@@ -45,3 +45,7 @@ export function addVote(reportId) {
 export function removeVote(reportId) {
   return `${getReport(reportId)}/unvote`;
 }
+
+export function addComment(reportId) {
+  return `${getReport(reportId)}/comment/user`;
+}
