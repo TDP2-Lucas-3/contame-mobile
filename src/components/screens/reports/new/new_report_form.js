@@ -151,8 +151,8 @@ const NewReportForm = (props) => {
             nextStepAnimation="slideRight"
             prevStepAnimation="slideLeft"
             useNativeDriver={true}
-            currentStep={({currentStep}) => {
-              setCurrentStep(currentStep);
+            currentStep={({currentStep: current}) => {
+              setCurrentStep(current);
             }}
           />
         </View>
