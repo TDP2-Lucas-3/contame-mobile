@@ -1,12 +1,31 @@
 import React, {useEffect, useState} from 'react';
-import {View, ToastAndroid} from 'react-native';
-import {Text, Button, colors} from 'react-native-elements';
-import {styles} from '../../../../../styles/common';
+import {View, ToastAndroid, StyleSheet} from 'react-native';
+import {Button} from 'react-native-elements';
 import ImageIcon from '../../../../common/image_icon';
 import {showImagePicker} from '../../../../common/image_picker';
+import {Next, Back} from '../buttons';
+import RalewayText from '../../../../common/raleway_text';
+import wizardStyles from '../styles';
+import COLORS from '../../../../../styles/colors';
 
 const MAX_IMAGE_ERROR_MSG = 'Podés subir hasta 5 imágenes';
 const MAX_IMAGE_COUNT = 5;
+
+const imageStepStyles = StyleSheet.create({
+  imagesButtonContainer: {
+    marginTop: 50,
+  },
+  imagesButtonTitle: {
+    color: COLORS.secondary,
+    textDecorationLine: 'underline',
+  },
+  imagesThumb: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    flexWrap: 'wrap',
+    height: 110,
+  },
+});
 
 const ImagesStep = (props) => {
   const [images, setImages] = useState([]);
@@ -47,38 +66,32 @@ const ImagesStep = (props) => {
   };
 
   return (
-    <View style={[styles.spaceAround, styles.fullH]}>
-      <View style={styles.alignCenter}>
-        <Text style={styles.pb_2}>Sacaste Fotos?</Text>
-        <Button
-          title="Adjuntar imagenes"
-          icon={{
-            name: 'camera',
-            type: 'font-awesome',
-            color: colors.primary,
-          }}
-          type="clear"
-          titleStyle={styles.link}
-          onPress={() => showImagePicker(imagePickerCallback)}
-        />
-        <View
-          style={[
-            styles.row,
-            styles.alignSelfStart,
-            styles.pb_2,
-            styles.flexWrap,
-          ]}>
-          {images.map((image) => (
-            <ImageIcon
-              image={`data:image/jpeg;base64,${image.data}`}
-              key={image.name}
-              name={image.name}
-              onRemove={() => onRemoveImage(image)}
-            />
-          ))}
-        </View>
+    <View style={imageStepStyles.container}>
+      <RalewayText style={wizardStyles.title}>¿Sacaste Fotos?</RalewayText>
+      <Button
+        title="Agregar Fotos"
+        icon={{
+          name: 'camera',
+          type: 'font-awesome',
+          color: COLORS.secondary,
+        }}
+        type="clear"
+        titleStyle={imageStepStyles.imagesButtonTitle}
+        containerStyle={imageStepStyles.imagesButtonContainer}
+        onPress={() => showImagePicker(imagePickerCallback)}
+      />
+      <View style={imageStepStyles.imagesThumb}>
+        {images.map((image) => (
+          <ImageIcon
+            image={`data:image/jpeg;base64,${image.data}`}
+            key={image.name}
+            name={image.name}
+            onRemove={() => onRemoveImage(image)}
+          />
+        ))}
       </View>
-      <Button title={'Contame!'} onPress={props.onNext} />
+      <Next title={'¡Contame!'} onPress={props.onNext} />
+      <Back onPress={props.onBack} />
     </View>
   );
 };

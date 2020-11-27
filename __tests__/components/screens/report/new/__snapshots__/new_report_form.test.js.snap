@@ -1,52 +1,207 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NewReportForm renders all values correctly 1`] = `
-<View>
-  <ForwardRef
-    nextStepAnimation="slideRight"
-    prevStepAnimation="slideLeft"
-    steps={
-      Array [
-        Object {
-          "content": <CategoryStep
-            onChange={[Function]}
-          />,
-        },
-        Object {
-          "content": <TitleStep
-            onBack={[Function]}
-            onChange={[MockFunction]}
-            onSelect={[Function]}
-          />,
-        },
-        Object {
-          "content": <DescriptionStep
-            onBack={[Function]}
-            onChange={[MockFunction]}
-            onSelect={[Function]}
-          />,
-        },
-        Object {
-          "content": <IncidentLocationMapViewStep
-            onSelect={[Function]}
-            skip={[Function]}
-          />,
-        },
-        Object {
-          "content": <ImagesStep
-            onChange={[MockFunction]}
-            onNext={[Function]}
-          />,
-        },
-        Object {
-          "content": <ConfirmStep
-            data={Object {}}
-            first={[Function]}
-            onSubmit={[MockFunction]}
-          />,
-        },
-      ]
+<Fragment>
+  <View
+    style={
+      Object {
+        "height": 200,
+        "marginLeft": 20,
+        "marginTop": 60,
+      }
     }
-  />
-</View>
+  >
+    <RalewayText
+      style={
+        Object {
+          "color": "white",
+          "fontSize": 48,
+        }
+      }
+    >
+      Nueva 
+Incidencia
+    </RalewayText>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginTop": 40,
+        }
+      }
+    >
+      <View
+        key="indicator-0"
+        style={
+          Array [
+            Object {
+              "borderRadius": 20,
+              "color": "white",
+              "height": 10,
+              "marginRight": 10,
+              "width": 10,
+            },
+            Object {
+              "backgroundColor": "#F4D35E",
+            },
+          ]
+        }
+      />
+      <View
+        key="indicator-1"
+        style={
+          Array [
+            Object {
+              "borderRadius": 20,
+              "color": "white",
+              "height": 10,
+              "marginRight": 10,
+              "width": 10,
+            },
+            Object {
+              "backgroundColor": "white",
+            },
+          ]
+        }
+      />
+      <View
+        key="indicator-2"
+        style={
+          Array [
+            Object {
+              "borderRadius": 20,
+              "color": "white",
+              "height": 10,
+              "marginRight": 10,
+              "width": 10,
+            },
+            Object {
+              "backgroundColor": "white",
+            },
+          ]
+        }
+      />
+      <View
+        key="indicator-3"
+        style={
+          Array [
+            Object {
+              "borderRadius": 20,
+              "color": "white",
+              "height": 10,
+              "marginRight": 10,
+              "width": 10,
+            },
+            Object {
+              "backgroundColor": "white",
+            },
+          ]
+        }
+      />
+      <View
+        key="indicator-4"
+        style={
+          Array [
+            Object {
+              "borderRadius": 20,
+              "color": "white",
+              "height": 10,
+              "marginRight": 10,
+              "width": 10,
+            },
+            Object {
+              "backgroundColor": "white",
+            },
+          ]
+        }
+      />
+      <View
+        key="indicator-5"
+        style={
+          Array [
+            Object {
+              "borderRadius": 20,
+              "color": "white",
+              "height": 10,
+              "marginRight": 10,
+              "width": 10,
+            },
+            Object {
+              "backgroundColor": "white",
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F4D35E",
+        "borderTopLeftRadius": 15,
+        "borderTopRightRadius": 15,
+        "height": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "margin": 20,
+        }
+      }
+    >
+      <ForwardRef
+        currentStep={[Function]}
+        steps={
+          Array [
+            Object {
+              "content": <CategoryStep
+                onChange={[MockFunction]}
+                onNext={[Function]}
+              />,
+            },
+            Object {
+              "content": <TitleStep
+                onBack={[Function]}
+                onChange={[MockFunction]}
+                onSelect={[Function]}
+              />,
+            },
+            Object {
+              "content": <DescriptionStep
+                onBack={[Function]}
+                onChange={[MockFunction]}
+                onSelect={[Function]}
+              />,
+            },
+            Object {
+              "content": <IncidentLocationMapViewStep
+                onBack={[Function]}
+                onSelect={[Function]}
+                skip={[Function]}
+              />,
+            },
+            Object {
+              "content": <ImagesStep
+                onBack={[Function]}
+                onChange={[MockFunction]}
+                onNext={[Function]}
+              />,
+            },
+            Object {
+              "content": <ConfirmStep
+                data={Object {}}
+                first={[Function]}
+                onSubmit={[MockFunction]}
+              />,
+            },
+          ]
+        }
+        useNativeDriver={true}
+      />
+    </View>
+  </View>
+</Fragment>
 `;

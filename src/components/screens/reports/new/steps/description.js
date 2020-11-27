@@ -1,26 +1,23 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Input, Button} from 'react-native-elements';
-import {styles} from '../../../../../styles/common';
+import {Input} from 'react-native-elements';
+import {Back, Next} from '../buttons';
+import wizardStyles from '../styles';
 
 const DescriptionStep = (props) => (
   <View>
     <Input
       placeholder="Contanos todos los detalles que consideres necesarios"
-      label="Detalles?"
+      label="Detalles"
+      labelStyle={wizardStyles.title}
+      inputContainerStyle={wizardStyles.inputContainer}
+      inputStyle={wizardStyles.input}
+      containerStyle={wizardStyles.container}
       onChangeText={(value) => props.onChange('description', value)}
       multiline
     />
-    <Button
-      title={props.description ? 'Siguiente' : 'Saltear'}
-      onPress={props.onSelect}
-    />
-    <Button
-      title="Volver"
-      onPress={props.onBack}
-      type="clear"
-      titleStyle={styles.underline}
-    />
+    <Next onPress={props.onSelect} />
+    <Back onPress={props.onBack} />
   </View>
 );
 

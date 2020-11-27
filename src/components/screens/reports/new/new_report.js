@@ -1,8 +1,17 @@
 import React, {useState, useCallback} from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {getReports} from '../../../../config/routes';
 import usePost from '../../../../hooks/usePost';
+import COLORS from '../../../../styles/colors';
 import NewReportForm from './new_report_form';
+
+const newReportStyles = StyleSheet.create({
+  container: {
+    backgroundColor: COLORS.secondary,
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+});
 
 const NewReport = () => {
   const [data, setData] = useState({});
@@ -30,7 +39,7 @@ const NewReport = () => {
   );
 
   return (
-    <View>
+    <View style={newReportStyles.container}>
       <NewReportForm
         onChange={onChange}
         onSubmit={onSubmit}

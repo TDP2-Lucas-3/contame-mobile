@@ -1,8 +1,9 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Button, Input} from 'react-native-elements';
-import {styles} from '../../../../../styles/common';
+import {Input} from 'react-native-elements';
 import {truncate} from 'lodash';
+import {Back, Next} from '../buttons';
+import wizardStyles from '../styles';
 
 const MIN_LENGTH = 10;
 const MAX_TITLE_LENGTH = 20;
@@ -11,7 +12,11 @@ const TitleStep = (props) => (
   <View>
     <Input
       placeholder="Contanos brevemente"
-      label="Que paso?"
+      label="¿Que pasó?"
+      labelStyle={wizardStyles.title}
+      inputContainerStyle={wizardStyles.inputContainer}
+      inputStyle={wizardStyles.input}
+      containerStyle={wizardStyles.container}
       onChangeText={(value) =>
         props.onChange(
           'title',
@@ -20,17 +25,11 @@ const TitleStep = (props) => (
       }
       value={props.title}
     />
-    <Button
-      title="Siguiente"
+    <Next
       onPress={props.onSelect}
-      disabled={props.title ? props.title.length < MIN_LENGTH : true}
+      disabled={!props.title || props.title.length < MIN_LENGTH}
     />
-    <Button
-      title="Volver"
-      onPress={props.onBack}
-      type="clear"
-      titleStyle={styles.underline}
-    />
+    <Back onPress={props.onBack} />
   </View>
 );
 
