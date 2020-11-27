@@ -5,6 +5,8 @@ import {styles} from '../../../../styles/common';
 import {Input} from 'react-native-elements';
 import COLORS from '../../../../styles/colors';
 
+const COMMENT_MIN_LENGTH = 15;
+
 const ReportToolbar = ({report, currentComment, loading, ...props}) => {
   const [inputHeight, setInputHeight] = useState(
     styles.report_comments_container.height,
@@ -54,7 +56,7 @@ const ReportToolbar = ({report, currentComment, loading, ...props}) => {
               type: 'font-awesome-5',
               size: 15,
               onPress: onPostComment,
-              disabled: currentComment.length === 0,
+              disabled: currentComment.length < COMMENT_MIN_LENGTH,
               disabledStyle: styles.report_comment_disabled_icon,
             }
           )
