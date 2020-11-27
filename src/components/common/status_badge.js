@@ -1,15 +1,24 @@
 import {Badge} from 'react-native-elements';
+import {StyleSheet} from 'react-native';
 import {styles} from '../../styles/common';
 import React from 'react';
+import COLORS from '../../styles/colors';
+
+const badgeStyles = StyleSheet.create({
+  badge: {
+    borderWidth: 0.5,
+    borderColor: 'black',
+  },
+});
 
 export const StatusBadge = (props) => {
   return (
     <Badge
       badgeStyle={[
         props.styles || styles.report_status_badge_no_icon,
-        {backgroundColor: props.color},
+        badgeStyles.badge,
       ]}
-      textStyle={props.textStyle}
+      textStyle={[props.textStyle, {color: COLORS.secondary}]}
       value={props.state}
     />
   );

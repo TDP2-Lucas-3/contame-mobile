@@ -15,6 +15,7 @@ export const ReportImage = (props) => {
           <StatusBadge
             state={props.state}
             styles={styles.report_status_badge}
+            color={props.stateColor}
           />
         </Card.Image>
       ) : (

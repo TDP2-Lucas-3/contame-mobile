@@ -10,7 +10,7 @@ const ReportDetails = (props) => {
   return (
     <TouchableOpacity onPress={props.onPress}>
       <Card containerStyle={styles.report_card_container}>
-        <ReportImage image={props.images[0]} state={props.state} />
+        <ReportImage image={props.images[0]} {...props} />
         <View style={styles.report_card_body}>
           <View style={styles.m_1}>
             <Text style={styles.report_card_title}>{props.title}</Text>
