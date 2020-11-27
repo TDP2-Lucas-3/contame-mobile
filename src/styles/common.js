@@ -46,7 +46,8 @@ export const styles = StyleSheet.create({
   },
   map: {
     width: '100%',
-    height: '85%',
+    height: '50%',
+    marginTop: 20,
   },
   incidentsMap: {
     width: '100%',
@@ -193,7 +194,7 @@ export const styles = StyleSheet.create({
   },
   report_details_map: {
     height: 250,
-    width: '80%',
+    width: '85%',
     margin: 30,
   },
   zIndex_9: {
@@ -265,8 +266,14 @@ export const styles = StyleSheet.create({
   font_md: {
     fontSize: 18,
   },
+  h4: {
+    fontSize: 24,
+  },
   font_14: {
     fontSize: 14,
+  },
+  font_12: {
+    fontSize: 12,
   },
   font_sm: {
     fontSize: 10,
@@ -290,8 +297,14 @@ export const styles = StyleSheet.create({
   mr_1: {
     marginRight: 10,
   },
+  mr_1_sm: {
+    marginRight: 3,
+  },
   mr_2: {
     marginRight: 20,
+  },
+  mr_3: {
+    marginRight: 30,
   },
   mv_2: {
     marginTop: 20,
@@ -304,11 +317,20 @@ export const styles = StyleSheet.create({
   ml_2: {
     marginLeft: 20,
   },
+  mb_1: {
+    marginBottom: 10,
+  },
   mb_2: {
     marginBottom: 20,
   },
   ml_3: {
     marginLeft: 30,
+  },
+  mr_5: {
+    marginRight: 50,
+  },
+  ml_4: {
+    marginLeft: 40,
   },
   mt_9: {
     marginTop: 90,
@@ -358,14 +380,55 @@ export const styles = StyleSheet.create({
     color: COLORS.LINK,
   },
   report_details_footer: {
-    padding: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
     borderTopWidth: 1,
     borderTopColor: colors.grey3,
     backgroundColor: COLORS.secondary,
+  },
+  report_comments_container: {
+    height: 30,
+    width: '70%',
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: 'white',
+    marginLeft: 10,
+    backgroundColor: '#E5E5E5',
+  },
+  report_comments_input_container: {
+    borderBottomColor: COLORS.secondary,
+    height: 30,
+  },
+  report_comment_input: {
+    fontFamily: 'Raleway-Regular',
+    color: COLORS.secondary,
+    fontSize: 14,
+  },
+  report_comment_icon: {
+    borderRightColor: COLORS.secondary,
+    borderRightWidth: 1,
+    paddingRight: 10,
   },
   voteIcon: {
     padding: 5,
     width: 75,
     flexDirection: 'row',
+  },
+  general_comment_body_container: {
+    backgroundColor: COLORS.secondary,
+    padding: 12,
+    paddingVertical: 7,
+    borderRadius: 10,
+    marginLeft: 10,
+    marginBottom: 5,
+  },
+  general_comment_footer: {
+    marginLeft: 45,
+    fontSize: 12,
+  },
+  report_comment_disabled_icon: {
+    backgroundColor: '#E5E5E5',
+    opacity: 0.3,
   },
 });

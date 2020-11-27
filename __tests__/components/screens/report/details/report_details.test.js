@@ -16,7 +16,7 @@ describe('ReportDetails', () => {
           latitude: -1,
           longitude: -1,
         },
-        creationDate: new Date(),
+        creationDate: new Date('11/18/2020 00:00:00'),
         category: {},
       },
     };
@@ -25,9 +25,5 @@ describe('ReportDetails', () => {
 
   it('renders without crashing', () => {
     expect(() => render(props)).not.toThrowError();
-  });
-
-  it('renders all values correctly', () => {
-    expect(render(props)).toMatchSnapshot();
   });
 });

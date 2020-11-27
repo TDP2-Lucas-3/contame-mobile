@@ -25,3 +25,13 @@ export const getHeaderOptions = (title, navigation) => ({
   headerStyle: styles.bg_secondary,
   headerTitleStyle: [styles.color_white, styles.raleway],
 });
+
+export const getHeaderBack = (navigation) => (
+  <Icon
+    name="arrow-left"
+    type="font-awesome-5"
+    containerStyle={styles.menu_bars_container}
+    onPress={() => navigation.goBack()}
+    size={15}
+  />
+);

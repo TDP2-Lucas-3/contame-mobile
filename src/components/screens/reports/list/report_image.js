@@ -1,7 +1,6 @@
 import {View} from 'react-native';
-import {Badge, Card, Icon} from 'react-native-elements';
+import {Card, Icon} from 'react-native-elements';
 import {styles} from '../../../../styles/common';
-import {verboseReportState} from '../../../../utils/verbose_report_names';
 import React from 'react';
 import {StatusBadge} from '../../../common/status_badge';
 
@@ -29,7 +28,7 @@ export const ReportImage = (props) => {
               styles.report_default_icon_container,
             ]}
           />
-          <StatusBadge state={props.state} />
+          <StatusBadge state={props.state} color={props.stateColor} />
         </View>
       )}
     </View>

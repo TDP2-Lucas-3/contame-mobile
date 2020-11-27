@@ -9,10 +9,10 @@ export const styles = StyleSheet.create({
 });
 export const notVotedStyles = StyleSheet.create({
   voteIcon: {
-    padding: 5,
+    padding: 7,
     paddingLeft: 10,
     paddingRight: 10,
-    width: 75,
+    width: 60,
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderWidth: 1,
