@@ -1,7 +1,6 @@
 import {View} from 'react-native';
 import {styles} from '../../../styles/common';
 import {Badge, Icon} from 'react-native-elements';
-import {verboseReportState} from '../../../utils/verbose_report_names';
 import React from 'react';
 import {WebView} from 'react-native-webview';
 
@@ -27,9 +26,12 @@ export const MapReportImage = (props) => {
         />
       )}
       <Badge
-        badgeStyle={styles.report_status_badge_no_icon}
+        badgeStyle={[
+          styles.report_status_badge_no_icon,
+          {backgroundColor: props.stateColor},
+        ]}
         status={'warning'}
-        value={verboseReportState(props.state)}
+        value={props.state}
       />
     </View>
   );
