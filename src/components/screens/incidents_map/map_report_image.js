@@ -1,8 +1,9 @@
 import {View} from 'react-native';
 import {styles} from '../../../styles/common';
-import {Badge, Icon} from 'react-native-elements';
+import {Icon} from 'react-native-elements';
 import React from 'react';
 import {WebView} from 'react-native-webview';
+import {StatusBadge} from '../../common/status_badge';
 
 export const MapReportImage = (props) => {
   return (
@@ -25,14 +26,7 @@ export const MapReportImage = (props) => {
           ]}
         />
       )}
-      <Badge
-        badgeStyle={[
-          styles.report_status_badge_no_icon,
-          {backgroundColor: props.stateColor},
-        ]}
-        status={'warning'}
-        value={props.state}
-      />
+      <StatusBadge state={props.state} color={props.stateColor} />
     </View>
   );
 };

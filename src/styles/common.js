@@ -78,7 +78,6 @@ export const styles = StyleSheet.create({
     right: 8,
   },
   report_card_container: {
-    position: 'relative',
     padding: 0,
     borderRadius: 10,
     shadowColor: '#000',
@@ -153,6 +152,13 @@ export const styles = StyleSheet.create({
     top: -150,
     right: 0,
     margin: 10,
+    padding: 5,
+  },
+  report_status_badge_detail: {
+    position: 'absolute',
+    top: -200,
+    right: 0,
+    margin: 15,
     padding: 5,
   },
   report_header_image: {

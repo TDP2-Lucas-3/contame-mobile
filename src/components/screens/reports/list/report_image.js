@@ -1,7 +1,8 @@
 import {View} from 'react-native';
-import {Badge, Card, Icon} from 'react-native-elements';
+import {Card, Icon} from 'react-native-elements';
 import {styles} from '../../../../styles/common';
 import React from 'react';
+import {StatusBadge} from '../../../common/status_badge';
 
 export const ReportImage = (props) => {
   return (
@@ -11,12 +12,9 @@ export const ReportImage = (props) => {
           testID="card_image"
           source={{uri: props.image}}
           style={styles.borderTopRadius_1}>
-          <Badge
-            badgeStyle={[
-              styles.report_status_badge,
-              {backgroundColor: props.stateColor},
-            ]}
-            value={props.state}
+          <StatusBadge
+            state={props.state}
+            styles={styles.report_status_badge}
           />
         </Card.Image>
       ) : (
@@ -30,13 +28,7 @@ export const ReportImage = (props) => {
               styles.report_default_icon_container,
             ]}
           />
-          <Badge
-            badgeStyle={[
-              styles.report_status_badge_no_icon,
-              {backgroundColor: props.stateColor},
-            ]}
-            value={props.state}
-          />
+          <StatusBadge state={props.state} color={props.stateColor} />
         </View>
       )}
     </View>

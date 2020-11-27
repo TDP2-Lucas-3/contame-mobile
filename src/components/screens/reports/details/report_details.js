@@ -7,6 +7,7 @@ import moment from 'moment';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapMarker from 'react-native-maps/lib/components/MapMarker';
 import {SliderBox} from 'react-native-image-slider-box';
+import {StatusBadge} from '../../../common/status_badge';
 import ReportToolbar from './report_toolbar';
 import RalewayText from '../../../common/raleway_text';
 import EmptyMessage from '../../../common/empty_message';
@@ -22,6 +23,8 @@ const ReportDetails = (props) => {
     lat: latitude,
     location,
     category,
+    state,
+    stateColor,
     subcategory,
     comments,
   } = props.report;
@@ -46,6 +49,12 @@ const ReportDetails = (props) => {
             {capitalize(title)}
           </RalewayText>
         </View>
+        <StatusBadge
+          state={state}
+          styles={styles.report_status_badge_detail}
+          textStyle={styles.font_14}
+          color={stateColor}
+        />
       </View>
       <ScrollView>
         <View style={[styles.row, styles.mt_9, styles.m_3, styles.alignCenter]}>
