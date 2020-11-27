@@ -20,7 +20,14 @@ exports[`ReportDetails renders all values correctly 1`] = `
     }
   >
     <ReportImage
+      description="some description"
       image="some image data"
+      images={
+        Array [
+          "some image data",
+        ]
+      }
+      title="a report"
     />
     <View
       style={
