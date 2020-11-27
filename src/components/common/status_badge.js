@@ -17,8 +17,9 @@ export const StatusBadge = (props) => {
       badgeStyle={[
         props.styles || styles.report_status_badge_no_icon,
         badgeStyles.badge,
+        {backgroundColor: props.stateColor},
       ]}
-      textStyle={[props.textStyle, {color: COLORS.secondary}]}
+      textStyle={[props.textStyle, {color: COLORS.secondary}, styles.raleway]}
       value={props.state}
     />
   );

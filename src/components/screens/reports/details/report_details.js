@@ -28,7 +28,7 @@ const ReportDetails = (props) => {
     subcategory,
     comments,
   } = props.report;
-
+  console.log(stateColor);
   return (
     <View style={styles.report_details_container}>
       <View style={styles.zIndex_9}>
@@ -53,7 +53,7 @@ const ReportDetails = (props) => {
           state={state}
           styles={styles.report_status_badge_detail}
           textStyle={styles.font_14}
-          color={stateColor}
+          stateColor={stateColor}
         />
       </View>
       <ScrollView>

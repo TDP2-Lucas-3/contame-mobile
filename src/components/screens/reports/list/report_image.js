@@ -15,7 +15,7 @@ export const ReportImage = (props) => {
           <StatusBadge
             state={props.state}
             styles={styles.report_status_badge}
-            color={props.stateColor}
+            stateColor={props.stateColor}
           />
         </Card.Image>
       ) : (
@@ -29,7 +29,7 @@ export const ReportImage = (props) => {
               styles.report_default_icon_container,
             ]}
           />
-          <StatusBadge state={props.state} color={props.stateColor} />
+          <StatusBadge state={props.state} stateColor={props.stateColor} />
         </View>
       )}
     </View>
