@@ -6,7 +6,7 @@ export const reportAttributesToFilterBy = [
   },
   {
     label: 'Categoria',
-    accesor: 'category.name',
+    accesor: 'category',
     stateKey: 'categories',
   },
   {
