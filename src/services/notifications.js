@@ -22,7 +22,7 @@ export async function displayNotification(notif, data) {
       channelId,
       style: {type: AndroidStyle.BIGTEXT, text: body},
       largeIcon: data.photo || undefined,
-      smallIcon: 'ic_launcher_round',
+      smallIcon: 'ic_contame',
       pressAction: {
         id: 'default',
       },
