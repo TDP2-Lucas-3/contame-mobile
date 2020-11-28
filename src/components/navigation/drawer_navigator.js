@@ -26,11 +26,10 @@ const DrawerNavigator = () => {
   const navigation = useNavigation();
 
   useHandleNotification((notification) => {
-    console.log(notification);
     navigation.navigate('ReportDetails', {
       reportId: notification.data.id
         ? parseInt(notification.data.id, 10)
-        : notification.data.reportId,
+        : parseInt(notification.data.reportId, 10),
     });
   });
 

@@ -28,7 +28,6 @@ const ReportDetails = (props) => {
     subcategory,
     comments,
   } = props.report;
-  console.log(stateColor);
   return (
     <View style={styles.report_details_container}>
       <View style={styles.zIndex_9}>

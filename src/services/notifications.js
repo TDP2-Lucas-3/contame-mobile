@@ -21,7 +21,7 @@ export async function displayNotification(notif, data) {
     android: {
       channelId,
       style: {type: AndroidStyle.BIGTEXT, text: body},
-      largeIcon: data.photo,
+      largeIcon: data.photo || undefined,
       smallIcon: 'ic_launcher_round',
       pressAction: {
         id: 'default',
