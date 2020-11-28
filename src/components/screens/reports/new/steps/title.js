@@ -12,7 +12,7 @@ const TitleStep = (props) => (
   <View>
     <Input
       placeholder="Contanos brevemente"
-      label="¿Que pasó?"
+      label="¿Qué pasó?"
       labelStyle={wizardStyles.title}
       inputContainerStyle={wizardStyles.inputContainer}
       inputStyle={wizardStyles.input}

@@ -57,7 +57,7 @@ const CommonPicker = (props) =>
 const CategoryPicker = (props) => {
   const [{data, loading}] = useAxios(getCategories());
 
-  const categories = [{key: 'category', value: 'Categoria'}, ...(data || [])];
+  const categories = [{key: 'category', value: 'Categoría'}, ...(data || [])];
 
   return (
     <CommonPicker

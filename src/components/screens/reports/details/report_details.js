@@ -132,7 +132,7 @@ const ReportDetails = (props) => {
             <EmptyMessage
               small
               title="Todavia no hay comentarios"
-              message="Se el primero!"
+              message="¡Se el primero!"
             />
           )}
         </View>
