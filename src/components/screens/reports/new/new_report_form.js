@@ -93,6 +93,7 @@ const NewReportForm = (props) => {
           onSelect={onSelect}
           skip={next}
           onBack={back}
+          location={{latitude: props.data.lat, longitude: props.data.long}}
         />
       ),
     },

@@ -19,7 +19,7 @@ export const StatusBadge = (props) => {
         badgeStyles.badge,
         {backgroundColor: props.stateColor},
       ]}
-      textStyle={[props.textStyle, {color: COLORS.secondary}, styles.raleway]}
+      textStyle={[props.textStyle, {color: 'black'}, styles.raleway_bold]}
       value={props.state}
     />
   );

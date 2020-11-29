@@ -4,8 +4,10 @@ import {VoteButton} from './vote_button';
 import {styles} from '../../../../styles/common';
 import {Input} from 'react-native-elements';
 import COLORS from '../../../../styles/colors';
+import {truncate} from 'lodash';
 
-const COMMENT_MIN_LENGTH = 15;
+const COMMENT_MIN_LENGTH = 10;
+const COMMENT_MAX_LENGTH = 150;
 
 const ReportToolbar = ({report, currentComment, loading, ...props}) => {
   const [inputHeight, setInputHeight] = useState(
@@ -65,7 +67,11 @@ const ReportToolbar = ({report, currentComment, loading, ...props}) => {
         onContentSizeChange={(e) =>
           setInputHeight(e.nativeEvent.contentSize.height)
         }
-        onChangeText={props.onChangeComment}
+        onChangeText={(newComment) =>
+          newComment.length < COMMENT_MAX_LENGTH
+            ? props.onChangeComment(newComment)
+            : props.onChangeComment(truncate(newComment, {omission: ''}))
+        }
         value={currentComment}
       />
     </View>

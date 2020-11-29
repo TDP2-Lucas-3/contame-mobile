@@ -13,14 +13,6 @@ export const getHeaderOptions = (title, navigation) => ({
       size={15}
     />
   ),
-  headerRight: () => (
-    <Icon
-      name="bell"
-      type="font-awesome-5"
-      containerStyle={styles.notification_icon_container}
-      size={15}
-    />
-  ),
   headerTitleAlign: 'center',
   headerStyle: styles.bg_secondary,
   headerTitleStyle: [styles.color_white, styles.raleway],
