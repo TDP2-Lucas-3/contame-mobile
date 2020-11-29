@@ -35,26 +35,10 @@ const DrawerNavigator = () => {
 
   return (
     <Drawer.Navigator
-      initialRouteName="myReports"
       drawerContent={(props) => <DrawerContent {...props} />}
       drawerContentOptions={{
         labelStyle: [styles.color_white, styles.raleway],
       }}>
-      <Drawer.Screen
-        name="myReports"
-        component={MyReportsStack}
-        options={{
-          title: 'Mis Incidencias',
-          drawerIcon: () => (
-            <Icon
-              name="clipboard-check"
-              type="font-awesome-5"
-              size={15}
-              color="white"
-            />
-          ),
-        }}
-      />
       <Drawer.Screen
         name="reports"
         component={GeneralReportsStack}
@@ -63,6 +47,21 @@ const DrawerNavigator = () => {
           drawerIcon: () => (
             <Icon
               name="clipboard-list"
+              type="font-awesome-5"
+              size={15}
+              color="white"
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="myReports"
+        component={MyReportsStack}
+        options={{
+          title: 'Mis Incidencias',
+          drawerIcon: () => (
+            <Icon
+              name="clipboard-check"
               type="font-awesome-5"
               size={15}
               color="white"
