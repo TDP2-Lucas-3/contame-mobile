@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {editUser} from '../../../services/editUser';
-import Loading from '../../common/loading';
 import {UserProfile} from './user_profile';
 import {ToastAndroid} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
@@ -53,9 +52,7 @@ export const UserProfileContainer = () => {
       console.log(e);
     }
   };
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <UserProfile
       photo={photo}
       imagePickerCallback={imagePickerCallback}
@@ -65,6 +62,7 @@ export const UserProfileContainer = () => {
       setFirstName={setFirstName}
       setLastName={setLastName}
       onSubmit={onSubmit}
+      loading={loading}
     />
   );
 };
