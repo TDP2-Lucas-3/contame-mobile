@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-
 import {styles} from '../../../styles/login_screen';
 
 export function Logo() {
