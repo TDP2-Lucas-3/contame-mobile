@@ -108,6 +108,7 @@ const NewReportForm = (props) => {
           first={first}
           onSubmit={props.onSubmit}
           data={props.data}
+          onGoBack={props.onGoBack}
         />
       ),
     },

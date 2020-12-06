@@ -13,7 +13,7 @@ const newReportStyles = StyleSheet.create({
   },
 });
 
-const NewReport = () => {
+const NewReport = ({navigation}) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const submit = usePost();
@@ -45,6 +45,7 @@ const NewReport = () => {
         onSubmit={onSubmit}
         loading={loading}
         data={data}
+        onGoBack={navigation.goBack}
       />
     </View>
   );
