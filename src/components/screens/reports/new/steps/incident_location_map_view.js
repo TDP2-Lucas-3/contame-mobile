@@ -9,8 +9,6 @@ import {DEFAULT_INITIAL_CENTER} from '../../../../../config/constants';
 import RalewayText from '../../../../common/raleway_text';
 import wizardStyles from '../styles';
 import {Back, Next} from '../buttons';
-import {isEmpty} from 'lodash';
-import { Button } from 'react-native-paper';
 
 async function fetch(setCenter) {
   let initialCenter = DEFAULT_INITIAL_CENTER;

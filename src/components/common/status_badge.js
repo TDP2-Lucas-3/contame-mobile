@@ -2,7 +2,6 @@ import {Badge} from 'react-native-elements';
 import {StyleSheet} from 'react-native';
 import {styles} from '../../styles/common';
 import React from 'react';
-import COLORS from '../../styles/colors';
 
 const badgeStyles = StyleSheet.create({
   badge: {
@@ -19,7 +18,7 @@ export const StatusBadge = (props) => {
         badgeStyles.badge,
         {backgroundColor: props.stateColor},
       ]}
-      textStyle={[props.textStyle, {color: 'black'}, styles.raleway_bold]}
+      textStyle={[props.textStyle, styles.color_black, styles.raleway_bold]}
       value={props.state}
     />
   );
