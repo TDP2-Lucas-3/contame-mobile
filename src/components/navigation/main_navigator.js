@@ -17,7 +17,7 @@ const MainNavigator = () => {
           {config.firstLogin ? (
             <Stack.Screen
               name="login_edit"
-              options={{title: 'Confirmá tus datos'}}
+              options={{headerShown: false}}
               component={FirstLoginEditContainer}
             />
           ) : (
