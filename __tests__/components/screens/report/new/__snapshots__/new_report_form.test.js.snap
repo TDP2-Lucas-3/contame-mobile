@@ -178,6 +178,12 @@ Incidencia
             },
             Object {
               "content": <IncidentLocationMapViewStep
+                location={
+                  Object {
+                    "latitude": undefined,
+                    "longitude": undefined,
+                  }
+                }
                 onBack={[Function]}
                 onSelect={[Function]}
                 skip={[Function]}
