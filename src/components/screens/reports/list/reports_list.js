@@ -23,13 +23,13 @@ const viewTypes = {
 };
 
 const ReportsList = ({navigation, reportsAPI}) => {
-  const [{data, loading}, refetch] = useAxios(reportsAPI);
-  const [filterData, setFilterData] = useState(
-    reportAttributesToFilterBy.reduce(
-      (initialState, filter) => ({...initialState, [filter.stateKey]: []}),
-      {},
-    ),
+  const initialFilterData = reportAttributesToFilterBy.reduce(
+    (initialState, filter) => ({...initialState, [filter.stateKey]: []}),
+    {},
   );
+
+  const [{data, loading}, refetch] = useAxios(reportsAPI);
+  const [filterData, setFilterData] = useState(initialFilterData);
 
   const [viewType, setViewType] = useState(viewTypes.LIST);
 
@@ -70,7 +70,7 @@ const ReportsList = ({navigation, reportsAPI}) => {
   const renderFilter = () => (
     <View style={styles.row}>
       <FilterMenu
-        onClear={() => setFilterData({category: [], neighborhood: []})}
+        onClear={() => setFilterData(initialFilterData)}
         filters={reportAttributesToFilterBy.map((filter) => (
           <CheckboxFilter
             title={filter.label}

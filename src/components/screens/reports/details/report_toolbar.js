@@ -68,9 +68,14 @@ const ReportToolbar = ({report, currentComment, loading, ...props}) => {
           setInputHeight(e.nativeEvent.contentSize.height)
         }
         onChangeText={(newComment) =>
-          newComment.length < COMMENT_MAX_LENGTH
+          newComment.length <= COMMENT_MAX_LENGTH
             ? props.onChangeComment(newComment)
-            : props.onChangeComment(truncate(newComment, {omission: ''}))
+            : props.onChangeComment(
+                truncate(newComment, {
+                  omission: '',
+                  length: COMMENT_MAX_LENGTH,
+                }),
+              )
         }
         value={currentComment}
       />
