@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import COLORS from './colors';
 
 export const styles = StyleSheet.create({
   backgroundImage: {
@@ -9,27 +10,33 @@ export const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'space-between',
     alignItems: 'center',
+    margin: 30,
   },
   logo: {
-    flex: 1,
     flexDirection: 'row',
-    paddingTop: 20,
+    alignItems: 'flex-end',
   },
   logoFirst: {
     fontSize: 48,
-    justifyContent: 'center',
     color: 'white',
+    fontFamily: 'Signika-Regular',
+  },
+  logoBlack: {
+    color: COLORS.secondary,
+    fontSize: 48,
     fontFamily: 'Signika-Regular',
   },
   logoSecond: {
     color: '#F4D35E',
     fontSize: 48,
-    justifyContent: 'center',
     fontFamily: 'Signika-Regular',
+  },
+  description_container: {
+    alignItems: 'center',
   },
   description: {
     fontSize: 16,
-    margin: 20,
+    margin: 30,
     marginBottom: 60,
     color: 'white',
     fontFamily: 'Raleway-Regular',

@@ -11,3 +11,12 @@ export function Logo() {
     </View>
   );
 }
+
+export function LogoSecondary() {
+  return (
+    <View style={styles.logo}>
+      <Text style={styles.logoFirst}>Conta</Text>
+      <Text style={styles.logoBlack}>ME</Text>
+    </View>
+  );
+}
