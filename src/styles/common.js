@@ -373,6 +373,9 @@ export const styles = StyleSheet.create({
   color_grey: {
     color: 'grey',
   },
+  color_black: {
+    color: 'black',
+  },
   color_white: {
     color: 'white',
   },
