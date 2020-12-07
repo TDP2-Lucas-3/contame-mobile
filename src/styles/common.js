@@ -17,6 +17,9 @@ export const styles = StyleSheet.create({
   justifyBetween: {
     justifyContent: 'space-between',
   },
+  maxWidth300: {
+    maxWidth: 300,
+  },
   justifyEnd: {
     justifyContent: 'flex-end',
   },
@@ -338,6 +341,9 @@ export const styles = StyleSheet.create({
   mt_9: {
     marginTop: 90,
   },
+  mt_5: {
+    marginTop: 50,
+  },
   mt_2: {
     marginTop: 20,
   },
@@ -428,6 +434,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 10,
     marginBottom: 5,
+    maxWidth: 300,
   },
   general_comment_footer: {
     marginLeft: 45,

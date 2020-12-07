@@ -56,7 +56,7 @@ const ReportDetails = (props) => {
         />
       </View>
       <ScrollView>
-        <View style={[styles.row, styles.mt_9, styles.m_3, styles.alignCenter]}>
+        <View style={[styles.row, styles.mt_5, styles.m_3, styles.alignCenter]}>
           <Icon
             name="calendar"
             type="font-awesome-5"
@@ -66,7 +66,13 @@ const ReportDetails = (props) => {
             {moment(creationDate).format('D [de] MMMM, y')}
           </RalewayText>
         </View>
-        <View style={[styles.row, styles.ml_3, styles.alignCenter]}>
+        <View
+          style={[
+            styles.row,
+            styles.ml_3,
+            styles.alignCenter,
+            styles.maxWidth300,
+          ]}>
           <Icon
             name="map-marker"
             type="font-awesome-5"
@@ -77,16 +83,24 @@ const ReportDetails = (props) => {
           </RalewayText>
         </View>
         <View
-          style={[styles.row, styles.ml_3, styles.mt_3, styles.alignCenter]}>
+          style={[
+            styles.row,
+            styles.ml_3,
+            styles.mt_3,
+            styles.mr_3,
+            styles.alignCenter,
+          ]}>
           <Icon
             name="layer-group"
             type="font-awesome-5"
             containerStyle={styles.report_details_icon_container}
           />
-          <RalewayText bold style={[styles.ml_2, styles.color_secondary]}>
-            {`${category} - `}
-          </RalewayText>
-          <RalewayText>{subcategory}</RalewayText>
+          <View>
+            <RalewayText bold style={[styles.ml_2, styles.color_secondary]}>
+              {`${category}`}
+            </RalewayText>
+            <RalewayText style={[styles.ml_3]}>{`\t${subcategory}`}</RalewayText>
+          </View>
         </View>
         <View style={[styles.ml_3, styles.mt_2, styles.mr_2]}>
           {description && (
