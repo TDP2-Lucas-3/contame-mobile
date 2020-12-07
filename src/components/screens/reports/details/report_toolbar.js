@@ -5,6 +5,7 @@ import {styles} from '../../../../styles/common';
 import {Input} from 'react-native-elements';
 import COLORS from '../../../../styles/colors';
 import {truncate} from 'lodash';
+import SocialShare from './social_share';
 
 const COMMENT_MIN_LENGTH = 10;
 const COMMENT_MAX_LENGTH = 150;
@@ -79,6 +80,7 @@ const ReportToolbar = ({report, currentComment, loading, ...props}) => {
         }
         value={currentComment}
       />
+      <SocialShare containerStyle={styles.ml_1_5} />
     </View>
   );
 };
