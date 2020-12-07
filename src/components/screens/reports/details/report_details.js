@@ -99,7 +99,8 @@ const ReportDetails = (props) => {
             <RalewayText bold style={[styles.ml_2, styles.color_secondary]}>
               {`${category}`}
             </RalewayText>
-            <RalewayText style={[styles.ml_3]}>{`\t${subcategory}`}</RalewayText>
+            <RalewayText
+              style={[styles.ml_3]}>{`\t${subcategory}`}</RalewayText>
           </View>
         </View>
         <View style={[styles.ml_3, styles.mt_2, styles.mr_2]}>
