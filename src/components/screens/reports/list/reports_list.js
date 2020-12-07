@@ -1,4 +1,4 @@
-import React, {useState, useMemo, useCallback} from 'react';
+import React, {useState, useEffect, useMemo, useCallback} from 'react';
 import {FlatList, View} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {Chip} from 'react-native-paper';
@@ -66,6 +66,14 @@ const ReportsList = ({navigation, reportsAPI}) => {
         .sort((a, b) => moment(a.creationDate) < moment(b.creationDate)),
     [shouldShow, data],
   );
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      refetch();
+    });
+    return unsubscribe;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigation]);
 
   const renderFilter = () => (
     <View style={styles.row}>
