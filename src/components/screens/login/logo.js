@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-
 import {styles} from '../../../styles/login_screen';
 
 export function Logo() {
@@ -8,6 +7,15 @@ export function Logo() {
     <View style={styles.logo}>
       <Text style={styles.logoFirst}>Conta</Text>
       <Text style={styles.logoSecond}>ME</Text>
+    </View>
+  );
+}
+
+export function LogoSecondary() {
+  return (
+    <View style={styles.logo}>
+      <Text style={styles.logoFirst}>Conta</Text>
+      <Text style={styles.logoBlack}>ME</Text>
     </View>
   );
 }
