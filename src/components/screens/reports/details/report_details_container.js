@@ -6,6 +6,8 @@ import {postComment} from '../../../../services/comment';
 import {fetchReport} from '../../../../services/fetchReport';
 import {useSelector} from 'react-redux';
 import {ToastAndroid} from 'react-native';
+import RNFetchBlob from 'react-native-fetch-blob';
+import Share from 'react-native-share';
 
 const ReportDetailsContainer = ({route}) => {
   const {reportId} = route.params;
@@ -71,6 +73,24 @@ const ReportDetailsContainer = ({route}) => {
     }
   };
 
+  const onShareTo = async (socialNetwork) => {
+    const configOptions = {
+      fileCache: true,
+    };
+
+    const response = await RNFetchBlob.config(configOptions).fetch(
+      'GET',
+      data.images[0],
+    );
+
+    const shareOptions = {
+      url: `file://${response.path()}`,
+      type: 'image/jpg',
+      social: socialNetwork,
+    };
+    Share.shareSingle(shareOptions);
+  };
+
   return !data ? (
     <Loading />
   ) : (
@@ -82,6 +102,7 @@ const ReportDetailsContainer = ({route}) => {
       onChangeComment={(newComment) => setComment(newComment)}
       currentComment={comment}
       loading={loading}
+      onShareTo={onShareTo}
     />
   );
 };

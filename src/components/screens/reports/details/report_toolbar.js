@@ -80,7 +80,7 @@ const ReportToolbar = ({report, currentComment, loading, ...props}) => {
         }
         value={currentComment}
       />
-      <SocialShare containerStyle={styles.ml_1_5} />
+      <SocialShare containerStyle={styles.ml_1_5} onShareTo={props.onShareTo} />
     </View>
   );
 };
