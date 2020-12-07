@@ -12,13 +12,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {saveConfig} from '../../redux/actions/config';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {UserProfileContainer} from '../screens/user_profile/user_profile_container';
 import {saveUserData} from '../../redux/actions/user';
 import useHandleNotification from '../../hooks/useHandleNotification';
 import {useNavigation} from '@react-navigation/native';
 import MyReportsStack from './my_reports_stack';
 import GeneralReportsStack from './general_reports_stack';
 import RalewayText from '../common/raleway_text';
+import ProfileStack from './profile_stack';
 
 const Drawer = createDrawerNavigator();
 
@@ -71,7 +71,7 @@ const DrawerNavigator = () => {
       />
       <Drawer.Screen
         name="profile"
-        component={UserProfileContainer}
+        component={ProfileStack}
         options={{
           title: 'Mi Cuenta',
           drawerIcon: () => (

@@ -323,6 +323,9 @@ export const styles = StyleSheet.create({
   mb_2: {
     marginBottom: 20,
   },
+  mb_3: {
+    marginBottom: 30,
+  },
   ml_3: {
     marginLeft: 30,
   },

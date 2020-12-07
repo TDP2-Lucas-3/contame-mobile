@@ -1,9 +1,10 @@
-import {Button, ScrollView, Text, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {styles} from './styles';
+import {styles as commonStyles} from '../../../styles/common';
 import {ClickableImage} from '../../common/clickable_image';
 import {showImagePicker} from '../../common/image_picker';
 import React from 'react';
-import {Input} from 'react-native-elements';
+import {Input, Button} from 'react-native-elements';
 
 const fieldValid = (field) => {
   return field && field.length > 0;
@@ -19,51 +20,60 @@ export const UserProfile = (props) => {
     setFirstName,
     setLastName,
     onSubmit,
+    loading,
   } = props;
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <ClickableImage
-        source={{uri: photo}}
-        style={styles.image}
-        onPress={() => showImagePicker(imagePickerCallback)}
-      />
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={commonStyles.m_2}>
+        <ClickableImage
+          source={{uri: photo}}
+          style={styles.image}
+          onPress={() => showImagePicker(imagePickerCallback)}
+        />
 
-      <Text style={styles.label}>{'Dirección de Correo'}</Text>
-      <Input disabled={true} defaultValue={email} />
+        <Input
+          disabled={true}
+          defaultValue={email}
+          label="Email"
+          labelStyle={commonStyles.color_secondary}
+        />
 
-      <Text style={styles.label}>{'Nombre'}</Text>
-      <Input
-        defaultValue={firstName}
-        onChangeText={setFirstName}
-        renderErrorMessage={!fieldValid(firstName)}
-        errorText={'Este campo es obligatorio.'}
-        errorStyle={styles.errorText}
-      />
-      {!fieldValid(firstName) && (
-        <Text style={styles.errorText}>Este campo es obligatorio.</Text>
-      )}
+        <Input
+          defaultValue={firstName}
+          onChangeText={setFirstName}
+          renderErrorMessage={!fieldValid(firstName)}
+          errorMessage={
+            !fieldValid(firstName) ? 'Este campo es obligatorio.' : ''
+          }
+          errorStyle={styles.errorText}
+          label="Nombre"
+          labelStyle={commonStyles.color_secondary}
+          containerStyle={commonStyles.mb_3}
+        />
 
-      <Text style={styles.label}>{'Apellido'}</Text>
-      <Input
-        defaultValue={lastName}
-        onChangeText={setLastName}
-        renderErrorMessage={!fieldValid(lastName)}
-        errorText={'Este campo es obligatorio.'}
-        errorStyle={styles.errorText}
-      />
-      {!fieldValid(lastName) && (
-        <Text style={styles.errorText}>Este campo es obligatorio.</Text>
-      )}
+        <Input
+          defaultValue={lastName}
+          onChangeText={setLastName}
+          renderErrorMessage={!fieldValid(lastName)}
+          errorMessage={
+            !fieldValid(lastName) ? 'Este campo es obligatorio.' : ''
+          }
+          errorStyle={styles.errorText}
+          label="Apellido"
+          labelStyle={commonStyles.color_secondary}
+        />
 
-      <View style={styles.buttonContainer}>
         <Button
-          disabled={!fieldValid(firstName) || !fieldValid(lastName)}
+          disabled={!fieldValid(firstName) || !fieldValid(lastName) || loading}
           style={styles.button}
           onPress={onSubmit}
           title={'Confirmar'}
+          buttonStyle={styles.button}
+          titleStyle={commonStyles.raleway}
+          loading={loading}
         />
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
