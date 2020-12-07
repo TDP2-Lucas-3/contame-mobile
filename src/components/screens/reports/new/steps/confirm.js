@@ -52,7 +52,7 @@ const ConfirmStep = (props) => {
       <RalewayText style={confirmStepStyles.subtitle}>
         ¡Gracias por reportar tu incidencia!
       </RalewayText>
-      <Next title={'Volver'} onPress={props.first} />
+      <Next title={'Volver'} onPress={props.onGoBack} />
     </>
   );
 };
