@@ -75,7 +75,8 @@ const ReportDetailsContainer = ({route}) => {
 
   const onShareTo = async (socialNetwork) => {
     const shareOptions = {
-      message: `Ayudame con tu voto! \n${generateReportLink(data.id)}`,
+      message: 'Ayudame con tu voto!\n',
+      url: generateReportLink(data.id),
       social: socialNetwork,
     };
     Share.shareSingle(shareOptions);
