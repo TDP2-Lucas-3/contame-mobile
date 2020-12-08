@@ -1,2 +1,4 @@
+import {host} from '../../app.json';
+
 export const generateReportLink = (reportId) =>
-  `https://contame.herokuapp.com/mobile/report?reportId=${reportId}`;
+  `${host}/contame/mobile/report?reportId=${reportId}`;

@@ -6,9 +6,10 @@ import {Provider} from 'react-redux';
 import {configure} from './src/services/notifications';
 import {Provider as PaperProvider} from 'react-native-paper';
 import Loading from './src/components/common/loading';
+import {host} from './app.json';
 
 const linking = {
-  prefixes: ['https://contame.herokuapp.com/mobile'],
+  prefixes: [`${host}/contame/mobile`],
   config: {
     screens: {
       drawer: {
