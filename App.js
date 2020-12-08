@@ -11,7 +11,15 @@ const linking = {
   prefixes: ['https://contame.herokuapp.com/mobile'],
   config: {
     screens: {
-      ReportDetails: 'report',
+      drawer: {
+        screens: {
+          reports: {
+            screens: {
+              ReportDetails: 'report',
+            },
+          },
+        },
+      },
     },
   },
 };
