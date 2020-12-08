@@ -6,7 +6,6 @@ import {postComment} from '../../../../services/comment';
 import {fetchReport} from '../../../../services/fetchReport';
 import {useSelector} from 'react-redux';
 import {ToastAndroid} from 'react-native';
-import RNFetchBlob from 'react-native-fetch-blob';
 import Share from 'react-native-share';
 
 const ReportDetailsContainer = ({route}) => {
@@ -74,18 +73,8 @@ const ReportDetailsContainer = ({route}) => {
   };
 
   const onShareTo = async (socialNetwork) => {
-    const configOptions = {
-      fileCache: true,
-    };
-
-    const response = await RNFetchBlob.config(configOptions).fetch(
-      'GET',
-      data.images[0],
-    );
-
     const shareOptions = {
-      url: `file://${response.path()}`,
-      type: 'image/jpg',
+      message: 'Ayudame con tu voto! \nhttp://someurl.com',
       social: socialNetwork,
     };
     Share.shareSingle(shareOptions);
