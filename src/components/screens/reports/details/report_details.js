@@ -160,6 +160,7 @@ const ReportDetails = (props) => {
         onChangeComment={props.onChangeComment}
         currentComment={props.currentComment}
         loading={props.loading}
+        onShareTo={props.onShareTo}
       />
     </View>
   );

@@ -5,6 +5,25 @@ import configureStore from './src/redux/store';
 import {Provider} from 'react-redux';
 import {configure} from './src/services/notifications';
 import {Provider as PaperProvider} from 'react-native-paper';
+import Loading from './src/components/common/loading';
+import {host} from './app.json';
+
+const linking = {
+  prefixes: [`${host}/contame/mobile`],
+  config: {
+    screens: {
+      drawer: {
+        screens: {
+          reports: {
+            screens: {
+              ReportDetails: 'report',
+            },
+          },
+        },
+      },
+    },
+  },
+};
 
 const App = () => {
   useEffect(() => {
@@ -14,7 +33,7 @@ const App = () => {
   return (
     <Provider store={configureStore()}>
       <PaperProvider>
-        <NavigationContainer>
+        <NavigationContainer linking={linking} fallback={<Loading />}>
           <WelcomeScreen />
         </NavigationContainer>
       </PaperProvider>

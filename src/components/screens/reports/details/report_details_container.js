@@ -6,6 +6,8 @@ import {postComment} from '../../../../services/comment';
 import {fetchReport} from '../../../../services/fetchReport';
 import {useSelector} from 'react-redux';
 import {ToastAndroid} from 'react-native';
+import Share from 'react-native-share';
+import {generateReportLink} from '../../../../services/deepLinking';
 
 const ReportDetailsContainer = ({route}) => {
   const {reportId} = route.params;
@@ -71,6 +73,15 @@ const ReportDetailsContainer = ({route}) => {
     }
   };
 
+  const onShareTo = async (socialNetwork) => {
+    const shareOptions = {
+      message: 'Ayudame con tu voto!\n',
+      url: generateReportLink(data.id),
+      social: socialNetwork,
+    };
+    Share.shareSingle(shareOptions);
+  };
+
   return !data ? (
     <Loading />
   ) : (
@@ -82,6 +93,7 @@ const ReportDetailsContainer = ({route}) => {
       onChangeComment={(newComment) => setComment(newComment)}
       currentComment={comment}
       loading={loading}
+      onShareTo={onShareTo}
     />
   );
 };

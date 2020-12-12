@@ -317,6 +317,9 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
   },
+  ml_1_5: {
+    marginLeft: 15,
+  },
   ml_2: {
     marginLeft: 20,
   },
